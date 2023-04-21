@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{b9dfa1fb-ca3e-4db7-b9a4-d275cace0cd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\1. Editor">
+      <UniqueIdentifier>{e4ca44ad-3771-4f7f-bbc0-41eff4990668}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\1. Editor\MainWindow">
+      <UniqueIdentifier>{9f213eec-1f76-42a9-ab99-770386b9e1cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\1. Editor\MainWindow\Resources">
+      <UniqueIdentifier>{f006ae32-944b-45de-b519-84966b3913d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform">
+      <UniqueIdentifier>{0caadfbc-1a2c-468f-b016-d133c6cd204a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform\GenericAPI">
+      <UniqueIdentifier>{36516320-785f-416c-baee-f989182d8df1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform\Linux %28TODO%29">
+      <UniqueIdentifier>{cf0858e4-ff50-4d2b-b48f-3ed9100a1365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform\Windows">
+      <UniqueIdentifier>{d13b09d5-20d2-445e-86fa-d2de80ebde4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform\Windows\API">
+      <UniqueIdentifier>{597a718e-3464-4d2c-ac8c-b56b1127eabd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\3. Core">
+      <UniqueIdentifier>{96742bd7-6924-4d6e-9184-4ab6efcbaffd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\4. Asset">
+      <UniqueIdentifier>{20dc6929-983c-47ec-a26d-b11d20d58b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\5. Engine">
+      <UniqueIdentifier>{b13cee11-f1ba-46b7-bde5-3c21eca56cac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Sources\Editor\MainWindow\App.hpp">
+      <Filter>Sources\1. Editor\MainWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Editor\Engine.hpp">
+      <Filter>Sources\1. Editor</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Platform\GenericOS.hpp">
+      <Filter>Sources\2. Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Platform\GenericCommon.hpp">
+      <Filter>Sources\2. Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Platform\Windows\API\WinTimer.hpp">
+      <Filter>Sources\2. Platform\Windows\API</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Platform\GenericAPI\GenericTimer.hpp">
+      <Filter>Sources\2. Platform\GenericAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Editor\MainWindow\Resources\Resource.h">
+      <Filter>Sources\1. Editor\MainWindow\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Editor\MainWindow\Resources\targetver.h">
+      <Filter>Sources\1. Editor\MainWindow\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Editor\MainWindow\Resources\framework.h">
+      <Filter>Sources\1. Editor\MainWindow\Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Sources\Editor\MainWindow\App.cpp">
+      <Filter>Sources\1. Editor\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Editor\Engine.cpp">
+      <Filter>Sources\1. Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Editor\Main.cpp">
+      <Filter>Sources\1. Editor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Sources\Editor\MainWindow\Resources\Furud.rc">
+      <Filter>Sources\1. Editor\MainWindow\Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Sources\Editor\MainWindow\Resources\Furud.ico">
+      <Filter>Sources\1. Editor\MainWindow\Resources</Filter>
+    </Image>
+    <Image Include="Sources\Editor\MainWindow\Resources\small.ico">
+      <Filter>Sources\1. Editor\MainWindow\Resources</Filter>
+    </Image>
+  </ItemGroup>
+</Project>
