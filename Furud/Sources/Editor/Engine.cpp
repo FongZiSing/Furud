@@ -1,4 +1,4 @@
-﻿//
+//
 // Engine.cpp
 //
 //       Copyright (c) Furud Engine. All rights reserved.
@@ -6,4 +6,18 @@
 //
 // Implemention of engine.
 //
-#include "Engine.hpp"
+module Furud.Engine;
+
+
+
+namespace Furud
+{
+	Engine::Engine()
+	{
+	}
+
+
+	Engine::~Engine()
+	{
+	}
+}

@@ -1,93 +1,95 @@
-﻿//
-// WinTimer.hpp
+//
+// Platform.API.FrameTimer.ixx
 //
 //       Copyright (c) Furud Engine. All rights reserved.
 //       @author FongZiSing
 //
 // High precision timer.
 //
-#pragma once
-
-#include <GenericCommon.hpp>
+module;
 
 #define WIN32_LEAN_AND_MEAN
 #define NOMINMAX
 #include <Windows.h>
+#include <Furud.hpp>
 
 
 
-namespace Furud
+export module Furud.Platform.API.FrameTimer;
+
+/** Frame timer */
+export namespace Furud
 {
-	class FURUD_API GenericTimer
+	class FrameTimer
 	{
 	public:
-		GenericTimer()
+		FrameTimer()
 		{
 			secondsPerCount = 1000.0 / static_cast<double>(GetPerformanceFrequency());
 		}
 
-		warn_nodiscard constexpr double TotalTime() const
+		FURUD_NODISCARD constexpr double TotalTime() const
 		{
-			return m_bStopped
+			return bStopped
 				? ((stopTime - pausedTime) - baseTime) * secondsPerCount
 				: ((currTime - pausedTime) - baseTime) * secondsPerCount;
 		}
 
-		warn_nodiscard constexpr float GetDeltaTime() const
+		FURUD_NODISCARD constexpr float GetDeltaTime() const
 		{
 			return static_cast<float>(deltaTime);
 		}
 
-		warn_nodiscard constexpr float GetElapsedTime() const
+		FURUD_NODISCARD constexpr float GetElapsedTime() const
 		{
 			return static_cast<float>(timeElapsed);
 		}
 
-		warn_nodiscard constexpr uint32 GetFrameNumber() const
+		FURUD_NODISCARD constexpr unsigned int GetFrameNumber() const
 		{
 			return framePerElapsed;
 		}
 
-		force_inline void Reset()
+		FURUD_INLINE void Reset()
 		{
-			int64 tempCurTime = GetPerformanceCounter();
+			long long tempCurTime = GetPerformanceCounter();
 			baseTime = tempCurTime;
 			prevTime = tempCurTime;
 			stopTime = 0;
-			m_bStopped = false;
+			bStopped = false;
 		}
 
-		force_inline void Start()
+		FURUD_INLINE void Start()
 		{
-			if (m_bStopped)
+			if (bStopped)
 			{
-				int64 tempCurTime = GetPerformanceCounter();
+				long long tempCurTime = GetPerformanceCounter();
 				pausedTime += (tempCurTime - stopTime);
 				prevTime = tempCurTime;
 				stopTime = 0;
-				m_bStopped = false;
+				bStopped = false;
 			}
 		}
 
-		force_inline void Stop()
+		FURUD_INLINE void Stop()
 		{
-			if (!m_bStopped)
+			if (!bStopped)
 			{
-				int64 TempCurTime = GetPerformanceCounter();
+				long long TempCurTime = GetPerformanceCounter();
 				stopTime = TempCurTime;
-				m_bStopped = true;
+				bStopped = true;
 			}
 		}
 
 		inline void BeginFrame()
 		{
-			if (m_bStopped)
+			if (bStopped)
 			{
 				deltaTime = 0.0;
 				return;
 			}
 
-			int64 tempCurTime = GetPerformanceCounter();
+			long long tempCurTime = GetPerformanceCounter();
 			currTime = tempCurTime;
 			deltaTime = (currTime - prevTime) * secondsPerCount;
 			deltaTime = deltaTime > 0.0 ? deltaTime : 0.0;
@@ -110,36 +112,36 @@ namespace Furud
 
 
 	private:
-		force_inline int64 GetPerformanceFrequency() const
+		long long GetPerformanceFrequency() const
 		{
-			int64 frequency;
+			long long frequency;
 			::QueryPerformanceFrequency((LARGE_INTEGER*)&frequency);
 			return frequency;
 		}
 
-		force_inline int64 GetPerformanceCounter() const
+		long long GetPerformanceCounter() const
 		{
-			int64 counter;
+			long long counter;
 			::QueryPerformanceCounter((LARGE_INTEGER*)&counter);
 			return counter;
 		}
 
 
 	private:
-		bool m_bStopped = false;
+		bool bStopped = false;
 
 		double secondsPerCount = 0;
 		double deltaTime = -1.0;
 
-		int64 baseTime = 0;
-		int64 pausedTime = 0;
-		int64 stopTime = 0;
-		int64 prevTime = 0;
-		int64 currTime = 0;
+		long long baseTime = 0;
+		long long pausedTime = 0;
+		long long stopTime = 0;
+		long long prevTime = 0;
+		long long currTime = 0;
 
 		double timeElapsed = 0.0;
-		uint32 lastFrame = 0;
-		uint32 currFrame = 0;
-		uint32 framePerElapsed = 0;
+		unsigned int lastFrame = 0;
+		unsigned int currFrame = 0;
+		unsigned int framePerElapsed = 0;
 	};
 }

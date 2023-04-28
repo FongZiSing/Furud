@@ -19,15 +19,6 @@
     <Filter Include="Sources\2. Platform\GenericAPI">
       <UniqueIdentifier>{36516320-785f-416c-baee-f989182d8df1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Sources\2. Platform\Linux %28TODO%29">
-      <UniqueIdentifier>{cf0858e4-ff50-4d2b-b48f-3ed9100a1365}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\2. Platform\Windows">
-      <UniqueIdentifier>{d13b09d5-20d2-445e-86fa-d2de80ebde4b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Sources\2. Platform\Windows\API">
-      <UniqueIdentifier>{597a718e-3464-4d2c-ac8c-b56b1127eabd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sources\3. Core">
       <UniqueIdentifier>{96742bd7-6924-4d6e-9184-4ab6efcbaffd}</UniqueIdentifier>
     </Filter>
@@ -37,26 +28,26 @@
     <Filter Include="Sources\5. Engine">
       <UniqueIdentifier>{b13cee11-f1ba-46b7-bde5-3c21eca56cac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\3. Core\Container">
+      <UniqueIdentifier>{2a32e5a3-891c-4afc-bb98-3a899a638764}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform\GenericThread">
+      <UniqueIdentifier>{bb1f46cd-c7de-4b8b-8fa4-39a72a874422}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform\GenericMemory">
+      <UniqueIdentifier>{25b90f9a-b07c-483f-8cf8-a2184bd83ad3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform\GenericSIMD">
+      <UniqueIdentifier>{9f936aea-7a8d-4181-9bde-8e5a229253d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform\GenericMath">
+      <UniqueIdentifier>{0fe2cda6-fdd2-413d-8201-5f78410e3564}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\3. Core\Math">
+      <UniqueIdentifier>{2f23f599-d965-4f19-9d98-40fd2e6b88a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\Editor\MainWindow\App.hpp">
-      <Filter>Sources\1. Editor\MainWindow</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Editor\Engine.hpp">
-      <Filter>Sources\1. Editor</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Platform\GenericOS.hpp">
-      <Filter>Sources\2. Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Platform\GenericCommon.hpp">
-      <Filter>Sources\2. Platform</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Platform\Windows\API\WinTimer.hpp">
-      <Filter>Sources\2. Platform\Windows\API</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Platform\GenericAPI\GenericTimer.hpp">
-      <Filter>Sources\2. Platform\GenericAPI</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Editor\MainWindow\Resources\Resource.h">
       <Filter>Sources\1. Editor\MainWindow\Resources</Filter>
     </ClInclude>
@@ -65,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="Sources\Editor\MainWindow\Resources\framework.h">
       <Filter>Sources\1. Editor\MainWindow\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Platform\Furud.hpp">
+      <Filter>Sources\2. Platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +70,87 @@
     </ClCompile>
     <ClCompile Include="Sources\Editor\Main.cpp">
       <Filter>Sources\1. Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Editor\Engine.ixx">
+      <Filter>Sources\1. Editor</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Editor\MainWindow\App.ixx">
+      <Filter>Sources\1. Editor\MainWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericAPI\Platform.API.FrameTimer.ixx">
+      <Filter>Sources\2. Platform\GenericAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericAPI\Platform.API.CharArray.ixx">
+      <Filter>Sources\2. Platform\GenericAPI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.Atomics.ixx">
+      <Filter>Sources\2. Platform\GenericThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.ixx">
+      <Filter>Sources\2. Platform\GenericThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.Parallel.ixx">
+      <Filter>Sources\2. Platform\GenericThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.ixx">
+      <Filter>Sources\2. Platform\GenericMemory</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.FileStream.ixx">
+      <Filter>Sources\2. Platform\GenericMemory</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.FileSystem.ixx">
+      <Filter>Sources\2. Platform\GenericMemory</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericMath\Platform.Numbers.ixx">
+      <Filter>Sources\2. Platform\GenericMath</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD.ixx">
+      <Filter>Sources\2. Platform\GenericSIMD</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericMath\Platform.Math.ixx">
+      <Filter>Sources\2. Platform\GenericMath</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\Math\Core.Matrix.ixx">
+      <Filter>Sources\3. Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\Math\Core.Math.ixx">
+      <Filter>Sources\3. Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Vec4.ixx">
+      <Filter>Sources\2. Platform\GenericSIMD</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Mat44.ixx">
+      <Filter>Sources\2. Platform\GenericSIMD</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Vec8.ixx">
+      <Filter>Sources\2. Platform\GenericSIMD</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\Math\Core.Matrix-Vector2.ixx">
+      <Filter>Sources\3. Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\Math\Core.Matrix-Vector3.ixx">
+      <Filter>Sources\3. Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\Math\Core.Matrix-Vector4.ixx">
+      <Filter>Sources\3. Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\Math\Core.Matrix-Matrix.ixx">
+      <Filter>Sources\3. Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\Math\Core.Color.ixx">
+      <Filter>Sources\3. Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Core\Math\Core.Rotator.ixx">
+      <Filter>Sources\3. Core\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.Atomic.ixx">
+      <Filter>Sources\2. Platform\GenericThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.SpinLock.ixx">
+      <Filter>Sources\2. Platform\GenericThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.TinyTask.ixx">
+      <Filter>Sources\2. Platform\GenericThread</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -90,5 +165,8 @@
     <Image Include="Sources\Editor\MainWindow\Resources\small.ico">
       <Filter>Sources\1. Editor\MainWindow\Resources</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

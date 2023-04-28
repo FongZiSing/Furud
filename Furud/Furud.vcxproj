@@ -110,8 +110,9 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnableEnhancedInstructionSet>AdvancedVectorExtensions2</EnableEnhancedInstructionSet>
+      <AdditionalOptions>/utf-8 /experimental:module %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -128,7 +129,8 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <AdditionalOptions>/utf-8 /experimental:module %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -138,20 +140,42 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Sources\Editor\Engine.hpp" />
-    <ClInclude Include="Sources\Editor\MainWindow\App.hpp" />
     <ClInclude Include="Sources\Editor\MainWindow\Resources\framework.h" />
     <ClInclude Include="Sources\Editor\MainWindow\Resources\Resource.h" />
     <ClInclude Include="Sources\Editor\MainWindow\Resources\targetver.h" />
-    <ClInclude Include="Sources\Platform\GenericAPI\GenericTimer.hpp" />
-    <ClInclude Include="Sources\Platform\GenericCommon.hpp" />
-    <ClInclude Include="Sources\Platform\GenericOS.hpp" />
-    <ClInclude Include="Sources\Platform\Windows\API\WinTimer.hpp" />
+    <ClInclude Include="Sources\Platform\Furud.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Sources\Core\Math\Core.Color.ixx" />
+    <ClCompile Include="Sources\Core\Math\Core.Math.ixx" />
+    <ClCompile Include="Sources\Core\Math\Core.Matrix-Matrix.ixx" />
+    <ClCompile Include="Sources\Core\Math\Core.Matrix-Vector2.ixx" />
+    <ClCompile Include="Sources\Core\Math\Core.Matrix-Vector3.ixx" />
+    <ClCompile Include="Sources\Core\Math\Core.Matrix-Vector4.ixx" />
+    <ClCompile Include="Sources\Core\Math\Core.Matrix.ixx" />
+    <ClCompile Include="Sources\Core\Math\Core.Rotator.ixx" />
     <ClCompile Include="Sources\Editor\Engine.cpp" />
+    <ClCompile Include="Sources\Editor\Engine.ixx" />
     <ClCompile Include="Sources\Editor\Main.cpp" />
     <ClCompile Include="Sources\Editor\MainWindow\App.cpp" />
+    <ClCompile Include="Sources\Editor\MainWindow\App.ixx" />
+    <ClCompile Include="Sources\Platform\GenericAPI\Platform.API.CharArray.ixx" />
+    <ClCompile Include="Sources\Platform\GenericAPI\Platform.API.FrameTimer.ixx" />
+    <ClCompile Include="Sources\Platform\GenericMath\Platform.Math.ixx" />
+    <ClCompile Include="Sources\Platform\GenericMath\Platform.Numbers.ixx" />
+    <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.FileStream.ixx" />
+    <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.FileSystem.ixx" />
+    <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.ixx" />
+    <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Mat44.ixx" />
+    <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Vec4.ixx" />
+    <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Vec8.ixx" />
+    <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD.ixx" />
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.Atomic.ixx" />
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.Atomics.ixx" />
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.Parallel.ixx" />
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.ixx" />
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.SpinLock.ixx" />
+    <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.TinyTask.ixx" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Sources\Editor\MainWindow\Resources\Furud.rc" />
@@ -159,6 +183,9 @@
   <ItemGroup>
     <Image Include="Sources\Editor\MainWindow\Resources\Furud.ico" />
     <Image Include="Sources\Editor\MainWindow\Resources\small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

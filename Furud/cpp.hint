@@ -1,0 +1,17 @@
+// The hint file contains macros that would otherwise cause regions of code
+// to be skipped by the C++ Browsing Database Parser.
+// see https://go.microsoft.com/fwlink/?linkid=865984
+
+#define FURUD_INLINE [[msvc::forceinline]]
+#define FURUD_NOINLINE [[msvc::noinline]]
+#define FURUD_INTRINSIC [[msvc::intrinsic]]
+#define FURUD_UNUSED [[maybe_unused]]
+#define FURUD_LIKELY [[likely]]
+#define FURUD_UNLIKELY [[unlikely]]
+#define FURUD_NODISCARD [[nodiscard]]
+#define FURUD_DEPRECATED(message) [[deprecated(message)]]
+#define FURUD_RESTRICT __restrict
+#define FURUD_INTERFACE __declspec(novtable)
+#define FURUD_VECTORAPI __vectorcall
+#define FURUD_FASTAPI __fastcall
+#define FURUD_SOFTBREAK { *(volatile int*)0 = 0; }

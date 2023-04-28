@@ -1,16 +1,34 @@
-﻿//
-// D2D/App.cpp
 //
-//       Copyright (c) FreezeRender. All rights reserved.
+// App.cpp
+//
+//       Copyright (c) Furud Engine. All rights reserved.
 //       @Author FongZiSing
 //
 // The Warpper class of Direct2D.
 //
-#include "App.hpp"
+module;
 
 // Windows header.
 #include "Resources/framework.h"
 #include "Resources/Resource.h"
+
+#ifndef WIN32_LEAN_AND_MEAN
+#define WIN32_LEAN_AND_MEAN
+#endif
+
+#ifndef NOMINMAX
+#define NOMINMAX
+#endif
+
+#include <Windows.h>
+
+// D2D1 Runtimer header.
+#include <dxgi1_4.h>
+#include <D3D11.h>
+#include <d2d1_3.h>
+
+// Smart Pointer Header.
+#include <wrl/client.h>
 
 #include <dwrite.h>
 #pragma comment(lib, "dxgi.lib")
@@ -19,10 +37,18 @@
 #pragma comment(lib, "dxguid.lib")
 #pragma comment(lib, "Dwrite.lib")
 
-#define GET_X_LPARAM(lp) ((int32)(int16)LOWORD(lp))
-#define GET_Y_LPARAM(lp) ((int32)(int16)HIWORD(lp))
+#define GET_X_LPARAM(lp) ((int32_t)(int16_t)LOWORD(lp))
+#define GET_Y_LPARAM(lp) ((int32_t)(int16_t)HIWORD(lp))
 
-#include <GenericAPI/GenericTimer.hpp>
+#include <Furud.hpp>
+#include <stdint.h>
+
+
+
+module Furud.App;
+
+import Furud.Platform.API.FrameTimer;
+using Microsoft::WRL::ComPtr;
 
 
 
@@ -60,7 +86,7 @@ namespace Furud
 		HRESULT hr = S_OK;
 
 		{
-			uint32 creationFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT;
+			uint32_t creationFlags = D3D11_CREATE_DEVICE_BGRA_SUPPORT;
 #ifdef _DEBUG
 			creationFlags |= D3D11_CREATE_DEVICE_DEBUG;
 #endif
@@ -330,7 +356,7 @@ namespace Furud
 		return FALSE;
 	}
 
-	LRESULT D2DApp::OnLeftMouseDown(const WPARAM& inFlags, const int32& inX, const int32& inY)
+	LRESULT D2DApp::OnLeftMouseDown(const WPARAM& inFlags, const int32_t& inX, const int32_t& inY)
 	{
 		// `inFlags`, the same as mouse move event.
 		// An application should return zero if it processes this message.
@@ -341,7 +367,7 @@ namespace Furud
 		return FALSE;
 	}
 
-	LRESULT D2DApp::OnLeftMouseUp(const WPARAM& inFlags, const int32& inX, const int32& inY)
+	LRESULT D2DApp::OnLeftMouseUp(const WPARAM& inFlags, const int32_t& inX, const int32_t& inY)
 	{
 		// `inFlags`, the same as mouse move event.
 		// An application should return zero if it processes this message.
@@ -357,7 +383,7 @@ namespace Furud
 		return FALSE;
 	}
 
-	LRESULT D2DApp::OnMiddleMouseDown(const WPARAM& inFlags, const int32& inX, const int32& inY)
+	LRESULT D2DApp::OnMiddleMouseDown(const WPARAM& inFlags, const int32_t& inX, const int32_t& inY)
 	{
 		// `inFlags`, the same as mouse move event.
 		// An application should return zero if it processes this message.
@@ -368,7 +394,7 @@ namespace Furud
 		return FALSE;
 	}
 
-	LRESULT D2DApp::OnMiddleMouseUp(const WPARAM& inFlags, const int32& inX, const int32& inY)
+	LRESULT D2DApp::OnMiddleMouseUp(const WPARAM& inFlags, const int32_t& inX, const int32_t& inY)
 	{
 		// `inFlags`, the same as mouse move event.
 		// An application should return zero if it processes this message.
@@ -386,7 +412,7 @@ namespace Furud
 		return FALSE;
 	}
 
-	LRESULT D2DApp::OnRightMouseDown(const WPARAM& inFlags, const int32& inX, const int32& inY)
+	LRESULT D2DApp::OnRightMouseDown(const WPARAM& inFlags, const int32_t& inX, const int32_t& inY)
 	{
 		// `inFlags`, the same as mouse move event.
 		// An application should return zero if it processes this message.
@@ -397,7 +423,7 @@ namespace Furud
 		return FALSE;
 	}
 
-	LRESULT D2DApp::OnRightMouseUp(const WPARAM& inFlags, const int32& inX, const int32& inY)
+	LRESULT D2DApp::OnRightMouseUp(const WPARAM& inFlags, const int32_t& inX, const int32_t& inY)
 	{
 		// `inFlags`, the same as mouse move event.
 		// An application should return zero if it processes this message.
@@ -412,7 +438,7 @@ namespace Furud
 		return FALSE;
 	}
 
-	LRESULT D2DApp::OnMouseMove(const WPARAM& inFlags, const int32& inX, const int32& inY)
+	LRESULT D2DApp::OnMouseMove(const WPARAM& inFlags, const int32_t& inX, const int32_t& inY)
 	{
 		// `inFlags` indicates whether various virtual keys are down. This parameter can be one or more of the following values.
 		//     MK_CONTROL(0x0008), MK_LBUTTON(0x0001), MK_MBUTTON(0x0010), MK_RBUTTON(0x0002),
@@ -423,7 +449,7 @@ namespace Furud
 		return FALSE;
 	}
 
-	LRESULT D2DApp::OnMouseWheel(const uint32& inFlags, const int16& inZDelta, const int32& inX, const int32& inY)
+	LRESULT D2DApp::OnMouseWheel(const uint32_t& inFlags, const int16_t& inZDelta, const int32_t& inX, const int32_t& inY)
 	{
 		// `inFlags`, the same as mouse move event.
 		// `zDelta` indicates the distance the wheel is rotated, expressed in multiples or divisions of WHEEL_DELTA, which is 120.
@@ -447,7 +473,7 @@ namespace Furud
 		return TRUE;
 	}
 
-	LRESULT D2DApp::OnSize(const WPARAM& inFlags, const uint32& inWidth, const uint32& inHeight)
+	LRESULT D2DApp::OnSize(const WPARAM& inFlags, const uint32_t& inWidth, const uint32_t& inHeight)
 	{
 		// `inFlags` is the type of resizing requested. It can be one of the following values.
 		//     SIZE_MAXHIDE(4), SIZE_MAXIMIZED(2), SIZE_MAXSHOW(3), SIZE_MINIMIZED(1), SIZE_RESTORED(0)
@@ -510,7 +536,7 @@ namespace Furud
 		return FALSE;
 	}
 
-	HRESULT D2DApp::Initialize(HINSTANCE hInstance, int32 nCmdShow)
+	HRESULT D2DApp::Initialize(HINSTANCE hInstance, int32_t nCmdShow)
 	{
 		HRESULT hr = S_OK;
 		LoadStringW(hInstance, IDS_APP_TITLE, wndCaption, MaxLoadString);
@@ -570,9 +596,9 @@ namespace Furud
 		return hr;
 	}
 
-	force_noinline int32 D2DApp::Run()
+	int32_t D2DApp::Run()
 	{
-		GenericTimer timer{};
+		FrameTimer timer{};
 		MSG msg{};
 
 		while (msg.message != WM_QUIT)
@@ -595,23 +621,23 @@ namespace Furud
 			}
 		}
 
-		return (int32)msg.wParam;
+		return (int32_t)msg.wParam;
 	}
 
-	LRESULT D2DApp::WndProc(HWND hwnd, uint32 message, WPARAM wParam, LPARAM lParam)
+	LRESULT D2DApp::WndProc(HWND hwnd, uint32_t message, WPARAM wParam, LPARAM lParam)
 	{
 		static D2DApp* pThis = nullptr;
 
 		switch (message)
 		{
-		branch_unlikely case WM_CREATE:
+		FURUD_UNLIKELY case WM_CREATE:
 			pThis = static_cast<D2DApp*>(reinterpret_cast<LPCREATESTRUCT>(lParam)->lpCreateParams);
 			break;
 
-		branch_unlikely case WM_DESTROY:
+		FURUD_UNLIKELY case WM_DESTROY:
 			return pThis->OnDestroy();
 
-		branch_unlikely case WM_COMMAND:
+		FURUD_UNLIKELY case WM_COMMAND:
 		{
 			switch (LOWORD(wParam))
 			{
