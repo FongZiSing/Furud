@@ -59,23 +59,23 @@ namespace Furud::Internal
 export namespace Furud
 {
 	class Vec8f;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI Equal(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI NotEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI GreaterThan(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI LessThan(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI GreaterThanOrEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI LessThanOrEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI operator + (const __m256& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI operator - (const __m256& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI operator * (const __m256& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI operator / (const __m256& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI Min(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI Max(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI And(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI AndNot(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI Or(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI Xor(const Vec8f& lhs, const Vec8f& rhs) noexcept;
-	FURUD_INLINE extern Vec8f FURUD_VECTORAPI Copysign(const Vec8f& value, const Vec8f& sign) noexcept;
+	furud_inline extern Vec8f furud_vectorapi Equal(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi NotEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi GreaterThan(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi LessThan(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi GreaterThanOrEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi LessThanOrEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi operator + (const __m256& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi operator - (const __m256& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi operator * (const __m256& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi operator / (const __m256& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi Min(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi Max(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi And(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi AndNot(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi Or(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi Xor(const Vec8f& lhs, const Vec8f& rhs) noexcept;
+	furud_inline extern Vec8f furud_vectorapi Copysign(const Vec8f& value, const Vec8f& sign) noexcept;
 }
 
 
@@ -106,11 +106,11 @@ export namespace Furud
 
 
 	public:
-		FURUD_INLINE Vec8f(const float& value) noexcept
+		furud_inline Vec8f(const float& value) noexcept
 			: reg(_mm256_set1_ps(value))
 		{}
 
-		FURUD_INLINE Vec8f(
+		furud_inline Vec8f(
 			const float& x0, const float& y0,
 			const float& z0, const float& w0,
 			const float& x1, const float& y1,
@@ -119,9 +119,9 @@ export namespace Furud
 			: reg(_mm256_setr_ps(x0, y0, z0, w0, x1, y1, z1, w1))
 		{}
 
-		FURUD_INLINE operator __m256() noexcept { return reg; }
+		furud_inline operator __m256() noexcept { return reg; }
 
-		FURUD_INLINE operator const __m256() const noexcept { return reg; }
+		furud_inline operator const __m256() const noexcept { return reg; }
 
 		Vec8f* operator & () = delete;
 		
@@ -134,18 +134,18 @@ export namespace Furud
 		// @details  加载/存储向量。
 		//****************************************************************
 
-		FURUD_INLINE Vec8f& Load(const void* data) noexcept
+		furud_inline Vec8f& Load(const void* data) noexcept
 		{
 			reg = _mm256_load_ps(static_cast<const float*>(data));
 			return *this;
 		}
 
-		FURUD_INLINE void Store(void* data) const noexcept
+		furud_inline void Store(void* data) const noexcept
 		{
 			_mm256_store_ps(static_cast<float*>(data), reg);
 		}
 
-		FURUD_INLINE static void Copy(const void* src, void* dst) noexcept
+		furud_inline static void Copy(const void* src, void* dst) noexcept
 		{
 			_mm256_store_ps(static_cast<float*>(dst), _mm256_load_ps(static_cast<const float*>(src)));
 		}
@@ -158,32 +158,32 @@ export namespace Furud
 		// @details  比较运算。
 		//****************************************************************
 
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI Equal(const Vec8f& lhs, const Vec8f& rhs) noexcept
+		furud_inline friend Vec8f furud_vectorapi Equal(const Vec8f& lhs, const Vec8f& rhs) noexcept
 		{
 			return _mm256_cmp_ps(lhs.reg, rhs.reg, _CMP_EQ_OQ);
 		}
 
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI NotEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept
+		furud_inline friend Vec8f furud_vectorapi NotEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept
 		{
 			return _mm256_cmp_ps(lhs.reg, rhs.reg, _CMP_NEQ_OQ);
 		}
 
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI GreaterThan(const Vec8f& lhs, const Vec8f& rhs) noexcept
+		furud_inline friend Vec8f furud_vectorapi GreaterThan(const Vec8f& lhs, const Vec8f& rhs) noexcept
 		{
 			return _mm256_cmp_ps(lhs.reg, rhs.reg, _CMP_GT_OQ);
 		}
 
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI LessThan(const Vec8f& lhs, const Vec8f& rhs) noexcept
+		furud_inline friend Vec8f furud_vectorapi LessThan(const Vec8f& lhs, const Vec8f& rhs) noexcept
 		{
 			return _mm256_cmp_ps(lhs.reg, rhs.reg, _CMP_LT_OQ);
 		}
 
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI GreaterThanOrEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept
+		furud_inline friend Vec8f furud_vectorapi GreaterThanOrEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept
 		{
 			return _mm256_cmp_ps(lhs.reg, rhs.reg, _CMP_GE_OQ);
 		}
 
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI LessThanOrEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept
+		furud_inline friend Vec8f furud_vectorapi LessThanOrEqual(const Vec8f& lhs, const Vec8f& rhs) noexcept
 		{
 			return _mm256_cmp_ps(lhs.reg, rhs.reg, _CMP_LE_OQ);
 		}
@@ -196,32 +196,32 @@ export namespace Furud
 		// @details  加减乘除。
 		//****************************************************************
 
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator - () const noexcept { return _mm256_sub_ps(_mm256_set1_ps(0), reg); }
+		furud_inline Vec8f furud_vectorapi operator - () const noexcept { return _mm256_sub_ps(_mm256_set1_ps(0), reg); }
 
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator + (const Vec8f& rhs) const noexcept { return _mm256_add_ps(reg, rhs.reg); }
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator - (const Vec8f& rhs) const noexcept { return _mm256_sub_ps(reg, rhs.reg); }
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator * (const Vec8f& rhs) const noexcept { return _mm256_mul_ps(reg, rhs.reg); }
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator / (const Vec8f& rhs) const noexcept { return _mm256_div_ps(reg, rhs.reg); }
+		furud_inline Vec8f furud_vectorapi operator + (const Vec8f& rhs) const noexcept { return _mm256_add_ps(reg, rhs.reg); }
+		furud_inline Vec8f furud_vectorapi operator - (const Vec8f& rhs) const noexcept { return _mm256_sub_ps(reg, rhs.reg); }
+		furud_inline Vec8f furud_vectorapi operator * (const Vec8f& rhs) const noexcept { return _mm256_mul_ps(reg, rhs.reg); }
+		furud_inline Vec8f furud_vectorapi operator / (const Vec8f& rhs) const noexcept { return _mm256_div_ps(reg, rhs.reg); }
 
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator + (const __m256& rhs) const noexcept { return _mm256_add_ps(reg, rhs); }
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator - (const __m256& rhs) const noexcept { return _mm256_sub_ps(reg, rhs); }
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator * (const __m256& rhs) const noexcept { return _mm256_mul_ps(reg, rhs); }
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator / (const __m256& rhs) const noexcept { return _mm256_div_ps(reg, rhs); }
+		furud_inline Vec8f furud_vectorapi operator + (const __m256& rhs) const noexcept { return _mm256_add_ps(reg, rhs); }
+		furud_inline Vec8f furud_vectorapi operator - (const __m256& rhs) const noexcept { return _mm256_sub_ps(reg, rhs); }
+		furud_inline Vec8f furud_vectorapi operator * (const __m256& rhs) const noexcept { return _mm256_mul_ps(reg, rhs); }
+		furud_inline Vec8f furud_vectorapi operator / (const __m256& rhs) const noexcept { return _mm256_div_ps(reg, rhs); }
 
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI operator + (const __m256& lhs, const Vec8f& rhs) noexcept { return _mm256_add_ps(lhs, rhs.reg); }
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI operator - (const __m256& lhs, const Vec8f& rhs) noexcept { return _mm256_sub_ps(lhs, rhs.reg); }
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI operator * (const __m256& lhs, const Vec8f& rhs) noexcept { return _mm256_mul_ps(lhs, rhs.reg); }
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI operator / (const __m256& lhs, const Vec8f& rhs) noexcept { return _mm256_div_ps(lhs, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi operator + (const __m256& lhs, const Vec8f& rhs) noexcept { return _mm256_add_ps(lhs, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi operator - (const __m256& lhs, const Vec8f& rhs) noexcept { return _mm256_sub_ps(lhs, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi operator * (const __m256& lhs, const Vec8f& rhs) noexcept { return _mm256_mul_ps(lhs, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi operator / (const __m256& lhs, const Vec8f& rhs) noexcept { return _mm256_div_ps(lhs, rhs.reg); }
 
-		FURUD_INLINE const Vec8f& operator += (const Vec8f& rhs) noexcept { reg = _mm256_add_ps(reg, rhs.reg); return *this; }
-		FURUD_INLINE const Vec8f& operator -= (const Vec8f& rhs) noexcept { reg = _mm256_sub_ps(reg, rhs.reg); return *this; }
-		FURUD_INLINE const Vec8f& operator *= (const Vec8f& rhs) noexcept { reg = _mm256_mul_ps(reg, rhs.reg); return *this; }
-		FURUD_INLINE const Vec8f& operator /= (const Vec8f& rhs) noexcept { reg = _mm256_div_ps(reg, rhs.reg); return *this; }
+		furud_inline const Vec8f& operator += (const Vec8f& rhs) noexcept { reg = _mm256_add_ps(reg, rhs.reg); return *this; }
+		furud_inline const Vec8f& operator -= (const Vec8f& rhs) noexcept { reg = _mm256_sub_ps(reg, rhs.reg); return *this; }
+		furud_inline const Vec8f& operator *= (const Vec8f& rhs) noexcept { reg = _mm256_mul_ps(reg, rhs.reg); return *this; }
+		furud_inline const Vec8f& operator /= (const Vec8f& rhs) noexcept { reg = _mm256_div_ps(reg, rhs.reg); return *this; }
 
-		FURUD_INLINE const Vec8f& operator += (const __m256& rhs) noexcept { reg = _mm256_add_ps(reg, rhs); return *this; }
-		FURUD_INLINE const Vec8f& operator -= (const __m256& rhs) noexcept { reg = _mm256_sub_ps(reg, rhs); return *this; }
-		FURUD_INLINE const Vec8f& operator *= (const __m256& rhs) noexcept { reg = _mm256_mul_ps(reg, rhs); return *this; }
-		FURUD_INLINE const Vec8f& operator /= (const __m256& rhs) noexcept { reg = _mm256_div_ps(reg, rhs); return *this; }
+		furud_inline const Vec8f& operator += (const __m256& rhs) noexcept { reg = _mm256_add_ps(reg, rhs); return *this; }
+		furud_inline const Vec8f& operator -= (const __m256& rhs) noexcept { reg = _mm256_sub_ps(reg, rhs); return *this; }
+		furud_inline const Vec8f& operator *= (const __m256& rhs) noexcept { reg = _mm256_mul_ps(reg, rhs); return *this; }
+		furud_inline const Vec8f& operator /= (const __m256& rhs) noexcept { reg = _mm256_div_ps(reg, rhs); return *this; }
 
 
 	public:
@@ -231,15 +231,15 @@ export namespace Furud
 		// @details  加减乘除。
 		//****************************************************************
 
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator + (const float& rhs) const noexcept { return _mm256_add_ps(reg, _mm256_set1_ps(rhs)); }
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator - (const float& rhs) const noexcept { return _mm256_sub_ps(reg, _mm256_set1_ps(rhs)); }
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator * (const float& rhs) const noexcept { return _mm256_mul_ps(reg, _mm256_set1_ps(rhs)); }
-		FURUD_INLINE Vec8f FURUD_VECTORAPI operator / (const float& rhs) const noexcept { return _mm256_div_ps(reg, _mm256_set1_ps(rhs)); }
+		furud_inline Vec8f furud_vectorapi operator + (const float& rhs) const noexcept { return _mm256_add_ps(reg, _mm256_set1_ps(rhs)); }
+		furud_inline Vec8f furud_vectorapi operator - (const float& rhs) const noexcept { return _mm256_sub_ps(reg, _mm256_set1_ps(rhs)); }
+		furud_inline Vec8f furud_vectorapi operator * (const float& rhs) const noexcept { return _mm256_mul_ps(reg, _mm256_set1_ps(rhs)); }
+		furud_inline Vec8f furud_vectorapi operator / (const float& rhs) const noexcept { return _mm256_div_ps(reg, _mm256_set1_ps(rhs)); }
 
-		FURUD_INLINE const Vec8f& operator += (const float& rhs) noexcept { reg = _mm256_add_ps(reg, _mm256_set1_ps(rhs)); return *this; }
-		FURUD_INLINE const Vec8f& operator -= (const float& rhs) noexcept { reg = _mm256_sub_ps(reg, _mm256_set1_ps(rhs)); return *this; }
-		FURUD_INLINE const Vec8f& operator *= (const float& rhs) noexcept { reg = _mm256_mul_ps(reg, _mm256_set1_ps(rhs)); return *this; }
-		FURUD_INLINE const Vec8f& operator /= (const float& rhs) noexcept { reg = _mm256_div_ps(reg, _mm256_set1_ps(rhs)); return *this; }
+		furud_inline const Vec8f& operator += (const float& rhs) noexcept { reg = _mm256_add_ps(reg, _mm256_set1_ps(rhs)); return *this; }
+		furud_inline const Vec8f& operator -= (const float& rhs) noexcept { reg = _mm256_sub_ps(reg, _mm256_set1_ps(rhs)); return *this; }
+		furud_inline const Vec8f& operator *= (const float& rhs) noexcept { reg = _mm256_mul_ps(reg, _mm256_set1_ps(rhs)); return *this; }
+		furud_inline const Vec8f& operator /= (const float& rhs) noexcept { reg = _mm256_div_ps(reg, _mm256_set1_ps(rhs)); return *this; }
 
 
 	public:
@@ -249,8 +249,8 @@ export namespace Furud
 		// @details  最大/最小值。
 		//****************************************************************
 
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI Min(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_min_ps(lhs.reg, rhs.reg); }
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI Max(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_max_ps(lhs.reg, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi Min(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_min_ps(lhs.reg, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi Max(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_max_ps(lhs.reg, rhs.reg); }
 
 
 	public:
@@ -259,35 +259,35 @@ export namespace Furud
 		 * @return   Vec8f( sqrt(x), same for yzw )
 		 * @details  平方根。
 		 */
-		FURUD_INLINE Vec8f FURUD_VECTORAPI Sqrt() const noexcept { return _mm256_sqrt_ps(reg); }
+		furud_inline Vec8f furud_vectorapi Sqrt() const noexcept { return _mm256_sqrt_ps(reg); }
 
 		/**
 		 * @brief    Computes the reciprocal square roots.
 		 * @return   Vec8f( sqrt(x), same for yzw )
 		 * @details  平方根倒数。
 		 */
-		FURUD_INLINE Vec8f FURUD_VECTORAPI RecipSqrt() const noexcept { return _mm256_rsqrt_ps(reg); }
+		furud_inline Vec8f furud_vectorapi RecipSqrt() const noexcept { return _mm256_rsqrt_ps(reg); }
 
 		/**
 		 * @brief    Computes the squares.
 		 * @return   Vec8f( reg1.x * reg1.x, same for yzw )
 		 * @details  平方。
 		 */
-		FURUD_INLINE Vec8f FURUD_VECTORAPI Squares() const noexcept { return _mm256_mul_ps(reg, reg); }
+		furud_inline Vec8f furud_vectorapi Squares() const noexcept { return _mm256_mul_ps(reg, reg); }
 
 		/*
 		 * @brief    Computes the approximations of reciprocals.
 		 * @return   Vec8f( 1 / reg1.x, same for yzw )
 		 * @details  倒数。
 		 */
-		FURUD_INLINE Vec8f FURUD_VECTORAPI Reciprocal() const noexcept { return _mm256_rcp_ps(reg); }
+		furud_inline Vec8f furud_vectorapi Reciprocal() const noexcept { return _mm256_rcp_ps(reg); }
 
 		/**
 		 * @brief    Returns the absolute value.
 		 * @return   Vec8f( abs(reg.x), same for yzw )
 		 * @details  绝对值。
 		 */
-		FURUD_INLINE Vec8f FURUD_VECTORAPI Abs() const noexcept
+		furud_inline Vec8f furud_vectorapi Abs() const noexcept
 		{
 
 			return _mm256_and_ps(reg, SIGN_MASK);
@@ -301,10 +301,10 @@ export namespace Furud
 		// @details  逻辑运算。
 		//****************************************************************
 
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI And(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_and_ps(lhs.reg, rhs.reg); }
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI AndNot(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_andnot_ps(lhs.reg, rhs.reg); }
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI Or(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_or_ps(lhs.reg, rhs.reg); }
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI Xor(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_xor_ps(lhs.reg, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi And(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_and_ps(lhs.reg, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi AndNot(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_andnot_ps(lhs.reg, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi Or(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_or_ps(lhs.reg, rhs.reg); }
+		furud_inline friend Vec8f furud_vectorapi Xor(const Vec8f& lhs, const Vec8f& rhs) noexcept { return _mm256_xor_ps(lhs.reg, rhs.reg); }
 
 
 	public:
@@ -313,14 +313,14 @@ export namespace Furud
 		 * @return   Bit 0 = sign(mask.x), Bit 1 = sign(mask.y), Bit 2 = sign(mask.z), Bit 3 = sign(mask.w) ...
 		 * @details  掩码。
 		 */
-		FURUD_INLINE int32_t MaskBits() const noexcept { return _mm256_movemask_ps(reg); }
+		furud_inline int32_t MaskBits() const noexcept { return _mm256_movemask_ps(reg); }
 
 		/**
 		 * @brief   Copy sign.
 		 * @return  Vec8f( sign.x > 0 ? abs(value.x) : -abs(value.x), same for yzw )
 		 * @details  复制符号位。
 		 */
-		FURUD_INLINE friend Vec8f FURUD_VECTORAPI Copysign(const Vec8f& value, const Vec8f& sign) noexcept
+		furud_inline friend Vec8f furud_vectorapi Copysign(const Vec8f& value, const Vec8f& sign) noexcept
 		{
 			return _mm256_or_ps(_mm256_and_ps(SIGN_BIT, sign.reg), _mm256_andnot_ps(SIGN_BIT, value.reg));
 		}

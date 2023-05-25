@@ -28,29 +28,29 @@ export namespace Furud
 			secondsPerCount = 1000.0 / static_cast<double>(GetPerformanceFrequency());
 		}
 
-		FURUD_NODISCARD constexpr double TotalTime() const
+		furud_nodiscard constexpr double TotalTime() const
 		{
 			return bStopped
 				? ((stopTime - pausedTime) - baseTime) * secondsPerCount
 				: ((currTime - pausedTime) - baseTime) * secondsPerCount;
 		}
 
-		FURUD_NODISCARD constexpr float GetDeltaTime() const
+		furud_nodiscard constexpr float GetDeltaTime() const
 		{
 			return static_cast<float>(deltaTime);
 		}
 
-		FURUD_NODISCARD constexpr float GetElapsedTime() const
+		furud_nodiscard constexpr float GetElapsedTime() const
 		{
 			return static_cast<float>(timeElapsed);
 		}
 
-		FURUD_NODISCARD constexpr unsigned int GetFrameNumber() const
+		furud_nodiscard constexpr unsigned int GetFrameNumber() const
 		{
 			return framePerElapsed;
 		}
 
-		FURUD_INLINE void Reset()
+		furud_inline void Reset()
 		{
 			long long tempCurTime = GetPerformanceCounter();
 			baseTime = tempCurTime;
@@ -59,7 +59,7 @@ export namespace Furud
 			bStopped = false;
 		}
 
-		FURUD_INLINE void Start()
+		furud_inline void Start()
 		{
 			if (bStopped)
 			{
@@ -71,7 +71,7 @@ export namespace Furud
 			}
 		}
 
-		FURUD_INLINE void Stop()
+		furud_inline void Stop()
 		{
 			if (!bStopped)
 			{

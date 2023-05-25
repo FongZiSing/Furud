@@ -52,7 +52,7 @@ namespace Furud::Internal
 		 * @returns  True if `ch` is a white-space character (0x09 - 0x0D or 0x20).
 		 * @details  判断是不是空格符号。(支持常量求值)
 		 */
-		FURUD_NODISCARD static constexpr bool IsWhitespace(const TChar& ch) noexcept
+		furud_nodiscard static constexpr bool IsWhitespace(const TChar& ch) noexcept
 		{
 			if (std::is_constant_evaluated())
 			{
@@ -92,7 +92,7 @@ namespace Furud::Internal
 		 * @brief    Convert the character to uppercase.
 		 * @details  转换成大写。(支持常量求值)
 		 */
-		FURUD_NODISCARD static constexpr TChar ToUpper(const TChar& ch) noexcept
+		furud_nodiscard static constexpr TChar ToUpper(const TChar& ch) noexcept
 		{
 			if (std::is_constant_evaluated())
 			{
@@ -116,7 +116,7 @@ namespace Furud::Internal
 		 * @brief    Convert the character to lowercase.
 		 * @details  转换成小写。(支持常量求值)
 		 */
-		FURUD_NODISCARD static constexpr TChar ToLower(const TChar& ch) noexcept
+		furud_nodiscard static constexpr TChar ToLower(const TChar& ch) noexcept
 		{
 			if (std::is_constant_evaluated())
 			{
@@ -141,9 +141,9 @@ namespace Furud::Internal
 		 * @details  字符串拷贝。(支持常量求值)
 		 */
 		static constexpr void Copy
-			( TChar* FURUD_RESTRICT dst
+			( TChar* furud_restrict dst
 			, TSize dstCount
-			, const TChar* FURUD_RESTRICT src
+			, const TChar* furud_restrict src
 			, TSize srcCount
 		) noexcept
 		{
@@ -173,9 +173,9 @@ namespace Furud::Internal
 		 * @details  字符串拷贝。空余部分会初始化为0。(支持常量求值)
 		 */
 		static constexpr void Assign
-			( TChar* FURUD_RESTRICT dst
+			( TChar* furud_restrict dst
 			, TSize dstCount
-			, const TChar* FURUD_RESTRICT src
+			, const TChar* furud_restrict src
 			, TSize srcCount
 		) noexcept
 		{
@@ -221,7 +221,7 @@ namespace Furud::Internal
 		 * @details  字符串赋值。(支持常量求值)
 		 */
 		static constexpr void Assign
-			( TChar* const FURUD_RESTRICT str
+			( TChar* const furud_restrict str
 			, const TChar& ch
 			, TSize count
 		) noexcept
@@ -252,7 +252,7 @@ namespace Furud::Internal
 		 * @returns  Zero if string is nullptr.
 		 * @details  计算字符串长度。(支持常量求值)
 		 */
-		FURUD_NODISCARD static constexpr TSize Length(const TChar* FURUD_RESTRICT str) noexcept
+		furud_nodiscard static constexpr TSize Length(const TChar* furud_restrict str) noexcept
 		{
 			if constexpr (std::same_as<TChar, char>)
 			{
@@ -272,9 +272,9 @@ namespace Furud::Internal
 		 *           > 0  `str1` greater than `str2`.
 		 * @details  字符串比较。(支持常量求值)
 		 */
-		FURUD_NODISCARD static constexpr int32_t Compare
-			( const TChar* FURUD_RESTRICT str1
-			, const TChar* FURUD_RESTRICT str2
+		furud_nodiscard static constexpr int32_t Compare
+			( const TChar* furud_restrict str1
+			, const TChar* furud_restrict str2
 			, TSize count
 		) noexcept
 		{
@@ -294,8 +294,8 @@ namespace Furud::Internal
 		 *           otherwise it returns nullptr.
 		 * @details  字符串查找。(支持常量求值)
 		 */
-		FURUD_NODISCARD static constexpr TChar* Locate
-			( TChar* FURUD_RESTRICT str
+		furud_nodiscard static constexpr TChar* Locate
+			( TChar* furud_restrict str
 			, const TChar& ch
 			, const TSize size
 		) noexcept
@@ -317,8 +317,8 @@ namespace Furud::Internal
 		 *           otherwise it returns nullptr.
 		 * @details  字符串查找。(支持常量求值)
 		 */
-		FURUD_NODISCARD static constexpr const TChar* Locate
-			( const TChar* FURUD_RESTRICT str
+		furud_nodiscard static constexpr const TChar* Locate
+			( const TChar* furud_restrict str
 			, const TChar& ch
 			, const TSize size
 		) noexcept
@@ -340,8 +340,8 @@ namespace Furud::Internal
 		 *           otherwise it returns `npos`.
 		 * @details  字符串查找。(支持常量求值)
 		 */
-		FURUD_NODISCARD static constexpr TSize Find
-			( const TChar* FURUD_RESTRICT str
+		furud_nodiscard static constexpr TSize Find
+			( const TChar* furud_restrict str
 			, const TChar& ch
 			, const TSize size
 			, const TSize from
@@ -366,9 +366,9 @@ namespace Furud::Internal
 		 *           otherwise it returns `npos`.
 		 * @details  字符串查找。(支持常量求值)
 		 */
-		FURUD_NODISCARD static constexpr TSize Find
-			( const TChar* FURUD_RESTRICT str
-			, const TChar* FURUD_RESTRICT search
+		furud_nodiscard static constexpr TSize Find
+			( const TChar* furud_restrict str
+			, const TChar* furud_restrict search
 			, TSize strSize
 			, TSize searchSize
 			, TSize from
@@ -407,9 +407,9 @@ namespace Furud::Internal
 		 * @details  字符串替换。(支持常量求值)
 		 */
 		static constexpr void Replace
-			( TChar* FURUD_RESTRICT str
-			, const TChar* FURUD_RESTRICT search
-			, const TChar* FURUD_RESTRICT replacement
+			( TChar* furud_restrict str
+			, const TChar* furud_restrict search
+			, const TChar* furud_restrict replacement
 			, TSize strSize
 			, TSize searchSize
 		) noexcept
@@ -456,7 +456,7 @@ namespace Furud::Internal
 		 * @returns  0 if failure.
 		 * @details  字符串转浮点数。
 		 */
-		FURUD_NODISCARD FURUD_INLINE static double ToDouble(const TChar* str) noexcept
+		furud_nodiscard furud_inline static double ToDouble(const TChar* str) noexcept
 		{
 			if constexpr (std::same_as<TChar, char>)
 			{
@@ -474,7 +474,7 @@ namespace Furud::Internal
 		 * @returns  0 if failure.
 		 * @details  字符串转浮点数。
 		 */
-		FURUD_NODISCARD FURUD_INLINE static float ToFloat(const TChar* str) noexcept
+		furud_nodiscard furud_inline static float ToFloat(const TChar* str) noexcept
 		{
 			return static_cast<float>(ToDouble(str));
 		}
@@ -486,7 +486,7 @@ namespace Furud::Internal
 		 *           LLONG_MIN/LLONG_MAX if overflow.
 		 * @details  字符串转整型。
 		 */
-		FURUD_NODISCARD FURUD_INLINE static int64_t ToInt64(const TChar* str) noexcept
+		furud_nodiscard furud_inline static int64_t ToInt64(const TChar* str) noexcept
 		{
 			if constexpr (std::same_as<TChar, char>)
 			{
@@ -505,7 +505,7 @@ namespace Furud::Internal
 		 *           ULLONG_MAX if overflow.
 		 * @details  字符串转整型。
 		 */
-		FURUD_NODISCARD FURUD_INLINE static uint64_t ToUint64(const TChar* str) noexcept
+		furud_nodiscard furud_inline static uint64_t ToUint64(const TChar* str) noexcept
 		{
 			if constexpr (std::same_as<TChar, char>)
 			{
@@ -524,7 +524,7 @@ namespace Furud::Internal
 		 *           LONG_MIN/LONG_MAX if overflow.
 		 * @details  字符串转整型。
 		 */
-		FURUD_NODISCARD FURUD_INLINE static int32_t ToInt32(const TChar* str) noexcept
+		furud_nodiscard furud_inline static int32_t ToInt32(const TChar* str) noexcept
 		{
 			if constexpr (std::same_as<TChar, char>)
 			{
@@ -543,7 +543,7 @@ namespace Furud::Internal
 		 *           ULONG_MAX if overflow.
 		 * @details  字符串转整型。
 		 */
-		FURUD_NODISCARD FURUD_INLINE static uint32_t ToUint32(const TChar* str) noexcept
+		furud_nodiscard furud_inline static uint32_t ToUint32(const TChar* str) noexcept
 		{
 			if constexpr (std::same_as<TChar, char>)
 			{
@@ -588,7 +588,7 @@ namespace Furud::Internal
 		 * @brief   Release the storage.
 		 * @detals  释放内存。
 		 */
-		FURUD_INLINE static void Free(TChar* oldData)
+		furud_inline static void Free(TChar* oldData)
 		{
 			if (oldData != nullptr) delete[] oldData;
 		}
@@ -598,7 +598,7 @@ namespace Furud::Internal
 		 * @brief   Allocate a piece of uninitialized storage.
 		 * @detals  申请内存。不会初始化这段内存。
 		 */
-		FURUD_INLINE static void Alloc(const TSize& inStorageSize, TChar** FURUD_RESTRICT outData, TSize* FURUD_RESTRICT outCapacity)
+		furud_inline static void Alloc(const TSize& inStorageSize, TChar** furud_restrict outData, TSize* furud_restrict outCapacity)
 		{
 			*outData = new TChar[inStorageSize];
 			*outCapacity = inStorageSize;
@@ -609,9 +609,9 @@ namespace Furud::Internal
 		 * @brief   Reallocate storage and initializes it.
 		 * @detals  申请并初始化内存。
 		 */
-		FURUD_INLINE static void Realloc
-		(TChar** FURUD_RESTRICT inOutData
-			, TSize* FURUD_RESTRICT outCapacity
+		furud_inline static void Realloc
+			( TChar** furud_restrict inOutData
+			, TSize* furud_restrict outCapacity
 			, TSize newCapacity
 			, TSize oldReservedSize
 		)
@@ -636,7 +636,7 @@ namespace Furud::Internal
 
 
 /** Template char array view. */
-export namespace Furud::Internal
+namespace Furud
 {
 	/**
 	 * @brief    This template describes the minimal common interface necessary to read character than std::string_view.
@@ -696,17 +696,17 @@ export namespace Furud::Internal
 
 
 	public:
-		FURUD_NODISCARD constexpr const TChar* Data() const noexcept
+		furud_nodiscard constexpr const TChar* Data() const noexcept
 		{
 			return data;
 		}
 
-		FURUD_NODISCARD constexpr TSize Size() const noexcept
+		furud_nodiscard constexpr TSize Size() const noexcept
 		{
 			return size;
 		}
 
-		FURUD_NODISCARD constexpr bool IsEmpty() const noexcept
+		furud_nodiscard constexpr bool IsEmpty() const noexcept
 		{
 			return size == 0;
 		}
@@ -723,30 +723,30 @@ export namespace Furud::Internal
 
 
 	public:
-		FURUD_NODISCARD constexpr bool IsEquals(const TChar* rhs) const noexcept
+		furud_nodiscard constexpr bool IsEquals(const TChar* rhs) const noexcept
 		{
 			if (size == 0) return rhs == nullptr;
 			return IStringBuilder::Compare(data, rhs, size) == 0;
 		}
 
-		FURUD_NODISCARD constexpr bool IsEquals(const TCharArrayView& rhs) const noexcept
+		furud_nodiscard constexpr bool IsEquals(const TCharArrayView& rhs) const noexcept
 		{
 			if (size == 0)        return rhs.size == 0;
 			if (data == rhs.data) return size == rhs.size;
 			return IStringBuilder::Compare(data, rhs.data, size) == 0;
 		}
 
-		FURUD_NODISCARD constexpr bool operator == (const TChar* rhs) const noexcept
+		furud_nodiscard constexpr bool operator == (const TChar* rhs) const noexcept
 		{
 			return IsEquals(rhs);
 		}
 
-		FURUD_NODISCARD friend constexpr bool operator == (const TChar* lhs, const TCharArrayView& rhs) noexcept
+		furud_nodiscard friend constexpr bool operator == (const TChar* lhs, const TCharArrayView& rhs) noexcept
 		{
 			return rhs.IsEquals(lhs);
 		}
 
-		FURUD_NODISCARD constexpr bool operator == (const TCharArrayView& rhs) const noexcept
+		furud_nodiscard constexpr bool operator == (const TCharArrayView& rhs) const noexcept
 		{
 			return IsEquals(rhs);
 		}
@@ -757,7 +757,7 @@ export namespace Furud::Internal
 		 * @brief    Removes whitespace character from the start of this array.
 		 * @details  删除开头位置的空格符号。
 		 */
-		FURUD_NODISCARD constexpr TCharArrayView TrimLeft() const noexcept
+		furud_nodiscard constexpr TCharArrayView TrimLeft() const noexcept
 		{
 			TSize spaceNum = 0;
 			for (TSize i = 0; i < size; ++i)
@@ -775,7 +775,7 @@ export namespace Furud::Internal
 		 * @brief    Removes whitespace character from the end of this array.
 		 * @details  删除结尾位置的空格符号。
 		 */
-		FURUD_NODISCARD constexpr TCharArrayView TrimRight() const noexcept
+		furud_nodiscard constexpr TCharArrayView TrimRight() const noexcept
 		{
 			TSize newSize = size;
 			while (newSize > 0 && IStringBuilder::IsWhitespace(data[newSize - 1]))
@@ -789,7 +789,7 @@ export namespace Furud::Internal
 		 * @brief    Removes whitespace character from the start and end of this array.
 		 * @details  删除开头和结尾位置的空格符号。
 		 */
-		FURUD_NODISCARD constexpr TCharArrayView Trim() const noexcept
+		furud_nodiscard constexpr TCharArrayView Trim() const noexcept
 		{
 			return TrimRight().TrimLeft();
 		};
@@ -800,7 +800,7 @@ export namespace Furud::Internal
 		 * @brief    Test whether starts with given character.
 		 * @details  测试开头字符。
 		 */
-		FURUD_NODISCARD constexpr bool StartWith(const TChar& prefix) const noexcept
+		furud_nodiscard constexpr bool StartWith(const TChar& prefix) const noexcept
 		{
 			return size >= 1 && data[0] == prefix;
 		}
@@ -809,7 +809,7 @@ export namespace Furud::Internal
 		 * @brief    Test whether ends with given character.
 		 * @details  测试结尾字符。
 		 */
-		FURUD_NODISCARD constexpr bool EndWith(const TChar& suffix) const noexcept
+		furud_nodiscard constexpr bool EndWith(const TChar& suffix) const noexcept
 		{
 			return size >= 1 && data[size - 1] = suffix;
 		}
@@ -818,7 +818,7 @@ export namespace Furud::Internal
 		 * @brief    Test whether ends with given characters.
 		 * @details  测试开头字符。
 		 */
-		FURUD_NODISCARD constexpr bool StartWith(const TCharArrayView& prefix) const noexcept
+		furud_nodiscard constexpr bool StartWith(const TCharArrayView& prefix) const noexcept
 		{
 			if (prefix.size <= 0 || prefix.size > size)
 			{
@@ -833,7 +833,7 @@ export namespace Furud::Internal
 		 * @brief    Test whether ends with given characters.
 		 * @details  测试结尾字符。
 		 */
-		FURUD_NODISCARD constexpr bool EndWith(const TCharArrayView& suffix) const noexcept
+		furud_nodiscard constexpr bool EndWith(const TCharArrayView& suffix) const noexcept
 		{
 			if (suffix.size <= 0 || suffix.size > size)
 			{
@@ -852,7 +852,7 @@ export namespace Furud::Internal
 		 * @returns  `npos` if failure.
 		 * @returns  查找字符，返回下标。
 		 */
-		FURUD_NODISCARD constexpr TSize Find(const TChar& c, const TSize& from = 0) const noexcept
+		furud_nodiscard constexpr TSize Find(const TChar& c, const TSize& from = 0) const noexcept
 		{
 			return (TSize)IStringBuilder::Find(data, c, size, from);
 		}
@@ -862,7 +862,7 @@ export namespace Furud::Internal
 		 * @returns  `npos` if failure.
 		 * @returns  查找字符，返回下标。
 		 */
-		FURUD_NODISCARD constexpr TSize Find(const TCharArrayView& arr, const TSize& from = 0) const noexcept
+		furud_nodiscard constexpr TSize Find(const TCharArrayView& arr, const TSize& from = 0) const noexcept
 		{
 			return (TSize)IStringBuilder::Find(
 				data, arr.data,
@@ -877,7 +877,7 @@ export namespace Furud::Internal
 		 * @brief    Converts to double number.
 		 * @details  转换成双精度浮点数。
 		 */
-		FURUD_NODISCARD constexpr double ToDouble() const noexcept
+		furud_nodiscard constexpr double ToDouble() const noexcept
 		{
 			return IStringBuilder::ToDouble(data);
 		}
@@ -886,7 +886,7 @@ export namespace Furud::Internal
 		 * @brief    Converts to float number.
 		 * @details  转换成单精度浮点数。
 		 */
-		FURUD_NODISCARD constexpr float ToFloat() const noexcept
+		furud_nodiscard constexpr float ToFloat() const noexcept
 		{
 			return IStringBuilder::ToFloat(data);
 		}
@@ -895,7 +895,7 @@ export namespace Furud::Internal
 		 * @brief    Converts to 64-bit signed integer number.
 		 * @details  转换成64位有符号整数。
 		 */
-		FURUD_NODISCARD constexpr int64_t ToInt64() const noexcept
+		furud_nodiscard constexpr int64_t ToInt64() const noexcept
 		{
 			return IStringBuilder::ToInt64(data);
 		}
@@ -904,7 +904,7 @@ export namespace Furud::Internal
 		 * @brief    Converts to 32-bit signed integer number.
 		 * @details  转换成64位有符号整数。
 		 */
-		FURUD_NODISCARD constexpr int32_t ToInt32() const noexcept
+		furud_nodiscard constexpr int32_t ToInt32() const noexcept
 		{
 			return IStringBuilder::ToInt32(data);
 		}
@@ -936,7 +936,7 @@ export namespace Furud::Internal
 
 
 /** Template char array. */
-export namespace Furud::Internal
+namespace Furud
 {
 	/**
 	 * @brief    This template describes the minimal common interface necessary to read character than std::string.
@@ -991,28 +991,28 @@ export namespace Furud::Internal
 			size = capacity = 0;
 		}
 
-		FURUD_INLINE TCharArray(const TChar* inData)
+		furud_inline TCharArray(const TChar* inData)
 		{
 			size = (TSize)IStringBuilder::Length(inData);
 			ICharAllocator::Alloc(size + 1, &data, &capacity);
 			IStringBuilder::Assign(data, size + 1, inData, size);
 		}
 
-		FURUD_INLINE TCharArray(const TSize& inSize)
+		furud_inline TCharArray(const TSize& inSize)
 		{
 			size = inSize;
 			ICharAllocator::Alloc(size + 1, &data, &capacity);
 			data[0] = TSize(0);
 		}
 
-		FURUD_INLINE TCharArray(const TCharArrayView<TChar, TSize>& inData)
+		furud_inline TCharArray(const TCharArrayView<TChar, TSize>& inData)
 		{
 			size = inData.Size();
 			ICharAllocator::Alloc(size + 1, &data, &capacity);
 			IStringBuilder::Assign(data, size + 1, inData, size);
 		}
 
-		FURUD_INLINE TCharArray(const TSize& inSize, const TChar& ch)
+		furud_inline TCharArray(const TSize& inSize, const TChar& ch)
 		{
 			size = inSize;
 			ICharAllocator::Alloc(size + 1, &data, &capacity);
@@ -1020,7 +1020,7 @@ export namespace Furud::Internal
 			data[size] = TSize(0);
 		}
 
-		FURUD_INLINE TCharArray(TCharArray&& inArr) noexcept
+		furud_inline TCharArray(TCharArray&& inArr) noexcept
 		{
 			std::swap(data, inArr.data);
 			std::swap(size, inArr.size);
@@ -1028,14 +1028,14 @@ export namespace Furud::Internal
 			inArr.~TCharArray();
 		}
 
-		FURUD_INLINE TCharArray& operator = (TCharArray&& inArr) noexcept
+		furud_inline TCharArray& operator = (TCharArray&& inArr) noexcept
 		{
 			Swap(inArr);
 			inArr.~TCharArray();
 			return *this;
 		}
 
-		FURUD_INLINE TCharArray Clone() noexcept
+		furud_inline TCharArray Clone() noexcept
 		{
 			TCharArray arr;
 			arr.size = size;
@@ -1044,7 +1044,7 @@ export namespace Furud::Internal
 			return arr;
 		}
 
-		FURUD_INLINE TCharArray Clone() const noexcept
+		furud_inline TCharArray Clone() const noexcept
 		{
 			TCharArray arr;
 			arr.size = size;
@@ -1055,27 +1055,27 @@ export namespace Furud::Internal
 
 
 	public:
-		FURUD_NODISCARD constexpr TChar* Data() noexcept
+		furud_nodiscard constexpr TChar* Data() noexcept
 		{
 			return data;
 		}
 
-		FURUD_NODISCARD constexpr const TChar* Data() const noexcept
+		furud_nodiscard constexpr const TChar* Data() const noexcept
 		{
 			return data;
 		}
 
-		FURUD_NODISCARD constexpr TSize Size() const noexcept
+		furud_nodiscard constexpr TSize Size() const noexcept
 		{
 			return size;
 		}
 
-		FURUD_NODISCARD constexpr TSize Capacity() const noexcept
+		furud_nodiscard constexpr TSize Capacity() const noexcept
 		{
 			return capacity;
 		}
 
-		FURUD_NODISCARD constexpr bool IsEmpty() const noexcept
+		furud_nodiscard constexpr bool IsEmpty() const noexcept
 		{
 			return size == 0;
 		}
@@ -1096,7 +1096,7 @@ export namespace Furud::Internal
 		 * @brief    Clear the array. It does not reallocate the memory storage.
 		 * @details  清空数组。保持内存大小不变。
 		 */
-		FURUD_INLINE void Clear()
+		furud_inline void Clear()
 		{
 			size = 0;
 
@@ -1110,7 +1110,7 @@ export namespace Furud::Internal
 		 * @brief    Empties the array. And supports reallocation of memory storage.
 		 * @details  清空数组。支持重新分配更大的内存。
 		 */
-		FURUD_INLINE void Empty(const TSize& inCapacity = 0)
+		furud_inline void Empty(const TSize& inCapacity = 0)
 		{
 			size = 0;
 
@@ -1129,7 +1129,7 @@ export namespace Furud::Internal
 		 * @brief    Reserves the array. Then it can contain at least `inCapacity` character.
 		 * @details  扩大数组内存。
 		 */
-		FURUD_INLINE void Reserve(const TSize& inCapacity)
+		furud_inline void Reserve(const TSize& inCapacity)
 		{
 			// Requested the new capacity is not larger than current capacity, ignore.
 			if (capacity >= inCapacity)
@@ -1144,7 +1144,7 @@ export namespace Furud::Internal
 		 * @brief    Shrinks the array. Then it only uses smallest memory storage as possible.
 		 * @details  缩紧数组内存。
 		 */
-		FURUD_INLINE void Shrink()
+		furud_inline void Shrink()
 		{
 			if (size + 1 != capacity)
 			{
@@ -1168,7 +1168,7 @@ export namespace Furud::Internal
 		 *           Possibly reallocating the array to fit.
 		 * @details  在尾部插入一个新的字符。
 		 */
-		FURUD_INLINE void Push(const TChar& ch)
+		furud_inline void Push(const TChar& ch)
 		{
 			if (size + 1 >= capacity)
 			{
@@ -1198,7 +1198,7 @@ export namespace Furud::Internal
 		 * @returns  0 if the array is empty.
 		 * @details  弹出尾部的一个字符。
 		 */
-		FURUD_INLINE TChar Pop() noexcept
+		furud_inline TChar Pop() noexcept
 		{
 			if (size > 0)
 			{
@@ -1216,7 +1216,7 @@ export namespace Furud::Internal
 		 *           Please ensure memory safety manually.
 		 * @details  弹出尾部的一个字符。
 		 */
-		FURUD_INLINE TChar PopUnsafe() noexcept
+		furud_inline TChar PopUnsafe() noexcept
 		{
 			--size;
 			TChar ch = data[size];
@@ -1229,7 +1229,7 @@ export namespace Furud::Internal
 		 *           Possibly reallocating the array to fit.
 		 * @details  尾部追加数组。
 		 */
-		FURUD_INLINE void Append(const TCharArrayView<TChar, TSize>& inArr)
+		furud_inline void Append(const TCharArrayView<TChar, TSize>& inArr)
 		{
 			if (inArr.Size() == 0)
 			{
@@ -1272,7 +1272,7 @@ export namespace Furud::Internal
 		 * @brief    Converts the character to uppercase.
 		 * @details  转换成大写。
 		 */
-		FURUD_INLINE void ToUpper() noexcept
+		furud_inline void ToUpper() noexcept
 		{
 			for (TSize i = 0; i != size; ++i)
 			{
@@ -1284,7 +1284,7 @@ export namespace Furud::Internal
 		 * @brief    Converts the character to lowercase.
 		 * @details  转换成小写。
 		 */
-		FURUD_INLINE void ToLower() noexcept
+		furud_inline void ToLower() noexcept
 		{
 			for (TSize i = 0; i != size; ++i)
 			{
@@ -1296,7 +1296,7 @@ export namespace Furud::Internal
 		 * @brief    Test whether this array starts with given character.
 		 * @details  测试开头字符。
 		 */
-		FURUD_NODISCARD constexpr bool StartWith(const TChar& prefix) const noexcept
+		furud_nodiscard constexpr bool StartWith(const TChar& prefix) const noexcept
 		{
 			return size >= 1 && data[0] == prefix;
 		}
@@ -1305,7 +1305,7 @@ export namespace Furud::Internal
 		 * @brief    Test whether this array ends with given character.
 		 * @details  测试结尾字符。
 		 */
-		FURUD_NODISCARD constexpr bool EndWith(const TChar& suffix) const noexcept
+		furud_nodiscard constexpr bool EndWith(const TChar& suffix) const noexcept
 		{
 			return size >= 1 && data[size - 1] = suffix;
 		}
@@ -1314,7 +1314,7 @@ export namespace Furud::Internal
 		 * @brief    Test whether this array starts with given characters.
 		 * @details  测试开头字符。
 		 */
-		FURUD_NODISCARD constexpr bool StartWith(const TCharArrayView<TChar, TSize>& prefix) const noexcept
+		furud_nodiscard constexpr bool StartWith(const TCharArrayView<TChar, TSize>& prefix) const noexcept
 		{
 			return TCharArrayView<TChar, TSize>(*this).StartWith(prefix);
 		}
@@ -1323,7 +1323,7 @@ export namespace Furud::Internal
 		 * @brief    Test whether this array ends with given characters.
 		 * @details  测试结尾字符。
 		 */
-		FURUD_NODISCARD constexpr bool EndWith(const TCharArrayView<TChar, TSize>& suffix) const noexcept
+		furud_nodiscard constexpr bool EndWith(const TCharArrayView<TChar, TSize>& suffix) const noexcept
 		{
 			return TCharArrayView<TChar, TSize>(*this).EndWith(suffix);
 		}
@@ -1332,7 +1332,7 @@ export namespace Furud::Internal
 		 * @brief    Returns the sub-array from the given position for count characters.
 		 * @details  获取子字符串。
 		 */
-		FURUD_NODISCARD constexpr TCharArrayView<TChar, TSize> Sub(const TSize& from, const TSize& count) const noexcept
+		furud_nodiscard constexpr TCharArrayView<TChar, TSize> Sub(const TSize& from, const TSize& count) const noexcept
 		{
 			return TCharArrayView<TChar, TSize>
 			{

@@ -34,56 +34,56 @@
 
 #if FURUD_OS_WIN
 
-	#ifndef FURUD_INLINE
-	#define FURUD_INLINE [[msvc::forceinline]]
+	#ifndef furud_inline
+	#define furud_inline [[msvc::forceinline]]
 	#endif
 
-	#ifndef FURUD_NOINLINE
-	#define FURUD_NOINLINE [[msvc::noinline]]
+	#ifndef furud_noinline
+	#define furud_noinline [[msvc::noinline]]
 	#endif
 
-	#ifndef FURUD_INTRINSIC
-	#define FURUD_INTRINSIC [[msvc::intrinsic]]
+	#ifndef furud_intrinsic
+	#define furud_intrinsic [[msvc::intrinsic]]
 	#endif
 
-	#ifndef FURUD_UNUSED
-	#define FURUD_UNUSED [[maybe_unused]]
+	#ifndef furud_unused
+	#define furud_unused [[maybe_unused]]
 	#endif
 
-	#ifndef FURUD_LIKELY
-	#define FURUD_LIKELY [[likely]]
+	#ifndef furud_likely
+	#define furud_likely [[likely]]
 	#endif
 
-	#ifndef FURUD_UNLIKELY
-	#define FURUD_UNLIKELY [[unlikely]]
+	#ifndef furud_unlikely
+	#define furud_unlikely [[unlikely]]
 	#endif
 
-	#ifndef FURUD_NODISCARD
-	#define FURUD_NODISCARD [[nodiscard]]
+	#ifndef furud_nodiscard
+	#define furud_nodiscard [[nodiscard]]
 	#endif
 
-	#ifndef FURUD_DEPRECATED
-	#define FURUD_DEPRECATED(message) [[deprecated(message)]]
+	#ifndef furud_deprecated
+	#define furud_deprecated(message) [[deprecated(message)]]
 	#endif
 
-	#ifndef FURUD_RESTRICT
-	#define FURUD_RESTRICT __restrict
+	#ifndef furud_restrict
+	#define furud_restrict __restrict
 	#endif
 
-	#ifndef FURUD_INTERFACE
-	#define FURUD_INTERFACE __declspec(novtable)
+	#ifndef furud_interface
+	#define furud_interface __declspec(novtable)
 	#endif
 
-	#ifndef FURUD_VECTORAPI
-	#define FURUD_VECTORAPI __vectorcall
+	#ifndef furud_vectorapi
+	#define furud_vectorapi __vectorcall
 	#endif
 
-	#ifndef FURUD_FASTAPI
-	#define FURUD_FASTAPI __fastcall
+	#ifndef furud_fastapi
+	#define furud_fastapi __fastcall
 	#endif
 
-	#ifndef FURUD_SOFTBREAK
-	#define FURUD_SOFTBREAK { *(volatile int*)0 = 0; }
+	#ifndef furud_softbreak
+	#define furud_softbreak { *(volatile int*)0 = 0; }
 	#endif
 
 #endif

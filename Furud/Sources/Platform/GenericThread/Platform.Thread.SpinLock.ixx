@@ -52,17 +52,17 @@ export namespace Furud
 			}
 		}
 
-		FURUD_INLINE bool TryLock() noexcept
+		furud_inline bool TryLock() noexcept
 		{
 			return !flag.exchange(true, std::memory_order_acquire);
 		}
 
-		FURUD_INLINE void UnLock() noexcept
+		furud_inline void UnLock() noexcept
 		{
 			flag.store(false, std::memory_order_release);
 		}
 
-		FURUD_INLINE bool IsLock() const noexcept
+		furud_inline bool IsLock() const noexcept
 		{
 			return flag.load(std::memory_order_acquire);
 		}

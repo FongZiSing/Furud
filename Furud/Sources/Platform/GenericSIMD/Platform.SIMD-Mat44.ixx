@@ -23,7 +23,7 @@ import :Vec4;
 export namespace Furud
 {
 	class Mat44f;
-	FURUD_INLINE extern Vec4f FURUD_VECTORAPI operator * (const Vec4f& lhs, const Mat44f& rhs) noexcept;
+	furud_inline extern Vec4f furud_vectorapi operator * (const Vec4f& lhs, const Mat44f& rhs) noexcept;
 
 
 	//****************************************************************
@@ -32,10 +32,10 @@ export namespace Furud
 	// @detials  复制向量元素。
 	//****************************************************************
 
-	FURUD_INLINE Vec4f FURUD_VECTORAPI ReplicateX(const __m128& r) noexcept { return _mm_shuffle_ps(r, r, 0);    }
-	FURUD_INLINE Vec4f FURUD_VECTORAPI ReplicateY(const __m128& r) noexcept { return _mm_shuffle_ps(r, r, 85u);  }
-	FURUD_INLINE Vec4f FURUD_VECTORAPI ReplicateZ(const __m128& r) noexcept { return _mm_shuffle_ps(r, r, 170u); }
-	FURUD_INLINE Vec4f FURUD_VECTORAPI ReplicateW(const __m128& r) noexcept { return _mm_shuffle_ps(r, r, 255u); }
+	furud_inline Vec4f furud_vectorapi ReplicateX(const __m128& r) noexcept { return _mm_shuffle_ps(r, r, 0);    }
+	furud_inline Vec4f furud_vectorapi ReplicateY(const __m128& r) noexcept { return _mm_shuffle_ps(r, r, 85u);  }
+	furud_inline Vec4f furud_vectorapi ReplicateZ(const __m128& r) noexcept { return _mm_shuffle_ps(r, r, 170u); }
+	furud_inline Vec4f furud_vectorapi ReplicateW(const __m128& r) noexcept { return _mm_shuffle_ps(r, r, 255u); }
 
 
 	/**
@@ -44,7 +44,7 @@ export namespace Furud
 	 * @details  交换向量元素位置。
 	 */
 	template<uint32_t i, uint32_t j, uint32_t k, uint32_t l>
-	FURUD_INLINE Vec4f FURUD_VECTORAPI Shuffle(const __m128& lhs, const __m128& rhs) noexcept
+	furud_inline Vec4f furud_vectorapi Shuffle(const __m128& lhs, const __m128& rhs) noexcept
 	{
 		constexpr uint32_t v = i | (j << 2) | (k << 4) | (l << 6);
 		return _mm_shuffle_ps(lhs, rhs, v);
@@ -55,7 +55,7 @@ export namespace Furud
 	 * @brief   2x2 row major Matrix multiply.
 	 * @return  ( a * b )
 	 */
-	FURUD_INLINE Vec4f FURUD_VECTORAPI Matrix2x2Multiply(const Vec4f& vec1, const Vec4f& vec2)
+	furud_inline Vec4f furud_vectorapi Matrix2x2Multiply(const Vec4f& vec1, const Vec4f& vec2)
 	{
 		return vec1 * vec2.Swizzle<0, 3, 0, 3>() + vec1.Swizzle<1, 0, 3, 2>() * vec2.Swizzle<2, 1, 2, 1>();
 	}
@@ -65,7 +65,7 @@ export namespace Furud
 	 * @brief   2x2 row major Matrix adjugate multiply.
 	 * @return  ( (a#) * b )
 	 */
-	FURUD_INLINE Vec4f FURUD_VECTORAPI Matrix2x2AdjMultiply(const Vec4f& vec1, const Vec4f& vec2)
+	furud_inline Vec4f furud_vectorapi Matrix2x2AdjMultiply(const Vec4f& vec1, const Vec4f& vec2)
 	{
 		return vec2 * vec1.Swizzle<3, 3, 0, 0>() - vec1.Swizzle<1, 1, 2, 2>() * vec2.Swizzle<2, 3, 0, 1>();
 	}
@@ -75,7 +75,7 @@ export namespace Furud
 	 * @brief   2x2 row major Matrix multiply adjugate.
 	 * @return  ( a * (b#) )
 	 */
-	FURUD_INLINE Vec4f FURUD_VECTORAPI Matrix2x2MultiplyAdj(const Vec4f& vec1, const Vec4f& vec2)
+	furud_inline Vec4f furud_vectorapi Matrix2x2MultiplyAdj(const Vec4f& vec1, const Vec4f& vec2)
 	{
 		return vec1 * vec2.Swizzle<3, 0, 3, 0>() - vec1.Swizzle<1, 0, 3, 2>() * vec2.Swizzle<2, 1, 2, 1>();
 	}
@@ -114,9 +114,9 @@ export namespace Furud
 		// @details  加载/存储向量。
 		//****************************************************************
 
-		FURUD_INLINE Mat44f& Load(const void* data) noexcept
+		furud_inline Mat44f& Load(const void* data) noexcept
 		{
-			const float* FURUD_RESTRICT m = static_cast<const float*>(data);
+			const float* furud_restrict m = static_cast<const float*>(data);
 			r[0] = _mm_load_ps(m);
 			r[1] = _mm_load_ps(m + 4);
 			r[2] = _mm_load_ps(m + 8);
@@ -124,19 +124,19 @@ export namespace Furud
 			return *this;
 		}
 
-		FURUD_INLINE void Store(void* data) const noexcept
+		furud_inline void Store(void* data) const noexcept
 		{
-			float* FURUD_RESTRICT m = static_cast<float*>(data);
+			float* furud_restrict m = static_cast<float*>(data);
 			_mm_store_ps(m, r[0]);
 			_mm_store_ps(m + 4, r[1]);
 			_mm_store_ps(m + 8, r[2]);
 			_mm_store_ps(m + 12, r[3]);
 		}
 
-		FURUD_INLINE static void Copy(const void* src, void* dst) noexcept
+		furud_inline static void Copy(const void* src, void* dst) noexcept
 		{
-			const float* FURUD_RESTRICT s = static_cast<const float*>(src);
-			float* FURUD_RESTRICT d = static_cast<float*>(dst);
+			const float* furud_restrict s = static_cast<const float*>(src);
+			float* furud_restrict d = static_cast<float*>(dst);
 			_mm256_store_ps(d, _mm256_load_ps(s));
 			_mm256_store_ps(d + 8, _mm256_load_ps(s + 8));
 		}
@@ -163,7 +163,7 @@ export namespace Furud
 		// @details  加减乘除。
 		//****************************************************************
 
-		FURUD_INLINE Mat44f FURUD_VECTORAPI operator - () const noexcept
+		furud_inline Mat44f furud_vectorapi operator - () const noexcept
 		{
 			Mat44f m;
 			const Vec4f* m1 = reinterpret_cast<const Vec4f*>(&r);
@@ -175,7 +175,7 @@ export namespace Furud
 			return m;
 		}
 
-		FURUD_INLINE Mat44f FURUD_VECTORAPI operator + (const Mat44f& rhs) const noexcept
+		furud_inline Mat44f furud_vectorapi operator + (const Mat44f& rhs) const noexcept
 		{
 			Mat44f m;
 			const Vec4f* m1 = reinterpret_cast<const Vec4f*>(&r);
@@ -188,7 +188,7 @@ export namespace Furud
 			return m;
 		}
 
-		FURUD_INLINE Mat44f FURUD_VECTORAPI operator - (const Mat44f& rhs) const noexcept
+		furud_inline Mat44f furud_vectorapi operator - (const Mat44f& rhs) const noexcept
 		{
 			Mat44f m;
 			const Vec4f* m1 = reinterpret_cast<const Vec4f*>(&r);
@@ -201,7 +201,7 @@ export namespace Furud
 			return m;
 		}
 
-		FURUD_INLINE Mat44f FURUD_VECTORAPI operator * (const float& rhs) const noexcept
+		furud_inline Mat44f furud_vectorapi operator * (const float& rhs) const noexcept
 		{
 			Mat44f m;
 			const Vec4f* m1 = reinterpret_cast<const Vec4f*>(&r);
@@ -214,7 +214,7 @@ export namespace Furud
 			return m;
 		}
 
-		FURUD_INLINE Mat44f FURUD_VECTORAPI operator / (const float& rhs) const noexcept
+		furud_inline Mat44f furud_vectorapi operator / (const float& rhs) const noexcept
 		{
 			Mat44f m;
 			const Vec4f* m1 = reinterpret_cast<const Vec4f*>(&r);
@@ -234,7 +234,7 @@ export namespace Furud
 		// @details  矩阵乘法。
 		//****************************************************************
 
-		FURUD_INLINE Mat44f FURUD_VECTORAPI operator * (const Mat44f& rhs) const noexcept
+		furud_inline Mat44f furud_vectorapi operator * (const Mat44f& rhs) const noexcept
 		{
 			const Mat44f& m1 = *this;
 			const Mat44f& m2 = rhs;
@@ -274,13 +274,13 @@ export namespace Furud
 			return m;
 		}
 
-		FURUD_INLINE const Mat44f& FURUD_VECTORAPI operator *= (const Mat44f& rhs) noexcept
+		furud_inline const Mat44f& furud_vectorapi operator *= (const Mat44f& rhs) noexcept
 		{
 			*this = this->operator*(rhs);
 			return *this;
 		}
 
-		FURUD_INLINE friend Vec4f FURUD_VECTORAPI operator * (const Vec4f& lhs, const Mat44f& rhs) noexcept
+		furud_inline friend Vec4f furud_vectorapi operator * (const Vec4f& lhs, const Mat44f& rhs) noexcept
 		{
 			const Vec4f& v = lhs;
 			const Mat44f& m = rhs;
@@ -300,19 +300,19 @@ export namespace Furud
 		// @details  矩阵运算。
 		//****************************************************************
 
-		FURUD_INLINE Mat44f FURUD_VECTORAPI Transpose() const noexcept
+		furud_inline Mat44f furud_vectorapi Transpose() const noexcept
 		{
 			Mat44f result = *this;
 			return result.Transposed();
 		}
 
-		FURUD_INLINE Mat44f& Transposed() noexcept
+		furud_inline Mat44f& Transposed() noexcept
 		{
 			_MM_TRANSPOSE4_PS(r[0], r[1], r[2], r[3]);
 			return *this;
 		}
 
-		FURUD_INLINE Mat44f FURUD_VECTORAPI Inverse() const noexcept
+		furud_inline Mat44f furud_vectorapi Inverse() const noexcept
 		{
 			// use block matrix method
 			// A is a matrix, then

@@ -72,7 +72,7 @@ export namespace Furud
 		 * @returns  False if file isn't exists or is directory.
 		 * @details  检查文件是否存在。
 		 */
-		FURUD_NODISCARD FURUD_INLINE bool FileExists(const PathString& path) noexcept
+		furud_nodiscard furud_inline bool FileExists(const PathString& path) noexcept
 		{
 			fs::path p = path.data.lexically_normal();
 			std::error_code error;
@@ -102,7 +102,7 @@ export namespace Furud
 		 * @returns  False if directory isn't exists or is file.
 		 * @details  检查文件夹是否存在。
 		 */
-		FURUD_NODISCARD FURUD_INLINE static bool DirectoryExists(const PathString& path) noexcept
+		furud_nodiscard furud_inline static bool DirectoryExists(const PathString& path) noexcept
 		{
 			fs::path p = path.data.lexically_normal();
 			std::error_code error;

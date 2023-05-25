@@ -144,7 +144,7 @@ namespace Furud::Internal
 /** Input stream interface */
 namespace Furud::Internal
 {
-	class FURUD_INTERFACE IInputFileStream
+	class furud_interface IInputFileStream
 	{
 	public:
 		constexpr IInputFileStream() = default;
@@ -183,7 +183,7 @@ namespace Furud::Internal
 /** Ouput stream interface. */
 namespace Furud::Internal
 {
-	class FURUD_INTERFACE IOutputFileStream
+	class furud_interface IOutputFileStream
 	{
 	public:
 		constexpr IOutputFileStream() = default;
@@ -337,7 +337,7 @@ export namespace Furud
 
 		virtual bool Read(void* data, int64_t bytes) override
 		{
-			uint8_t* FURUD_RESTRICT p = (uint8_t*)data;
+			uint8_t* furud_restrict p = (uint8_t*)data;
 			int64_t batch             = bytes / int64_t(UINT32_MAX);
 			int64_t remainder         = bytes % int64_t(UINT32_MAX);
 
@@ -362,7 +362,7 @@ export namespace Furud
 
 
 	private:
-		FURUD_INLINE bool ReadFileInternal(uint8_t*& data, DWORD bytesToRead)
+		furud_inline bool ReadFileInternal(uint8_t*& data, DWORD bytesToRead)
 		{
 			DWORD bytesRead = 0;
 			// Reads data from specified file.
@@ -518,7 +518,7 @@ export namespace Furud
 	public:
 		virtual bool Write(const void* data, int64_t bytes) override
 		{
-			uint8_t* FURUD_RESTRICT p  = (uint8_t*)data;
+			uint8_t* furud_restrict p  = (uint8_t*)data;
 			int64_t batch              = bytes / int64_t(UINT32_MAX);
 			int64_t remainder          = bytes % int64_t(UINT32_MAX);
 
@@ -543,7 +543,7 @@ export namespace Furud
 
 
 	private:
-		FURUD_INLINE bool WriteFileInternal(uint8_t*& data, DWORD bytesToWrite)
+		furud_inline bool WriteFileInternal(uint8_t*& data, DWORD bytesToWrite)
 		{
 			DWORD bytesWritten = 0;
 			// Writes data from specified file.
@@ -673,7 +673,7 @@ export namespace Furud
 
 
 	private:
-		FURUD_INLINE void GetlineInternal(bool& finished)
+		furud_inline void GetlineInternal(bool& finished)
 		{
 			AnsicharArray::TSize counter = buffer.Capacity() - 1;
 

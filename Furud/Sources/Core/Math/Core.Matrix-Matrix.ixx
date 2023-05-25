@@ -65,19 +65,19 @@ export namespace Furud
 			m[3][0] = row3.x;  m[3][1] = row3.y;  m[3][2] = row3.z;  m[3][3] = row3.w;
 		}
 		
-		FURUD_INLINE Matrix44f(Matrix44f const& v) noexcept
+		furud_inline Matrix44f(Matrix44f const& v) noexcept
 		{
 			Vec8f::Copy(&v.m[0][0], &m[0][0]);
 			Vec8f::Copy(&v.m[2][0], &m[2][0]);
 		}
 
-		FURUD_INLINE Matrix44f& operator = (Matrix44f const& v) noexcept
+		furud_inline Matrix44f& operator = (Matrix44f const& v) noexcept
 		{
 			Vec8f::Copy(&v.m[0][0], &m[0][0]);
 			Vec8f::Copy(&v.m[2][0], &m[2][0]);
 		}
 
-		FURUD_INLINE Matrix44f(Matrix44f&& v) noexcept
+		furud_inline Matrix44f(Matrix44f&& v) noexcept
 		{
 			m[0][0] = v.m[0][0];  m[0][1] = v.m[0][1];  m[0][2] = v.m[0][2];  m[0][3] = v.m[0][3];
 			m[1][0] = v.m[1][0];  m[1][1] = v.m[1][1];  m[1][2] = v.m[1][2];  m[1][3] = v.m[1][3];
@@ -85,7 +85,7 @@ export namespace Furud
 			m[3][0] = v.m[3][0];  m[3][1] = v.m[3][1];  m[3][2] = v.m[3][2];  m[3][3] = v.m[3][3];
 		}
 
-		FURUD_INLINE constexpr Matrix44f& operator = (Matrix44f&& v) noexcept
+		furud_inline constexpr Matrix44f& operator = (Matrix44f&& v) noexcept
 		{
 			m[0][0] = v.m[0][0];  m[0][1] = v.m[0][1];  m[0][2] = v.m[0][2];  m[0][3] = v.m[0][3];
 			m[1][0] = v.m[1][0];  m[1][1] = v.m[1][1];  m[1][2] = v.m[1][2];  m[1][3] = v.m[1][3];
@@ -98,70 +98,70 @@ export namespace Furud
 		
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Mat44f ToMat4() const noexcept
+		furud_nodiscard furud_inline Mat44f ToMat4() const noexcept
 		{
 			Mat44f r;
 			r.Load(this);
 			return r;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Mat44f& AsMat4() noexcept
+		furud_nodiscard furud_inline Mat44f& AsMat4() noexcept
 		{
 			return *(Mat44f*)(this);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE const Mat44f& AsMat4() const noexcept
+		furud_nodiscard furud_inline const Mat44f& AsMat4() const noexcept
 		{
 			return *(Mat44f*)(this);
 		}
 
 
 	public:
-		FURUD_INLINE bool operator == (Matrix44f const& rhs) const noexcept
+		furud_inline bool operator == (Matrix44f const& rhs) const noexcept
 		{
-			const float* FURUD_RESTRICT p = &m[0][0];
-			const float* FURUD_RESTRICT q = &rhs.m[0][0];
+			const float* furud_restrict p = &m[0][0];
+			const float* furud_restrict q = &rhs.m[0][0];
 
 			for (int32_t i = 0; i < 16; i++, p++, q++)
 				if (*q != *p) return false;
 			return true;
 		}
 
-		FURUD_INLINE bool operator != (Matrix44f const& rhs) const noexcept
+		furud_inline bool operator != (Matrix44f const& rhs) const noexcept
 		{
 			return !(*this == rhs);
 		}
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Matrix44f operator - () const noexcept
+		furud_nodiscard furud_inline Matrix44f operator - () const noexcept
 		{
 			Matrix44f result;
 			(-AsMat4()).Store(&result);
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Matrix44f operator + (Matrix44f const& rhs) const noexcept
+		furud_nodiscard furud_inline Matrix44f operator + (Matrix44f const& rhs) const noexcept
 		{
 			Matrix44f result;
 			result.AsMat4() = AsMat4() + rhs.AsMat4();
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Matrix44f operator - (Matrix44f const& rhs) const noexcept
+		furud_nodiscard furud_inline Matrix44f operator - (Matrix44f const& rhs) const noexcept
 		{
 			Matrix44f result;
 			result.AsMat4() = AsMat4() - rhs.AsMat4();
 			return result;
 		}
 
-		FURUD_INLINE Matrix44f const& operator += (Matrix44f const& rhs) noexcept
+		furud_inline Matrix44f const& operator += (Matrix44f const& rhs) noexcept
 		{
 			AsMat4() = AsMat4() + rhs.AsMat4();
 			return *this;
 		}
 
-		FURUD_INLINE Matrix44f const& operator -= (Matrix44f const& rhs) noexcept
+		furud_inline Matrix44f const& operator -= (Matrix44f const& rhs) noexcept
 		{
 			AsMat4() = AsMat4() - rhs.AsMat4();
 			return *this;
@@ -175,27 +175,27 @@ export namespace Furud
 
 		Matrix44f const& operator -= (float const& rhs) = delete;
 
-		FURUD_NODISCARD FURUD_INLINE Matrix44f operator * (float const& rhs) const noexcept
+		furud_nodiscard furud_inline Matrix44f operator * (float const& rhs) const noexcept
 		{
 			Matrix44f result;
 			result.AsMat4() = AsMat4() * rhs;
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Matrix44f operator / (float const& rhs) const noexcept
+		furud_nodiscard furud_inline Matrix44f operator / (float const& rhs) const noexcept
 		{
 			Matrix44f result;
 			result.AsMat4() = AsMat4() / rhs;
 			return result;
 		}
 
-		FURUD_INLINE Matrix44f const& operator *= (float const& rhs) noexcept
+		furud_inline Matrix44f const& operator *= (float const& rhs) noexcept
 		{
 			AsMat4() = AsMat4() * rhs;
 			return *this;
 		}
 
-		FURUD_INLINE Matrix44f const& operator /= (float const& rhs) noexcept
+		furud_inline Matrix44f const& operator /= (float const& rhs) noexcept
 		{
 			AsMat4() = AsMat4() / rhs;
 			return *this;
@@ -203,14 +203,14 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Matrix44f Transpose() const noexcept
+		furud_nodiscard furud_inline Matrix44f Transpose() const noexcept
 		{
 			Matrix44f result;
 			result.AsMat4() = AsMat4().Transpose();
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Matrix44f Inverse() const noexcept
+		furud_nodiscard furud_inline Matrix44f Inverse() const noexcept
 		{
 			Matrix44f result;
 			result.AsMat4() = AsMat4().Inverse();
@@ -219,7 +219,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Vector3f TransformPosition3(Vector3f const& rhs) const noexcept
+		furud_nodiscard furud_inline Vector3f TransformPosition3(Vector3f const& rhs) const noexcept
 		{
 			const Mat44f& m = AsMat4();
 			const Vec4f v { rhs.x, rhs.y, rhs.z, 1 };
@@ -230,7 +230,7 @@ export namespace Furud
 
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3f TransformVector3(Vector3f const& rhs) const noexcept
+		furud_nodiscard furud_inline Vector3f TransformVector3(Vector3f const& rhs) const noexcept
 		{
 			const Mat44f& m = AsMat4();
 			const Vec4f v { rhs.x, rhs.y, rhs.z, 0 };
@@ -240,7 +240,7 @@ export namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3f TransformPosition3(Vector4f const& rhs) const noexcept
+		furud_nodiscard furud_inline Vector3f TransformPosition3(Vector4f const& rhs) const noexcept
 		{
 			const Mat44f& m = AsMat4();
 			const Vec4f& v = rhs.AsVec4();
@@ -250,7 +250,7 @@ export namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3f TransformVector3(Vector4f const& rhs) const noexcept
+		furud_nodiscard furud_inline Vector3f TransformVector3(Vector4f const& rhs) const noexcept
 		{
 			const Mat44f& m = AsMat4();
 			const Vec4f& v = rhs.AsVec4();
@@ -260,7 +260,7 @@ export namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector4f TransformPosition4(Vector3f const& rhs) const noexcept
+		furud_nodiscard furud_inline Vector4f TransformPosition4(Vector3f const& rhs) const noexcept
 		{
 			const Mat44f& m = AsMat4();
 			const Vec4f v { rhs.x, rhs.y, rhs.z, 1 };
@@ -269,7 +269,7 @@ export namespace Furud
 			(v * m).Homogenize().Store4(&result);
 			return result;
 		}
-		FURUD_NODISCARD FURUD_INLINE Vector4f TransformVector4(Vector3f const& rhs) const noexcept
+		furud_nodiscard furud_inline Vector4f TransformVector4(Vector3f const& rhs) const noexcept
 		{
 			const Mat44f& m = AsMat4();
 			const Vec4f v { rhs.x, rhs.y, rhs.z, 0 };
@@ -279,7 +279,7 @@ export namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector4f TransformPosition4(Vector4f const& rhs) const noexcept
+		furud_nodiscard furud_inline Vector4f TransformPosition4(Vector4f const& rhs) const noexcept
 		{
 			const Mat44f& m = AsMat4();
 			const Vec4f& v = rhs.AsVec4();
@@ -289,7 +289,7 @@ export namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector4f TransformVector4(Vector4f const& rhs) const noexcept
+		furud_nodiscard furud_inline Vector4f TransformVector4(Vector4f const& rhs) const noexcept
 		{
 			const Mat44f& m = AsMat4();
 			const Vec4f& v = rhs.AsVec4();

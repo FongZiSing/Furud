@@ -27,7 +27,7 @@ namespace Furud::Internal
 	 *           This interface specifies the function used to manager thread's life cycle.
 	 * @details  线程接口。
 	 */
-	class FURUD_INTERFACE IThread
+	class furud_interface IThread
 	{
 	public:
 		enum class Priority : uint8_t

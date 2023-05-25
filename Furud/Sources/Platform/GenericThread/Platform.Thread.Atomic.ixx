@@ -50,52 +50,52 @@ export namespace Furud
 
 
     public:
-        FURUD_INLINE TValue operator = (const TValue& value) volatile noexcept
+        furud_inline TValue operator = (const TValue& value) volatile noexcept
         {
             return Super::operator = (value);
         }
 
-        FURUD_INLINE TValue operator = (const TValue& value) noexcept
+        furud_inline TValue operator = (const TValue& value) noexcept
         {
             return Super::operator = (value);
         }
 
-        FURUD_INLINE operator TValue() const volatile noexcept
+        furud_inline operator TValue() const volatile noexcept
         {
             return Super::load();
         }
 
-        FURUD_INLINE operator TValue() const noexcept
+        furud_inline operator TValue() const noexcept
         {
             return Super::load();
         }
 
-        FURUD_INLINE void Set(const TValue& value) volatile noexcept
+        furud_inline void Set(const TValue& value) volatile noexcept
         {
             Super::store(value);
         }
 
-        FURUD_INLINE void Set(const TValue& value, const MemoryOrder& order) volatile noexcept
+        furud_inline void Set(const TValue& value, const MemoryOrder& order) volatile noexcept
         {
             Super::store(value, static_cast<std::memory_order>(order));
         }
 
-        FURUD_NODISCARD FURUD_INLINE TValue Get() const volatile noexcept
+        furud_nodiscard furud_inline TValue Get() const volatile noexcept
         {
             return Super::load();
         }
 
-        FURUD_NODISCARD FURUD_INLINE TValue Get(const MemoryOrder& order) const volatile noexcept
+        furud_nodiscard furud_inline TValue Get(const MemoryOrder& order) const volatile noexcept
         {
             return Super::load(static_cast<std::memory_order>(order));
         }
 
-        FURUD_INLINE TValue Exchange(const TValue& value) volatile noexcept
+        furud_inline TValue Exchange(const TValue& value) volatile noexcept
         {
             return Super::exchange(value);
         }
 
-        FURUD_INLINE TValue Exchange(const TValue& value, const MemoryOrder& order) volatile noexcept
+        furud_inline TValue Exchange(const TValue& value, const MemoryOrder& order) volatile noexcept
         {
             return Super::exchange(value, static_cast<std::memory_order>(order));
         }

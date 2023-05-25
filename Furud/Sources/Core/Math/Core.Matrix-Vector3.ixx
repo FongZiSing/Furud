@@ -27,15 +27,15 @@ import Furud.Core.Math;
 export namespace Furud
 {
 	struct Vector3i;
-	FURUD_INLINE extern Vector3i Clamp(const Vector3i& inVal, int32_t const& inMin, int32_t const& inMax) noexcept;
+	furud_inline extern Vector3i Clamp(const Vector3i& inVal, int32_t const& inMin, int32_t const& inMax) noexcept;
 
 
 	struct Vector3f;
-	FURUD_INLINE extern Vector3f Clamp(const Vector3f& inVal, float const& inMin, float const& inMax) noexcept;
+	furud_inline extern Vector3f Clamp(const Vector3f& inVal, float const& inMin, float const& inMax) noexcept;
 
 
 	struct Vector3d;
-	FURUD_INLINE extern Vector3d Clamp(const Vector3d& inVal, double const& inMin, double const& inMax) noexcept;
+	furud_inline extern Vector3d Clamp(const Vector3d& inVal, double const& inMin, double const& inMax) noexcept;
 }
 
 
@@ -88,7 +88,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Vec4i ToVec4() const noexcept
+		furud_nodiscard furud_inline Vec4i ToVec4() const noexcept
 		{
 			Vec4i r;
 			r.Load3(this);
@@ -131,7 +131,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE friend Vector3i Clamp(const Vector3i& inVal, int32_t const& inMin, int32_t const& inMax) noexcept
+		furud_nodiscard furud_inline friend Vector3i Clamp(const Vector3i& inVal, int32_t const& inMin, int32_t const& inMax) noexcept
 		{
 			return
 			{
@@ -143,8 +143,8 @@ export namespace Furud
 
 
 	public:
-		//FURUD_NODISCARD FURUD_INLINE BasicMatrix<int32_t> ToMatrix() const noexcept;
-		//FURUD_NODISCARD FURUD_INLINE BasicMatrix<int32_t> ToInvMatrix() const noexcept;
+		//furud_nodiscard furud_inline BasicMatrix<int32_t> ToMatrix() const noexcept;
+		//furud_nodiscard furud_inline BasicMatrix<int32_t> ToInvMatrix() const noexcept;
 	};
 
 
@@ -204,7 +204,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Vec4f ToVec4() const noexcept
+		furud_nodiscard furud_inline Vec4f ToVec4() const noexcept
 		{
 			Vec4f r;
 			r.Load3(this);
@@ -247,7 +247,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Vector3f operator ^ (const Vector3f& rhs) const noexcept
+		furud_nodiscard furud_inline Vector3f operator ^ (const Vector3f& rhs) const noexcept
 		{
 			return
 			{
@@ -257,32 +257,32 @@ export namespace Furud
 			};
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3f CrossProduct(const Vector3f& rhs) const noexcept
+		furud_nodiscard furud_inline Vector3f CrossProduct(const Vector3f& rhs) const noexcept
 		{
 			return (*this) ^ rhs;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float operator | (const Vector3f& rhs) const noexcept
+		furud_nodiscard furud_inline float operator | (const Vector3f& rhs) const noexcept
 		{
 			return x * rhs.x + y * rhs.y + z * rhs.z;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float DotProduct(const Vector3f& rhs) const noexcept
+		furud_nodiscard furud_inline float DotProduct(const Vector3f& rhs) const noexcept
 		{
 			return (*this) | rhs;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float LengthSquared() const noexcept
+		furud_nodiscard furud_inline float LengthSquared() const noexcept
 		{
 			return x * x + y * y + z * z;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float Length() const noexcept
+		furud_nodiscard furud_inline float Length() const noexcept
 		{
 			return IMath::Sqrt(x * x + y * y + z * z);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3f Normalize(float const& tolerance = IFloat::SMALLER) const noexcept
+		furud_nodiscard furud_inline Vector3f Normalize(float const& tolerance = IFloat::SMALLER) const noexcept
 		{
 			Vector3f result;
 			Vec4f r;
@@ -290,7 +290,7 @@ export namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool IsNormalized(float const& tolerance = IFloat::SMALL) const noexcept
+		furud_nodiscard furud_inline bool IsNormalized(float const& tolerance = IFloat::SMALL) const noexcept
 		{
 			Vec4f r;
 			r.Load3(this);
@@ -298,7 +298,7 @@ export namespace Furud
 			return (IMath::Abs(1.f - squareSum) < tolerance);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE friend Vector3f Clamp(const Vector3f& inVal, float const& inMin, float const& inMax) noexcept
+		furud_nodiscard furud_inline friend Vector3f Clamp(const Vector3f& inVal, float const& inMin, float const& inMax) noexcept
 		{
 			return
 			{
@@ -308,30 +308,30 @@ export namespace Furud
 			};
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AnyNaN() const noexcept
+		furud_nodiscard furud_inline bool AnyNaN() const noexcept
 		{
 			return IMath::IsNaN(x) || IMath::IsNaN(y) || IMath::IsNaN(z);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AllNaN() const noexcept
+		furud_nodiscard furud_inline bool AllNaN() const noexcept
 		{
 			return IMath::IsNaN(x) && IMath::IsNaN(y) && IMath::IsNaN(z);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AnyFinite() const noexcept
+		furud_nodiscard furud_inline bool AnyFinite() const noexcept
 		{
 			return IMath::IsFinite(x) || IMath::IsFinite(y) || IMath::IsFinite(z);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AllFinite() const noexcept
+		furud_nodiscard furud_inline bool AllFinite() const noexcept
 		{
 			return IMath::IsFinite(x) && IMath::IsFinite(y) && IMath::IsFinite(z);
 		}
 
 
 	public:
-		//FURUD_NODISCARD FURUD_INLINE BasicMatrix<float> ToMatrix() const noexcept;
-		//FURUD_NODISCARD FURUD_INLINE BasicMatrix<float> ToInvMatrix() const noexcept;
+		//furud_nodiscard furud_inline BasicMatrix<float> ToMatrix() const noexcept;
+		//furud_nodiscard furud_inline BasicMatrix<float> ToInvMatrix() const noexcept;
 	};
 
 
@@ -391,7 +391,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Vec4f ToVec4() const noexcept
+		furud_nodiscard furud_inline Vec4f ToVec4() const noexcept
 		{
 			Vec4f r;
 			r.Load3(this);
@@ -434,7 +434,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Vector3d operator ^ (const Vector3d& rhs) const noexcept
+		furud_nodiscard furud_inline Vector3d operator ^ (const Vector3d& rhs) const noexcept
 		{
 			return
 			{
@@ -444,32 +444,32 @@ export namespace Furud
 			};
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3d CrossProduct(const Vector3d& rhs) const noexcept
+		furud_nodiscard furud_inline Vector3d CrossProduct(const Vector3d& rhs) const noexcept
 		{
 			return (*this) ^ rhs;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE double operator | (const Vector3d& rhs) const noexcept
+		furud_nodiscard furud_inline double operator | (const Vector3d& rhs) const noexcept
 		{
 			return x * rhs.x + y * rhs.y + z * rhs.z;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE double DotProduct(const Vector3d& rhs) const noexcept
+		furud_nodiscard furud_inline double DotProduct(const Vector3d& rhs) const noexcept
 		{
 			return (*this) | rhs;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE double LengthSquared() const noexcept
+		furud_nodiscard furud_inline double LengthSquared() const noexcept
 		{
 			return x * x + y * y + z * z;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE double Length() const noexcept
+		furud_nodiscard furud_inline double Length() const noexcept
 		{
 			return IMath::Sqrt(x * x + y * y + z * z);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3d Normalize(double const& tolerance = IDouble::SMALLER) const noexcept
+		furud_nodiscard furud_inline Vector3d Normalize(double const& tolerance = IDouble::SMALLER) const noexcept
 		{
 			Vector3d result = *this;
 			const double squareSum = result.LengthSquared();
@@ -483,13 +483,13 @@ export namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool IsNormalized(double const& tolerance = IDouble::SMALL) const noexcept
+		furud_nodiscard furud_inline bool IsNormalized(double const& tolerance = IDouble::SMALL) const noexcept
 		{
 			const double squareSum = LengthSquared();
 			return (IMath::Abs(1.f - squareSum) < tolerance);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE friend Vector3d Clamp(const Vector3d& inVal, double const& inMin, double const& inMax) noexcept
+		furud_nodiscard furud_inline friend Vector3d Clamp(const Vector3d& inVal, double const& inMin, double const& inMax) noexcept
 		{
 			return
 			{
@@ -499,30 +499,30 @@ export namespace Furud
 			};
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AnyNaN() const noexcept
+		furud_nodiscard furud_inline bool AnyNaN() const noexcept
 		{
 			return IMath::IsNaN(x) || IMath::IsNaN(y) || IMath::IsNaN(z);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AllNaN() const noexcept
+		furud_nodiscard furud_inline bool AllNaN() const noexcept
 		{
 			return IMath::IsNaN(x) && IMath::IsNaN(y) && IMath::IsNaN(z);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AnyFinite() const noexcept
+		furud_nodiscard furud_inline bool AnyFinite() const noexcept
 		{
 			return IMath::IsFinite(x) || IMath::IsFinite(y) || IMath::IsFinite(z);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AllFinite() const noexcept
+		furud_nodiscard furud_inline bool AllFinite() const noexcept
 		{
 			return IMath::IsFinite(x) && IMath::IsFinite(y) && IMath::IsFinite(z);
 		}
 
 
 	public:
-		//FURUD_NODISCARD FURUD_INLINE BasicMatrix<double> ToMatrix() const noexcept;
-		//FURUD_NODISCARD FURUD_INLINE BasicMatrix<double> ToInvMatrix() const noexcept;
+		//furud_nodiscard furud_inline BasicMatrix<double> ToMatrix() const noexcept;
+		//furud_nodiscard furud_inline BasicMatrix<double> ToInvMatrix() const noexcept;
 	};
 
 
