@@ -20,6 +20,7 @@
 
 #include "Name.hpp"
 #include "Security.hpp"
+#include "Logger.hpp"
 
 
 
@@ -28,8 +29,17 @@ namespace Furud::IPC
 	class ISharedMemory final
 	{
 	private:
+		/** Native name. */
+		IName name{ L"__FURUD_IPC_SHM__" };
+		
+		/** Native security. */
+		ISecurity security;
+
+		/** Native handle. */
 		HANDLE handle = NULL;
+		
 		void* memory = nullptr;
+		
 		UINT32 size = 0;
 
 
@@ -75,8 +85,7 @@ namespace Furud::IPC
 
 		bool Open(wchar_t const* sharedMemoryName, UINT32 sharedMemorySize, EFlag sharedMemoryFlag)
 		{
-			ISecurity security;
-			IName name{ L"__FURUD_IPC_SHM__", sharedMemoryName };
+			name.Construct(sharedMemoryName);
 
 			if (sharedMemoryFlag == EFlag::Open)
 			{
@@ -100,6 +109,7 @@ namespace Furud::IPC
 				// If the object exists, remove it.
 				if (handle && ::GetLastError() == ERROR_ALREADY_EXISTS)
 				{
+					Logger::Error("Failed to create shared memory, shared memory has existed.`");
 					::CloseHandle(handle);
 					handle = NULL;
 				}

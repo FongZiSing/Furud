@@ -29,6 +29,18 @@
     <ClInclude Include="Sources\Details\SharedMemory.hpp">
       <Filter>Sources\Details</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Details\Connectable.hpp">
+      <Filter>Sources\Details</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Client.hpp">
+      <Filter>Sources</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Details\Mutex.hpp">
+      <Filter>Sources\Details</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Details\Logger.hpp">
+      <Filter>Sources\Details</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

@@ -17,35 +17,41 @@ namespace Furud::IPC
 {
 	struct IName
 	{
-	public:
+	private:
 		/** The maximum length of name. */
-		static constexpr unsigned long long capacity = 50;
+		static constexpr uint32_t capacity = 50;
 
+
+	public:
 		/** The string of name. */
 		wchar_t data[capacity];
 
+		/** The prefix of name. */
+		const wchar_t* prefix;
+
+		/** The length of prefix. */
+		const uint32_t prelen;
+
 
 	public:
-		explicit IName(wchar_t const* inPrefix, wchar_t const* inName) noexcept
+		explicit IName(wchar_t const* inPrefix) noexcept
+			: prefix(inPrefix)
+			, prelen(std::min(capacity - 1, (uint32_t)__builtin_wcslen(inPrefix)))
 		{
-			// Copy the prefix name.
-			const auto suitPrefixSize = capacity - 1;
-			const auto wantPrefixSize = __builtin_wcslen(inPrefix);
-			const auto usedPrefixSize = std::min(suitPrefixSize, wantPrefixSize);
-			::wmemcpy(data, inPrefix, wantPrefixSize);
+			::wmemcpy(data, prefix, prelen);
+			data[prelen] = L'\0';
+		}
 
+		void Construct(wchar_t const* inName)
+		{
 			// Copy the real name.
-			if (suitPrefixSize > usedPrefixSize)
+			if (capacity - 1 > prelen)
 			{
-				const auto suitNameSize = suitPrefixSize - usedPrefixSize;
-				const auto wantNameSize = __builtin_wcslen(inName);
+				const auto suitNameSize = capacity - prelen - 1;
+				const auto wantNameSize = (uint32_t)__builtin_wcslen(inName);
 				const auto usedNameSize = std::min(suitNameSize, wantNameSize);
-				::wmemcpy(data + usedPrefixSize, inName, usedNameSize);
-				data[usedPrefixSize + usedNameSize] = L'\0';
-			}
-			else
-			{
-				data[suitPrefixSize] = L'\0';
+				::wmemcpy(data + prelen, inName, usedNameSize);
+				data[prelen + usedNameSize] = L'\0';
 			}
 		}
 	};

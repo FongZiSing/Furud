@@ -20,6 +20,7 @@
 
 #include "Name.hpp"
 #include "Security.hpp"
+#include "Logger.hpp"
 
 
 
@@ -28,6 +29,12 @@ namespace Furud::IPC
 	class ISemaphore final
 	{
 	private:
+		/** Native name. */
+		IName name { L"__FURUD_IPC_SEM__" };
+
+		/** Native security. */
+		ISecurity security;
+
 		/** Native handle. */
 		HANDLE handle = NULL;
 
@@ -73,15 +80,14 @@ namespace Furud::IPC
 
 		bool Open(wchar_t const* inSemaphoreName, UINT32 inSemaphoreCount, EFlag SemaphoreFlag) noexcept
 		{
-			ISecurity security;
-			IName name { L"__FURUD_IPC_SEM__", inSemaphoreName };
+			name.Construct(inSemaphoreName);
 
 			if (SemaphoreFlag == EFlag::Open)
 			{
 				// Opens an existing named semaphore object.
 				// https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-opensemaphorew
 				handle = OpenSemaphoreW
-				(EVENT_ALL_ACCESS
+					( EVENT_ALL_ACCESS
 					, false
 					, name.data
 				);
@@ -101,6 +107,7 @@ namespace Furud::IPC
 
 				if (handle && GetLastError() == ERROR_ALREADY_EXISTS)
 				{
+					Logger::Error("Failed to create semaphore, semaphore has existed.`");
 					::CloseHandle(handle);
 					handle = NULL;
 				}
@@ -125,6 +132,7 @@ namespace Furud::IPC
 
 				case WAIT_ABANDONED:
 				default:
+					Logger::Error("Failed to call `WaitForSingleObject` with error code `%lu`, return code `0x%08X`", ::GetLastError(), ret);
 					break;
 				}
 			}
@@ -135,8 +143,14 @@ namespace Furud::IPC
 		{
 			if (handle)
 			{
-				// Release the semaphore when task is finished
-				return ::ReleaseSemaphore(handle, static_cast<LONG>(count), nullptr);
+				// Release the semaphore.
+				// see https://learn.microsoft.com/en-us/windows/win32/api/synchapi/nf-synchapi-releasesemaphore
+				if (!::ReleaseSemaphore(handle, static_cast<LONG>(count), nullptr))
+				{
+					Logger::Error("Failed to call `ReleaseSemaphore` with error code `%lu`", ::GetLastError());
+					return false;
+				}
+				return true;
 			}
 			return false;
 		}
