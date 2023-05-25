@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Includes">
+      <UniqueIdentifier>{81d7e700-ea9b-4bf8-8673-5f409dc18dc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources">
+      <UniqueIdentifier>{e7e79acf-7d8b-4a69-8bb7-4c15990c2cb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\Details">
+      <UniqueIdentifier>{bef110c1-88c4-4377-a742-71ff2ab9926c}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h" />
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="Includes\IPC.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Details\Name.hpp">
+      <Filter>Sources\Details</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Details\Security.hpp">
+      <Filter>Sources\Details</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Details\Semaphore.hpp">
+      <Filter>Sources\Details</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Details\SharedMemory.hpp">
+      <Filter>Sources\Details</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp" />
+    <ClCompile Include="Sources\IPC.cpp">
+      <Filter>Sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

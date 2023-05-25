@@ -5,6 +5,15 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Furud", "Furud\Furud.vcxproj", "{29957EE9-73F4-410A-AB45-A0F799E9AE71}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tool", "Tool", "{7A545A72-D2ED-4178-892D-4BB785A7E6B9}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Furud IPC", "Tool\Furud IPC\Furud IPC.vcxproj", "{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Furud IPC Test", "Tool\Furud IPC Test\Furud IPC Test.vcxproj", "{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6} = {AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,9 +30,29 @@ Global
 		{29957EE9-73F4-410A-AB45-A0F799E9AE71}.Release|x64.Build.0 = Release|x64
 		{29957EE9-73F4-410A-AB45-A0F799E9AE71}.Release|x86.ActiveCfg = Release|Win32
 		{29957EE9-73F4-410A-AB45-A0F799E9AE71}.Release|x86.Build.0 = Release|Win32
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}.Debug|x64.ActiveCfg = Debug|x64
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}.Debug|x64.Build.0 = Debug|x64
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}.Debug|x86.ActiveCfg = Debug|Win32
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}.Debug|x86.Build.0 = Debug|Win32
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}.Release|x64.ActiveCfg = Release|x64
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}.Release|x64.Build.0 = Release|x64
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}.Release|x86.ActiveCfg = Release|Win32
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6}.Release|x86.Build.0 = Release|Win32
+		{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9}.Debug|x64.ActiveCfg = Debug|x64
+		{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9}.Debug|x64.Build.0 = Debug|x64
+		{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9}.Debug|x86.ActiveCfg = Debug|Win32
+		{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9}.Debug|x86.Build.0 = Debug|Win32
+		{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9}.Release|x64.ActiveCfg = Release|x64
+		{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9}.Release|x64.Build.0 = Release|x64
+		{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9}.Release|x86.ActiveCfg = Release|Win32
+		{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{AD4CF7FC-381D-4FF3-A26E-616AAB0D2BF6} = {7A545A72-D2ED-4178-892D-4BB785A7E6B9}
+		{A3DEBC33-51D3-4A43-BD78-1F944C2A04F9} = {7A545A72-D2ED-4178-892D-4BB785A7E6B9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0AE9AD7D-FE7E-4F6B-8CD0-E4E5ADD7EF70}
