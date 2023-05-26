@@ -41,6 +41,12 @@
     <ClInclude Include="Sources\Details\Logger.hpp">
       <Filter>Sources\Details</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Details\Message.hpp">
+      <Filter>Sources\Details</Filter>
+    </ClInclude>
+    <ClInclude Include="Includes\GUID.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

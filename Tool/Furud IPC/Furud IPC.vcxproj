@@ -140,7 +140,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -152,11 +152,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Includes\GUID.h" />
     <ClInclude Include="Includes\IPC.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Sources\Client.hpp" />
     <ClInclude Include="Sources\Details\Connectable.hpp" />
     <ClInclude Include="Sources\Details\Logger.hpp" />
+    <ClInclude Include="Sources\Details\Message.hpp" />
     <ClInclude Include="Sources\Details\Mutex.hpp" />
     <ClInclude Include="Sources\Details\Name.hpp" />
     <ClInclude Include="Sources\Details\Security.hpp" />
