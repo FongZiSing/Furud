@@ -1,4 +1,4 @@
-//
+﻿//
 // Security.hpp
 //
 //       Copyright (c) Furud IPC Library. All rights reserved.

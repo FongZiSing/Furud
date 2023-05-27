@@ -1,5 +1,7 @@
-#pragma once
+﻿#pragma once
 #include "GUID.h"
+
+
 
 namespace Furud::IPC
 {

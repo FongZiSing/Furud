@@ -24,7 +24,7 @@ void TestIPC(int argc, char** argv)
 		std::string input;
 		while (std::cin >> input)
 		{
-			server.Send((unsigned char*)input.c_str(), input.size());
+			server.Send((unsigned char*)input.c_str(), (int)input.size());
 		}
 	}
 	else
