@@ -50,7 +50,7 @@ export namespace Furud
 			return framePerElapsed;
 		}
 
-		FURUD_INLINE void Reset()
+		furud_inline void Reset()
 		{
 			long long tempCurTime = GetPerformanceCounter();
 			baseTime = tempCurTime;
@@ -59,7 +59,7 @@ export namespace Furud
 			bStopped = false;
 		}
 
-		FURUD_INLINE void Start()
+		furud_inline void Start()
 		{
 			if (bStopped)
 			{
@@ -71,7 +71,7 @@ export namespace Furud
 			}
 		}
 
-		FURUD_INLINE void Stop()
+		furud_inline void Stop()
 		{
 			if (!bStopped)
 			{

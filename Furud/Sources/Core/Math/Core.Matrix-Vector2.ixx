@@ -25,15 +25,15 @@ import Furud.Core.Math;
 export namespace Furud
 {
 	struct Vector2i;
-	FURUD_INLINE extern Vector2i Clamp(const Vector2i& inVal, int32_t const& inMin, int32_t const& inMax) noexcept;
+	furud_inline extern Vector2i Clamp(const Vector2i& inVal, int32_t const& inMin, int32_t const& inMax) noexcept;
 
 
 	struct Vector2f;
-	FURUD_INLINE extern Vector2f Clamp(const Vector2f& inVal, float const& inMin, float const& inMax) noexcept;
+	furud_inline extern Vector2f Clamp(const Vector2f& inVal, float const& inMin, float const& inMax) noexcept;
 
 
 	struct Vector2d;
-	FURUD_INLINE extern Vector2d Clamp(const Vector2d& inVal, double const& inMin, double const& inMax) noexcept;
+	furud_inline extern Vector2d Clamp(const Vector2d& inVal, double const& inMin, double const& inMax) noexcept;
 }
 
 
@@ -110,7 +110,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE friend Vector2i Clamp(Vector2i const& inVal, int32_t const& inMin, int32_t const& inMax) noexcept
+		FURUD_NODISCARD furud_inline friend Vector2i Clamp(Vector2i const& inVal, int32_t const& inMin, int32_t const& inMax) noexcept
 		{
 			return
 			{
@@ -201,37 +201,37 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE float operator ^ (Vector2f const& rhs) const noexcept
+		FURUD_NODISCARD furud_inline float operator ^ (Vector2f const& rhs) const noexcept
 		{
 			return x * rhs.y - y * rhs.x;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float CrossProduct(Vector2f const& rhs) const noexcept
+		FURUD_NODISCARD furud_inline float CrossProduct(Vector2f const& rhs) const noexcept
 		{
 			return (*this) ^ rhs;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float operator | (Vector2f const& rhs) const noexcept
+		FURUD_NODISCARD furud_inline float operator | (Vector2f const& rhs) const noexcept
 		{
 			return x * rhs.x + y * rhs.y;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float DotProduct(Vector2f const& rhs) const noexcept
+		FURUD_NODISCARD furud_inline float DotProduct(Vector2f const& rhs) const noexcept
 		{
 			return (*this) | rhs;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float LengthSquared() const noexcept
+		FURUD_NODISCARD furud_inline float LengthSquared() const noexcept
 		{
 			return x * x + y * y;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float Length() const noexcept
+		FURUD_NODISCARD furud_inline float Length() const noexcept
 		{
 			return IMath::Sqrt(x * x + y * y);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector2f Normalize(float const& tolerance = IFloat::SMALLER) const noexcept
+		FURUD_NODISCARD furud_inline Vector2f Normalize(float const& tolerance = IFloat::SMALLER) const noexcept
 		{
 			const float squareSum = x * x + y * y;
 			if (squareSum > tolerance)
@@ -242,13 +242,13 @@ export namespace Furud
 			return *this;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool IsNormalized(float const& tolerance = IFloat::SMALL) const noexcept
+		FURUD_NODISCARD furud_inline bool IsNormalized(float const& tolerance = IFloat::SMALL) const noexcept
 		{
 			const float squareSum = x * x + y * y;
 			return (IMath::Abs(1.f - squareSum) < tolerance);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE friend Vector2f Clamp(Vector2f const& inVal, float const& inMin, float const& inMax) noexcept
+		FURUD_NODISCARD furud_inline friend Vector2f Clamp(Vector2f const& inVal, float const& inMin, float const& inMax) noexcept
 		{
 			return
 			{
@@ -257,30 +257,30 @@ export namespace Furud
 			};
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AnyNaN() const noexcept
+		FURUD_NODISCARD furud_inline bool AnyNaN() const noexcept
 		{
 			return IMath::IsNaN(x) || IMath::IsNaN(y);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AllNaN() const noexcept
+		FURUD_NODISCARD furud_inline bool AllNaN() const noexcept
 		{
 			return IMath::IsNaN(x) && IMath::IsNaN(y);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AnyFinite() const noexcept
+		FURUD_NODISCARD furud_inline bool AnyFinite() const noexcept
 		{
 			return IMath::IsFinite(x) || IMath::IsFinite(y);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AllFinite() const noexcept
+		FURUD_NODISCARD furud_inline bool AllFinite() const noexcept
 		{
 			return IMath::IsFinite(x) && IMath::IsFinite(y);
 		}
 
 
 	public:
-		//FURUD_NODISCARD FURUD_INLINE BasicMatrix<float> ToMatrix() const noexcept;
-		//FURUD_NODISCARD FURUD_INLINE BasicMatrix<float> ToInvMatrix() const noexcept;
+		//FURUD_NODISCARD furud_inline BasicMatrix<float> ToMatrix() const noexcept;
+		//FURUD_NODISCARD furud_inline BasicMatrix<float> ToInvMatrix() const noexcept;
 	};
 
 
@@ -364,37 +364,37 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE double operator ^ (Vector2d const& rhs) const noexcept
+		FURUD_NODISCARD furud_inline double operator ^ (Vector2d const& rhs) const noexcept
 		{
 			return x * rhs.y - y * rhs.x;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE double CrossProduct(Vector2d const& rhs) const noexcept
+		FURUD_NODISCARD furud_inline double CrossProduct(Vector2d const& rhs) const noexcept
 		{
 			return (*this) ^ rhs;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE double operator | (Vector2d const& rhs) const noexcept
+		FURUD_NODISCARD furud_inline double operator | (Vector2d const& rhs) const noexcept
 		{
 			return x * rhs.x + y * rhs.y;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE double DotProduct(Vector2d const& rhs) const noexcept
+		FURUD_NODISCARD furud_inline double DotProduct(Vector2d const& rhs) const noexcept
 		{
 			return (*this) | rhs;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE double LengthSquared() const noexcept
+		FURUD_NODISCARD furud_inline double LengthSquared() const noexcept
 		{
 			return x * x + y * y;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE double Length() const noexcept
+		FURUD_NODISCARD furud_inline double Length() const noexcept
 		{
 			return IMath::Sqrt(x * x + y * y);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector2d Normalize(double const& tolerance = IDouble::SMALLER) const noexcept
+		FURUD_NODISCARD furud_inline Vector2d Normalize(double const& tolerance = IDouble::SMALLER) const noexcept
 		{
 			const double squareSum = x * x + y * y;
 			if (squareSum > tolerance)
@@ -405,13 +405,13 @@ export namespace Furud
 			return *this;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool IsNormalized(double const& tolerance = IDouble::SMALL) const noexcept
+		FURUD_NODISCARD furud_inline bool IsNormalized(double const& tolerance = IDouble::SMALL) const noexcept
 		{
 			const double squareSum = x * x + y * y;
 			return (IMath::Abs(1.f - squareSum) < tolerance);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE friend Vector2d Clamp(Vector2d const& inVal, double const& inMin, double const& inMax) noexcept
+		FURUD_NODISCARD furud_inline friend Vector2d Clamp(Vector2d const& inVal, double const& inMin, double const& inMax) noexcept
 		{
 			return
 			{
@@ -420,22 +420,22 @@ export namespace Furud
 			};
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AnyNaN() const noexcept
+		FURUD_NODISCARD furud_inline bool AnyNaN() const noexcept
 		{
 			return IMath::IsNaN(x) || IMath::IsNaN(y);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AllNaN() const noexcept
+		FURUD_NODISCARD furud_inline bool AllNaN() const noexcept
 		{
 			return IMath::IsNaN(x) && IMath::IsNaN(y);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AnyFinite() const noexcept
+		FURUD_NODISCARD furud_inline bool AnyFinite() const noexcept
 		{
 			return IMath::IsFinite(x) || IMath::IsFinite(y);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool AllFinite() const noexcept
+		FURUD_NODISCARD furud_inline bool AllFinite() const noexcept
 		{
 			return IMath::IsFinite(x) && IMath::IsFinite(y);
 		}

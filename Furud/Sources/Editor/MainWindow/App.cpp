@@ -630,14 +630,14 @@ namespace Furud
 
 		switch (message)
 		{
-		FURUD_UNLIKELY case WM_CREATE:
+		furud_unlikely case WM_CREATE:
 			pThis = static_cast<D2DApp*>(reinterpret_cast<LPCREATESTRUCT>(lParam)->lpCreateParams);
 			break;
 
-		FURUD_UNLIKELY case WM_DESTROY:
+		furud_unlikely case WM_DESTROY:
 			return pThis->OnDestroy();
 
-		FURUD_UNLIKELY case WM_COMMAND:
+		furud_unlikely case WM_COMMAND:
 		{
 			switch (LOWORD(wParam))
 			{

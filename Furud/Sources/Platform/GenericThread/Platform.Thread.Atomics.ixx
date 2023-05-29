@@ -35,7 +35,7 @@ namespace Furud
 		 * @returns  the old destination value.
 		 * @details  原子测试。
 		 */
-		FURUD_INLINE static T CompareAndExchange(volatile T* dst, const T& exchange, const T& comparand)
+		furud_inline static T CompareAndExchange(volatile T* dst, const T& exchange, const T& comparand)
 		{
 			// see https://learn.microsoft.com/en-us/cpp/intrinsics/interlockedcompareexchange-intrinsic-functions
 			if constexpr (std::same_as<T, char>)
@@ -70,7 +70,7 @@ namespace Furud
 		 * @brief    Does an interlocked read.
 		 * @details  原子读。
 		 */
-		FURUD_INLINE static T Read(volatile const T* dst)
+		furud_inline static T Read(volatile const T* dst)
 		{
 			return CompareAndExchange(const_cast<volatile T*>(dst), T(0), T(0));
 		}
@@ -81,7 +81,7 @@ namespace Furud
 		 * @returns  The old destination value.
 		 * @details  原子写。
 		 */
-		FURUD_INLINE static T Write(volatile T* dst, const T& value)
+		furud_inline static T Write(volatile T* dst, const T& value)
 		{
 			// see https://learn.microsoft.com/en-us/cpp/intrinsics/interlockedexchange-intrinsic-functions
 			if constexpr (std::same_as<T, char>)
@@ -117,7 +117,7 @@ namespace Furud
 		 * @returns  destination value + 1.
 		 * @details  原子自增。
 		 */
-		FURUD_INLINE static T Increment(volatile T* dst)
+		furud_inline static T Increment(volatile T* dst)
 		{
 			// see https://learn.microsoft.com/en-us/cpp/intrinsics/interlockedexchangeadd-intrinsic-functions
 			if constexpr (std::same_as<T, char>)
@@ -154,7 +154,7 @@ namespace Furud
 		 * @returns  destination value - 1.
 		 * @details  原子自减。
 		 */
-		FURUD_INLINE static T Decrement(volatile T* dst)
+		furud_inline static T Decrement(volatile T* dst)
 		{
 			// see https://learn.microsoft.com/en-us/cpp/intrinsics/interlockedexchangeadd-intrinsic-functions
 			if constexpr (std::same_as<T, char>)

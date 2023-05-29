@@ -28,15 +28,15 @@ import Furud.Core.Math;
 export namespace Furud
 {
 	struct Vector4i;
-	FURUD_INLINE extern Vector4i Clamp(Vector4i inVal, int32_t const& inMin, int32_t const& inMax) noexcept;
+	furud_inline extern Vector4i Clamp(Vector4i inVal, int32_t const& inMin, int32_t const& inMax) noexcept;
 
 
 	struct Vector4f;
-	FURUD_INLINE extern Vector4f Clamp(Vector4f inVal, float const& inMin, float const& inMax) noexcept;
-	FURUD_INLINE extern void SinCos(const Vector4f& inAngles, Vector4f& outSineResult, Vector4f& outCosineResult) noexcept;
+	furud_inline extern Vector4f Clamp(Vector4f inVal, float const& inMin, float const& inMax) noexcept;
+	furud_inline extern void SinCos(const Vector4f& inAngles, Vector4f& outSineResult, Vector4f& outCosineResult) noexcept;
 
 	struct Vector4d;
-	FURUD_INLINE extern Vector4d Clamp(Vector4d inVal, double const& inMin, double const& inMax) noexcept;
+	furud_inline extern Vector4d Clamp(Vector4d inVal, double const& inMin, double const& inMax) noexcept;
 }
 
 
@@ -98,19 +98,19 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Vec4i ToVec4() const noexcept
+		FURUD_NODISCARD furud_inline Vec4i ToVec4() const noexcept
 		{
 			Vec4i r;
 			r.Load4(this);
 			return r;
 		}
 
-		FURUD_NODISCARD FURUD_INTRINSIC Vec4i& AsVec4() noexcept
+		FURUD_NODISCARD furud_intrinsic Vec4i& AsVec4() noexcept
 		{
 			return *(Vec4i*)(this);
 		}
 
-		FURUD_NODISCARD FURUD_INTRINSIC const Vec4i& AsVec4() const noexcept
+		FURUD_NODISCARD furud_intrinsic const Vec4i& AsVec4() const noexcept
 		{
 			return *(Vec4i*)(this);
 		}
@@ -146,7 +146,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE friend Vector4i Clamp(Vector4i inVal, int32_t const& inMin, int32_t const& inMax) noexcept
+		FURUD_NODISCARD furud_inline friend Vector4i Clamp(Vector4i inVal, int32_t const& inMin, int32_t const& inMax) noexcept
 		{
 			Vec4i& vval = inVal.AsVec4();
 			Vec4i vmin = inMin;
@@ -222,19 +222,19 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Vec4f ToVec4() const noexcept
+		FURUD_NODISCARD furud_inline Vec4f ToVec4() const noexcept
 		{
 			Vec4f r;
 			r.Load4(this);
 			return r;
 		}
 
-		FURUD_NODISCARD FURUD_INTRINSIC Vec4f& AsVec4() noexcept
+		FURUD_NODISCARD furud_intrinsic Vec4f& AsVec4() noexcept
 		{
 			return *(Vec4f*)(this);
 		}
 
-		FURUD_NODISCARD FURUD_INTRINSIC const Vec4f& AsVec4() const noexcept
+		FURUD_NODISCARD furud_intrinsic const Vec4f& AsVec4() const noexcept
 		{
 			return *(Vec4f*)(this);
 		}
@@ -273,47 +273,47 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE float operator | (const Vector4f& rhs) const noexcept
+		FURUD_NODISCARD furud_inline float operator | (const Vector4f& rhs) const noexcept
 		{
 			return Furud::DotProduct(AsVec4(), rhs.AsVec4());
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float DotProduct(const Vector4f& rhs) const noexcept
+		FURUD_NODISCARD furud_inline float DotProduct(const Vector4f& rhs) const noexcept
 		{
 			return *this | rhs;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float LengthSquared() const noexcept
+		FURUD_NODISCARD furud_inline float LengthSquared() const noexcept
 		{
 			return AsVec4().Squares().Sum();
 		}
 
-		FURUD_NODISCARD FURUD_INLINE float Length() const noexcept
+		FURUD_NODISCARD furud_inline float Length() const noexcept
 		{
 			return Furud::DotProduct(AsVec4(), AsVec4());
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector4f Normalize(float const& tolerance = IFloat::SMALL) const noexcept
+		FURUD_NODISCARD furud_inline Vector4f Normalize(float const& tolerance = IFloat::SMALL) const noexcept
 		{
 			Vector4f v;
 			AsVec4().Normalize().Store4(&v);
 			return v;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE bool IsNormalized(float const& tolerance = IFloat::SMALL) const noexcept
+		FURUD_NODISCARD furud_inline bool IsNormalized(float const& tolerance = IFloat::SMALL) const noexcept
 		{
 			const float squareSum = AsVec4().Squares().Sum();
 			return (IMath::Abs(1.f - squareSum) < tolerance);
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector4f Homogenize() const noexcept
+		FURUD_NODISCARD furud_inline Vector4f Homogenize() const noexcept
 		{
 			Vector4f v;
 			AsVec4().Homogenize().Store4(&v);
 			return v;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE friend Vector4f Clamp(Vector4f inVal, float const& inMin, float const& inMax) noexcept
+		FURUD_NODISCARD furud_inline friend Vector4f Clamp(Vector4f inVal, float const& inMin, float const& inMax) noexcept
 		{
 			Vec4f& vval = inVal.AsVec4();
 			Vec4f vmin = inMin;
@@ -324,7 +324,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_INLINE friend void SinCos(const Vector4f& inAngles, Vector4f& outSineResult, Vector4f& outCosineResult) noexcept
+		furud_inline friend void SinCos(const Vector4f& inAngles, Vector4f& outSineResult, Vector4f& outCosineResult) noexcept
 		{
 			const Vec4f& angles = inAngles.AsVec4();
 			const Vec4f RECIP_PI2 { 1.f / (2.f * IFloat::PI) };
@@ -475,7 +475,7 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE friend Vector4d Clamp(Vector4d inVal, double const& inMin, double const& inMax) noexcept
+		FURUD_NODISCARD furud_inline friend Vector4d Clamp(Vector4d inVal, double const& inMin, double const& inMax) noexcept
 		{
 			return
 			{

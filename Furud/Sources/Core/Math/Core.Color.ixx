@@ -61,36 +61,36 @@ export namespace Furud
 
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE static Color FromLinearVector(Vector4f const& color)
+		FURUD_NODISCARD furud_inline static Color FromLinearVector(Vector4f const& color)
 		{
 			Vector4f v = Clamp(color * 255.f, 0.f, 255.f);
 			return { uint8_t(v.x), uint8_t(v.y), uint8_t(v.z), uint8_t(v.w) };
 		}
 		
-		FURUD_NODISCARD FURUD_INLINE static Color FromLinearVector(Vector3f const& color)
+		FURUD_NODISCARD furud_inline static Color FromLinearVector(Vector3f const& color)
 		{
 			Vector4f v = Clamp(Vector4f(color) * 255.f, 0.f, 255.f);
 			return { uint8_t(v.x), uint8_t(v.y), uint8_t(v.z) };
 		}
 
-		FURUD_NODISCARD FURUD_INLINE static Color FromVector(Vector4f const& color)
+		FURUD_NODISCARD furud_inline static Color FromVector(Vector4f const& color)
 		{
 			Vector4f v = Clamp(color, 0.f, 255.f);
 			return { uint8_t(v.x), uint8_t(v.y), uint8_t(v.z), uint8_t(v.w) };
 		}
 
-		FURUD_NODISCARD FURUD_INLINE static Color FromVector(Vector3f const& color)
+		FURUD_NODISCARD furud_inline static Color FromVector(Vector3f const& color)
 		{
 			Vector4f v = Clamp(Vector4f(color), 0.f, 255.f);
 			return { uint8_t(v.x), uint8_t(v.y), uint8_t(v.z) };
 		}
 		
-		FURUD_NODISCARD FURUD_INLINE static Color FromClampedVector(Vector4f const& color)
+		FURUD_NODISCARD furud_inline static Color FromClampedVector(Vector4f const& color)
 		{
 			return { uint8_t(color.x), uint8_t(color.y), uint8_t(color.z), uint8_t(color.w) };
 		}
 		
-		FURUD_NODISCARD FURUD_INLINE static Color FromClampedVector(Vector3f const& color)
+		FURUD_NODISCARD furud_inline static Color FromClampedVector(Vector3f const& color)
 		{
 			return { uint8_t(color.x), uint8_t(color.y), uint8_t(color.z) };
 		}

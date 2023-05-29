@@ -62,49 +62,49 @@ namespace Furud
 
 
 	public:
-		FURUD_INLINE Vector3f Euler() { return { roll, pitch, yaw }; }
+		furud_inline Vector3f Euler() { return { roll, pitch, yaw }; }
 
 
 	public:
-		FURUD_INLINE bool operator == (const Rotator& rhs) { return rhs.yaw == yaw && rhs.pitch == pitch && rhs.roll == roll; }
-		FURUD_INLINE bool operator != (const Rotator& rhs) { return rhs.yaw != yaw || rhs.pitch != pitch || rhs.roll != roll; }
+		furud_inline bool operator == (const Rotator& rhs) { return rhs.yaw == yaw && rhs.pitch == pitch && rhs.roll == roll; }
+		furud_inline bool operator != (const Rotator& rhs) { return rhs.yaw != yaw || rhs.pitch != pitch || rhs.roll != roll; }
 
 
 	public:
 		Rotator operator - () const noexcept { return { -yaw, -pitch, -roll }; }
 		
-		FURUD_INLINE Rotator operator + (const Rotator& rhs) { return { yaw + rhs.yaw, pitch + rhs.pitch, roll + rhs.roll }; }
-		FURUD_INLINE Rotator operator - (const Rotator& rhs) { return { yaw - rhs.yaw, pitch - rhs.pitch, roll - rhs.roll }; }
-		FURUD_INLINE Rotator operator * (const Rotator& rhs) { return { yaw * rhs.yaw, pitch * rhs.pitch, roll * rhs.roll }; }
-		FURUD_INLINE Rotator operator / (const Rotator& rhs) { return { yaw / rhs.yaw, pitch / rhs.pitch, roll / rhs.roll }; }
+		furud_inline Rotator operator + (const Rotator& rhs) { return { yaw + rhs.yaw, pitch + rhs.pitch, roll + rhs.roll }; }
+		furud_inline Rotator operator - (const Rotator& rhs) { return { yaw - rhs.yaw, pitch - rhs.pitch, roll - rhs.roll }; }
+		furud_inline Rotator operator * (const Rotator& rhs) { return { yaw * rhs.yaw, pitch * rhs.pitch, roll * rhs.roll }; }
+		furud_inline Rotator operator / (const Rotator& rhs) { return { yaw / rhs.yaw, pitch / rhs.pitch, roll / rhs.roll }; }
 		
-		FURUD_INLINE Rotator operator + (const Rotator& rhs) const { return { yaw + rhs.yaw, pitch + rhs.pitch, roll + rhs.roll }; }
-		FURUD_INLINE Rotator operator - (const Rotator& rhs) const { return { yaw - rhs.yaw, pitch - rhs.pitch, roll - rhs.roll }; }
-		FURUD_INLINE Rotator operator * (const Rotator& rhs) const { return { yaw * rhs.yaw, pitch * rhs.pitch, roll * rhs.roll }; }
-		FURUD_INLINE Rotator operator / (const Rotator& rhs) const { return { yaw / rhs.yaw, pitch / rhs.pitch, roll / rhs.roll }; }
+		furud_inline Rotator operator + (const Rotator& rhs) const { return { yaw + rhs.yaw, pitch + rhs.pitch, roll + rhs.roll }; }
+		furud_inline Rotator operator - (const Rotator& rhs) const { return { yaw - rhs.yaw, pitch - rhs.pitch, roll - rhs.roll }; }
+		furud_inline Rotator operator * (const Rotator& rhs) const { return { yaw * rhs.yaw, pitch * rhs.pitch, roll * rhs.roll }; }
+		furud_inline Rotator operator / (const Rotator& rhs) const { return { yaw / rhs.yaw, pitch / rhs.pitch, roll / rhs.roll }; }
 		
-		FURUD_INLINE const Rotator& operator += (const Rotator& rhs) { yaw += rhs.yaw; pitch += rhs.pitch; roll += rhs.roll; return *this; }
-		FURUD_INLINE const Rotator& operator -= (const Rotator& rhs) { yaw -= rhs.yaw; pitch -= rhs.pitch; roll -= rhs.roll; return *this; }
-		FURUD_INLINE const Rotator& operator *= (const Rotator& rhs) { yaw *= rhs.yaw; pitch *= rhs.pitch; roll *= rhs.roll; return *this; }
-		FURUD_INLINE const Rotator& operator /= (const Rotator& rhs) { yaw /= rhs.yaw; pitch /= rhs.pitch; roll /= rhs.roll; return *this; }
+		furud_inline const Rotator& operator += (const Rotator& rhs) { yaw += rhs.yaw; pitch += rhs.pitch; roll += rhs.roll; return *this; }
+		furud_inline const Rotator& operator -= (const Rotator& rhs) { yaw -= rhs.yaw; pitch -= rhs.pitch; roll -= rhs.roll; return *this; }
+		furud_inline const Rotator& operator *= (const Rotator& rhs) { yaw *= rhs.yaw; pitch *= rhs.pitch; roll *= rhs.roll; return *this; }
+		furud_inline const Rotator& operator /= (const Rotator& rhs) { yaw /= rhs.yaw; pitch /= rhs.pitch; roll /= rhs.roll; return *this; }
 
-		FURUD_INLINE Rotator operator + (const float& rhs) { return { yaw + rhs, pitch + rhs, roll + rhs }; }
-		FURUD_INLINE Rotator operator - (const float& rhs) { return { yaw - rhs, pitch - rhs, roll - rhs }; }
-		FURUD_INLINE Rotator operator * (const float& rhs) { return { yaw * rhs, pitch * rhs, roll * rhs }; }
-		FURUD_INLINE Rotator operator / (const float& rhs) { return { yaw / rhs, pitch / rhs, roll / rhs }; }
+		furud_inline Rotator operator + (const float& rhs) { return { yaw + rhs, pitch + rhs, roll + rhs }; }
+		furud_inline Rotator operator - (const float& rhs) { return { yaw - rhs, pitch - rhs, roll - rhs }; }
+		furud_inline Rotator operator * (const float& rhs) { return { yaw * rhs, pitch * rhs, roll * rhs }; }
+		furud_inline Rotator operator / (const float& rhs) { return { yaw / rhs, pitch / rhs, roll / rhs }; }
 		
-		FURUD_INLINE Rotator operator + (const float& rhs) const { return { yaw + rhs, pitch + rhs, roll + rhs }; }
-		FURUD_INLINE Rotator operator - (const float& rhs) const { return { yaw - rhs, pitch - rhs, roll - rhs }; }
-		FURUD_INLINE Rotator operator * (const float& rhs) const { return { yaw * rhs, pitch * rhs, roll * rhs }; }
-		FURUD_INLINE Rotator operator / (const float& rhs) const { return { yaw / rhs, pitch / rhs, roll / rhs }; }
+		furud_inline Rotator operator + (const float& rhs) const { return { yaw + rhs, pitch + rhs, roll + rhs }; }
+		furud_inline Rotator operator - (const float& rhs) const { return { yaw - rhs, pitch - rhs, roll - rhs }; }
+		furud_inline Rotator operator * (const float& rhs) const { return { yaw * rhs, pitch * rhs, roll * rhs }; }
+		furud_inline Rotator operator / (const float& rhs) const { return { yaw / rhs, pitch / rhs, roll / rhs }; }
 		
-		FURUD_INLINE const Rotator& operator += (const float& rhs) { yaw += rhs; pitch += rhs; roll += rhs; return *this; }
-		FURUD_INLINE const Rotator& operator -= (const float& rhs) { yaw -= rhs; pitch -= rhs; roll -= rhs; return *this; }
-		FURUD_INLINE const Rotator& operator *= (const float& rhs) { yaw *= rhs; pitch *= rhs; roll *= rhs; return *this; }
-		FURUD_INLINE const Rotator& operator /= (const float& rhs) { yaw /= rhs; pitch /= rhs; roll /= rhs; return *this; }
+		furud_inline const Rotator& operator += (const float& rhs) { yaw += rhs; pitch += rhs; roll += rhs; return *this; }
+		furud_inline const Rotator& operator -= (const float& rhs) { yaw -= rhs; pitch -= rhs; roll -= rhs; return *this; }
+		furud_inline const Rotator& operator *= (const float& rhs) { yaw *= rhs; pitch *= rhs; roll *= rhs; return *this; }
+		furud_inline const Rotator& operator /= (const float& rhs) { yaw /= rhs; pitch /= rhs; roll /= rhs; return *this; }
 
 	public:
-		FURUD_NODISCARD FURUD_INLINE Rotator Normalize() const
+		FURUD_NODISCARD furud_inline Rotator Normalize() const
 		{
 			Rotator result;
 			Vec4f temp { yaw, pitch, roll, 0 };
@@ -122,7 +122,7 @@ namespace Furud
 			return  result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Matrix44f ToMatrix() const
+		FURUD_NODISCARD furud_inline Matrix44f ToMatrix() const
 		{
 			Vector4f degrees { 0, yaw, pitch, roll };
 			Vector4f radians { degrees * IFloat::DEG_TO_RAD };
@@ -155,7 +155,7 @@ namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Matrix44f ToInvMatrix() const
+		FURUD_NODISCARD furud_inline Matrix44f ToInvMatrix() const
 		{
 			Vector4f degrees { 0, yaw, pitch, roll };
 			Vector4f radians { degrees * IFloat::DEG_TO_RAD };
@@ -188,7 +188,7 @@ namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3f GetForwardVector() const
+		FURUD_NODISCARD furud_inline Vector3f GetForwardVector() const
 		{
 			// The same as `ToMatrix() * Vector3f( 0, 0, -1 )`.
 			Vector4f degrees { 0, yaw, pitch, roll };
@@ -206,7 +206,7 @@ namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3f GetRightVector() const
+		FURUD_NODISCARD furud_inline Vector3f GetRightVector() const
 		{
 			// The same as `ToMatrix() * Vector3f( 1, 0, 0 )`.
 			Vector4f degrees { 0, yaw, pitch, roll };
@@ -224,7 +224,7 @@ namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD FURUD_INLINE Vector3f GetUpVector() const
+		FURUD_NODISCARD furud_inline Vector3f GetUpVector() const
 		{
 			// The same as `ToMatrix() * Vector3f( 0, 0, -1 )`.
 			Vector4f degrees { 0, yaw, pitch, roll };
