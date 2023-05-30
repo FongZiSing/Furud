@@ -21,7 +21,7 @@ export namespace Furud::IMath
 		* @details  钳制。
 		*/
 	template <typename T>
-	FURUD_NODISCARD constexpr decltype(auto) Clamp
+	furud_nodiscard constexpr decltype(auto) Clamp
 		( const T& inVal
 		, const T& inMin
 		, const T& inMax
@@ -35,7 +35,7 @@ export namespace Furud::IMath
 		* @details  重心坐标插值。
 		*/
 	template <typename T>
-	FURUD_NODISCARD constexpr decltype(auto) Interpolate
+	furud_nodiscard constexpr decltype(auto) Interpolate
 		( const float& alpha
 		, const float& beta
 		, const float& gamma
@@ -52,7 +52,7 @@ export namespace Furud::IMath
 		* @details  插值。
 		*/
 	template <typename T>
-	FURUD_NODISCARD constexpr decltype(auto) Lerp
+	furud_nodiscard constexpr decltype(auto) Lerp
 		( const float& alpha
 		, const T& attribute1
 		, const T& attribute2

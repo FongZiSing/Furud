@@ -104,7 +104,7 @@ namespace Furud
 		furud_inline const Rotator& operator /= (const float& rhs) { yaw /= rhs; pitch /= rhs; roll /= rhs; return *this; }
 
 	public:
-		FURUD_NODISCARD furud_inline Rotator Normalize() const
+		furud_nodiscard furud_inline Rotator Normalize() const
 		{
 			Rotator result;
 			Vec4f temp { yaw, pitch, roll, 0 };
@@ -122,7 +122,7 @@ namespace Furud
 			return  result;
 		}
 
-		FURUD_NODISCARD furud_inline Matrix44f ToMatrix() const
+		furud_nodiscard furud_inline Matrix44f ToMatrix() const
 		{
 			Vector4f degrees { 0, yaw, pitch, roll };
 			Vector4f radians { degrees * IFloat::DEG_TO_RAD };
@@ -155,7 +155,7 @@ namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD furud_inline Matrix44f ToInvMatrix() const
+		furud_nodiscard furud_inline Matrix44f ToInvMatrix() const
 		{
 			Vector4f degrees { 0, yaw, pitch, roll };
 			Vector4f radians { degrees * IFloat::DEG_TO_RAD };
@@ -188,7 +188,7 @@ namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD furud_inline Vector3f GetForwardVector() const
+		furud_nodiscard furud_inline Vector3f GetForwardVector() const
 		{
 			// The same as `ToMatrix() * Vector3f( 0, 0, -1 )`.
 			Vector4f degrees { 0, yaw, pitch, roll };
@@ -206,7 +206,7 @@ namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD furud_inline Vector3f GetRightVector() const
+		furud_nodiscard furud_inline Vector3f GetRightVector() const
 		{
 			// The same as `ToMatrix() * Vector3f( 1, 0, 0 )`.
 			Vector4f degrees { 0, yaw, pitch, roll };
@@ -224,7 +224,7 @@ namespace Furud
 			return result;
 		}
 
-		FURUD_NODISCARD furud_inline Vector3f GetUpVector() const
+		furud_nodiscard furud_inline Vector3f GetUpVector() const
 		{
 			// The same as `ToMatrix() * Vector3f( 0, 0, -1 )`.
 			Vector4f degrees { 0, yaw, pitch, roll };

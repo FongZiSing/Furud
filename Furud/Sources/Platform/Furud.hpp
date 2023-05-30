@@ -58,8 +58,8 @@
 	#define furud_unlikely [[unlikely]]
 	#endif
 
-	#ifndef FURUD_NODISCARD
-	#define FURUD_NODISCARD [[nodiscard]]
+	#ifndef furud_nodiscard
+	#define furud_nodiscard [[nodiscard]]
 	#endif
 
 	#ifndef furud_deprecated

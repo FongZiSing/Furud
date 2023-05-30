@@ -80,12 +80,12 @@ export namespace Furud
             Super::store(value, static_cast<std::memory_order>(order));
         }
 
-        FURUD_NODISCARD furud_inline TValue Get() const volatile noexcept
+        furud_nodiscard furud_inline TValue Get() const volatile noexcept
         {
             return Super::load();
         }
 
-        FURUD_NODISCARD furud_inline TValue Get(const MemoryOrder& order) const volatile noexcept
+        furud_nodiscard furud_inline TValue Get(const MemoryOrder& order) const volatile noexcept
         {
             return Super::load(static_cast<std::memory_order>(order));
         }
