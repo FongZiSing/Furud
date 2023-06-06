@@ -610,7 +610,7 @@ namespace Furud::Internal
 		 * @detals  申请并初始化内存。
 		 */
 		furud_inline static void Realloc
-		(TChar** furud_restrict inOutData
+			( TChar** furud_restrict inOutData
 			, TSize* furud_restrict outCapacity
 			, TSize newCapacity
 			, TSize oldReservedSize
@@ -636,7 +636,7 @@ namespace Furud::Internal
 
 
 /** Template char array view. */
-export namespace Furud::Internal
+namespace Furud
 {
 	/**
 	 * @brief    This template describes the minimal common interface necessary to read character than std::string_view.
@@ -936,7 +936,7 @@ export namespace Furud::Internal
 
 
 /** Template char array. */
-export namespace Furud::Internal
+namespace Furud
 {
 	/**
 	 * @brief    This template describes the minimal common interface necessary to read character than std::string.

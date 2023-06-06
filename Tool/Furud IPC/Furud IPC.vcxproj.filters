@@ -47,6 +47,9 @@
     <ClInclude Include="Includes\GUID.h">
       <Filter>Includes</Filter>
     </ClInclude>
+    <ClInclude Include="Includes\VIEW.h">
+      <Filter>Includes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />

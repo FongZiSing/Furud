@@ -154,6 +154,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="Includes\GUID.h" />
     <ClInclude Include="Includes\IPC.h" />
+    <ClInclude Include="Includes\VIEW.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Sources\Client.hpp" />
     <ClInclude Include="Sources\Details\Connectable.hpp" />
