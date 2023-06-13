@@ -636,7 +636,7 @@ namespace Furud::Internal
 
 
 /** Template char array view. */
-namespace Furud
+namespace Furud::Internal
 {
 	/**
 	 * @brief    This template describes the minimal common interface necessary to read character than std::string_view.
@@ -936,7 +936,7 @@ namespace Furud
 
 
 /** Template char array. */
-namespace Furud
+namespace Furud::Internal
 {
 	/**
 	 * @brief    This template describes the minimal common interface necessary to read character than std::string.
