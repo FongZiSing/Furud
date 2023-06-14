@@ -21,16 +21,10 @@ export module Furud.Platform.API.CharArray;
 /** Forward declaration. */
 namespace Furud::Internal
 {
-	template <typename C>
-	concept typechar = std::same_as<C, char> || std::same_as<C, wchar_t>;
-
-	template <typename S>
-	concept typesize = std::integral<S>;
-
-	template <typechar C, typesize S>
+	template <typename C, typename S>
 	class TCharArray;
 
-	template <typechar C, typesize S>
+	template <typename C, typename S>
 	class TCharArrayView;
 }
 
@@ -39,7 +33,7 @@ namespace Furud::Internal
 /** Template char builder. */
 namespace Furud::Internal
 {
-	template <typechar TChar, typesize TSize>
+	template <typename TChar, typename TSize>
 	struct TStringBuilder
 	{
 		// Invalid(Non) position.
@@ -648,7 +642,7 @@ namespace Furud::Internal
 	 * @tparam   S  -  Size type.
 	 * @details  一个更简易通用的字符视图，可替代std::string_view。有更常用的接口，且完全支持常量求值。
 	 */
-	template <typechar C, typesize S>
+	template <typename C, typename S>
 	class TCharArrayView
 	{
 	public:
@@ -947,7 +941,7 @@ namespace Furud::Internal
 	 *              -  禁止placement new，避免不良编程方式导致的内存泄露。
 	 *              -  禁止拷贝复制行为，从而保证任何地方只能通过指针或引用使用，除非使用显示的Clone函数。
 	 */
-	template <typechar C, typesize S>
+	template <typename C, typename S>
 	class TCharArray
 	{
 	public:
@@ -1356,7 +1350,7 @@ namespace Furud::Internal
 
 
 
-	template <typechar C, typesize S>
+	template <typename C, typename S>
 	constexpr TCharArrayView<C, S>::TCharArrayView(const TCharArray<C, S>& inArr) noexcept
 		: data(inArr.Data())
 		, size(inArr.Size())
