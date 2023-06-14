@@ -23,72 +23,70 @@ import Furud.Numbers;
 
 namespace Furud::Internal
 {
-	struct IVec4iBuilder
+	consteval __m128i Construct4i(uint32_t x)
 	{
-		static consteval __m128i Construct(uint32_t x)
-		{
-			__m128i result;
-			result.m128i_u32[0] = x;
-			result.m128i_u32[1] = x;
-			result.m128i_u32[2] = x;
-			result.m128i_u32[3] = x;
-			return result;
-		}
+		__m128i result;
+		result.m128i_u32[0] = x;
+		result.m128i_u32[1] = x;
+		result.m128i_u32[2] = x;
+		result.m128i_u32[3] = x;
+		return result;
+	}
 
-		static consteval __m128i Construct(uint32_t x, uint32_t y, uint32_t z, uint32_t w)
-		{
-			__m128i result;
-			result.m128i_u32[0] = x;
-			result.m128i_u32[1] = y;
-			result.m128i_u32[2] = z;
-			result.m128i_u32[3] = w;
-			return result;
-		}
-	};
-
-
-	struct IVec4fBuilder
+	consteval __m128i Construct4i(uint32_t x, uint32_t y, uint32_t z, uint32_t w)
 	{
-		static consteval __m128 Construct(float x, float y, float z, float w)
-		{
-			__m128 result;
-			result.m128_f32[0] = x;
-			result.m128_f32[1] = y;
-			result.m128_f32[2] = z;
-			result.m128_f32[3] = w;
-			return result;
-		}
+		__m128i result;
+		result.m128i_u32[0] = x;
+		result.m128i_u32[1] = y;
+		result.m128i_u32[2] = z;
+		result.m128i_u32[3] = w;
+		return result;
+	}
+}
 
-		static consteval __m128 Construct(uint32_t x, uint32_t y, uint32_t z, uint32_t w)
-		{
-			__m128 result;
-			result.m128_u32[0] = x;
-			result.m128_u32[1] = y;
-			result.m128_u32[2] = z;
-			result.m128_u32[3] = w;
-			return result;
-		}
 
-		static consteval __m128 Construct(float x)
-		{
-			__m128 result;
-			result.m128_f32[0] = x;
-			result.m128_f32[1] = x;
-			result.m128_f32[2] = x;
-			result.m128_f32[3] = x;
-			return result;
-		}
 
-		static consteval __m128 Construct(uint32_t x)
-		{
-			__m128 result;
-			result.m128_u32[0] = x;
-			result.m128_u32[1] = x;
-			result.m128_u32[2] = x;
-			result.m128_u32[3] = x;
-			return result;
-		}
-	};
+namespace Furud::Internal
+{
+	consteval __m128 Construct4f(float x, float y, float z, float w)
+	{
+		__m128 result;
+		result.m128_f32[0] = x;
+		result.m128_f32[1] = y;
+		result.m128_f32[2] = z;
+		result.m128_f32[3] = w;
+		return result;
+	}
+
+	consteval __m128 Construct4f(uint32_t x, uint32_t y, uint32_t z, uint32_t w)
+	{
+		__m128 result;
+		result.m128_u32[0] = x;
+		result.m128_u32[1] = y;
+		result.m128_u32[2] = z;
+		result.m128_u32[3] = w;
+		return result;
+	}
+
+	consteval __m128 Construct4f(float x)
+	{
+		__m128 result;
+		result.m128_f32[0] = x;
+		result.m128_f32[1] = x;
+		result.m128_f32[2] = x;
+		result.m128_f32[3] = x;
+		return result;
+	}
+
+	consteval __m128 Construct4f(uint32_t x)
+	{
+		__m128 result;
+		result.m128_u32[0] = x;
+		result.m128_u32[1] = x;
+		result.m128_u32[2] = x;
+		result.m128_u32[3] = x;
+		return result;
+	}
 }
 
 
@@ -201,24 +199,23 @@ export namespace Furud
 	class Vec4i final
 	{
 	private:
-		using IBuilder = Internal::IVec4iBuilder;
 		__m128i r;
 
 
 	public:
-		static constexpr __m128i X_MASK    { IBuilder::Construct(0xffffffffui32, 0, 0, 0) };
-		static constexpr __m128i Y_MASK    { IBuilder::Construct(0, 0xffffffffui32, 0, 0) };
-		static constexpr __m128i Z_MASK    { IBuilder::Construct(0, 0, 0xffffffffui32, 0) };
-		static constexpr __m128i W_MASK    { IBuilder::Construct(0, 0, 0, 0xffffffffui32) };
-		static constexpr __m128i XY_MASK   { IBuilder::Construct(0xffffffffui32, 0xffffffffui32, 0, 0) };
-		static constexpr __m128i XZ_MASK   { IBuilder::Construct(0xffffffffui32, 0, 0xffffffffui32, 0) };
-		static constexpr __m128i YW_MASK   { IBuilder::Construct(0, 0xffffffffui32, 0, 0xffffffffui32) };
-		static constexpr __m128i ZW_MASK   { IBuilder::Construct(0, 0, 0xffffffffui32, 0xffffffffui32) };
-		static constexpr __m128i XYZ_MASK  { IBuilder::Construct(0xffffffffui32, 0xffffffffui32, 0xffffffffui32, 0) };
-		static constexpr __m128i YZW_MASK  { IBuilder::Construct(0, 0xffffffffui32, 0xffffffffui32, 0xffffffffui32) };
-		static constexpr __m128i XYZW_MASK { IBuilder::Construct(0xffffffffui32) };
-		static constexpr __m128i SIGN_BIT  { IBuilder::Construct(0x80000000ui32) };
-		static constexpr __m128i SIGN_MASK { IBuilder::Construct(0x7fffffffui32) };
+		static constexpr __m128i X_MASK    { Internal::Construct4i(0xffffffffui32, 0, 0, 0) };
+		static constexpr __m128i Y_MASK    { Internal::Construct4i(0, 0xffffffffui32, 0, 0) };
+		static constexpr __m128i Z_MASK    { Internal::Construct4i(0, 0, 0xffffffffui32, 0) };
+		static constexpr __m128i W_MASK    { Internal::Construct4i(0, 0, 0, 0xffffffffui32) };
+		static constexpr __m128i XY_MASK   { Internal::Construct4i(0xffffffffui32, 0xffffffffui32, 0, 0) };
+		static constexpr __m128i XZ_MASK   { Internal::Construct4i(0xffffffffui32, 0, 0xffffffffui32, 0) };
+		static constexpr __m128i YW_MASK   { Internal::Construct4i(0, 0xffffffffui32, 0, 0xffffffffui32) };
+		static constexpr __m128i ZW_MASK   { Internal::Construct4i(0, 0, 0xffffffffui32, 0xffffffffui32) };
+		static constexpr __m128i XYZ_MASK  { Internal::Construct4i(0xffffffffui32, 0xffffffffui32, 0xffffffffui32, 0) };
+		static constexpr __m128i YZW_MASK  { Internal::Construct4i(0, 0xffffffffui32, 0xffffffffui32, 0xffffffffui32) };
+		static constexpr __m128i XYZW_MASK { Internal::Construct4i(0xffffffffui32) };
+		static constexpr __m128i SIGN_BIT  { Internal::Construct4i(0x80000000ui32) };
+		static constexpr __m128i SIGN_MASK { Internal::Construct4i(0x7fffffffui32) };
 
 
 	public:
@@ -501,41 +498,40 @@ export namespace Furud
 	class Vec4f final
 	{
 	private:
-		using IBuilder = Internal::IVec4fBuilder;
 		friend class Mat44f;
 		//friend class Vec4d;
 		__m128 r;
 
 
 	public:
-		static constexpr __m128 ZERO            { IBuilder::Construct(0.f) };
-		static constexpr __m128 ONE             { IBuilder::Construct(1.f) };
-		static constexpr __m128 NEG_ONE         { IBuilder::Construct(-1.f) };
-		static constexpr __m128 TWO             { IBuilder::Construct(2.f) };
-		static constexpr __m128 NEG_TWO         { IBuilder::Construct(-2.f) };
-		static constexpr __m128 HALF            { IBuilder::Construct(0.5f) };
-		static constexpr __m128 PI              { IBuilder::Construct(IFloat::PI) };
-		static constexpr __m128 PI2             { IBuilder::Construct(2.0f * IFloat::PI) };
-		static constexpr __m128 HALF_PI         { IBuilder::Construct(0.5f * IFloat::PI) };
-		static constexpr __m128 D180            { IBuilder::Construct(180.f) };
-		static constexpr __m128 D360            { IBuilder::Construct(360.f) };
-		static constexpr __m128 D255            { IBuilder::Construct(255.f) };
-		static constexpr __m128 DEG_TO_RAD      { IBuilder::Construct(IFloat::DEG_TO_RAD) };
-		static constexpr __m128 RAD_TO_DEG      { IBuilder::Construct(IFloat::RAD_TO_DEG) };
-		static constexpr __m128 SIGN_BIT        { IBuilder::Construct(0x80000000ui32) };
-		static constexpr __m128 SIGN_MASK       { IBuilder::Construct(0x7fffffffui32) };
-		static constexpr __m128 NON_FRACTIONAL  { IBuilder::Construct(8388608.f) };
-		static constexpr __m128 X_MASK          { IBuilder::Construct(0xffffffffui32, 0, 0, 0) };
-		static constexpr __m128 Y_MASK          { IBuilder::Construct(0, 0xffffffffui32, 0, 0) };
-		static constexpr __m128 Z_MASK          { IBuilder::Construct(0, 0, 0xffffffffui32, 0) };
-		static constexpr __m128 W_MASK          { IBuilder::Construct(0, 0, 0, 0xffffffffui32) };
-		static constexpr __m128 XY_MASK         { IBuilder::Construct(0xffffffffui32, 0xffffffffui32, 0, 0) };
-		static constexpr __m128 XZ_MASK         { IBuilder::Construct(0xffffffffui32, 0, 0xffffffffui32, 0) };
-		static constexpr __m128 YW_MASK         { IBuilder::Construct(0, 0xffffffffui32, 0, 0xffffffffui32) };
-		static constexpr __m128 ZW_MASK         { IBuilder::Construct(0, 0, 0xffffffffui32, 0xffffffffui32) };
-		static constexpr __m128 XYZ_MASK        { IBuilder::Construct(0xffffffffui32, 0xffffffffui32, 0xffffffffui32, 0) };
-		static constexpr __m128 YZW_MASK        { IBuilder::Construct(0, 0xffffffffui32, 0xffffffffui32, 0xffffffffui32) };
-		static constexpr __m128 XYZW_MASK       { IBuilder::Construct(0xffffffffui32) };
+		static constexpr __m128 ZERO            { Internal::Construct4f(0.f) };
+		static constexpr __m128 ONE             { Internal::Construct4f(1.f) };
+		static constexpr __m128 NEG_ONE         { Internal::Construct4f(-1.f) };
+		static constexpr __m128 TWO             { Internal::Construct4f(2.f) };
+		static constexpr __m128 NEG_TWO         { Internal::Construct4f(-2.f) };
+		static constexpr __m128 HALF            { Internal::Construct4f(0.5f) };
+		static constexpr __m128 PI              { Internal::Construct4f(IFloat::PI) };
+		static constexpr __m128 PI2             { Internal::Construct4f(2.0f * IFloat::PI) };
+		static constexpr __m128 HALF_PI         { Internal::Construct4f(0.5f * IFloat::PI) };
+		static constexpr __m128 D180            { Internal::Construct4f(180.f) };
+		static constexpr __m128 D360            { Internal::Construct4f(360.f) };
+		static constexpr __m128 D255            { Internal::Construct4f(255.f) };
+		static constexpr __m128 DEG_TO_RAD      { Internal::Construct4f(IFloat::DEG_TO_RAD) };
+		static constexpr __m128 RAD_TO_DEG      { Internal::Construct4f(IFloat::RAD_TO_DEG) };
+		static constexpr __m128 SIGN_BIT        { Internal::Construct4f(0x80000000ui32) };
+		static constexpr __m128 SIGN_MASK       { Internal::Construct4f(0x7fffffffui32) };
+		static constexpr __m128 NON_FRACTIONAL  { Internal::Construct4f(8388608.f) };
+		static constexpr __m128 X_MASK          { Internal::Construct4f(0xffffffffui32, 0, 0, 0) };
+		static constexpr __m128 Y_MASK          { Internal::Construct4f(0, 0xffffffffui32, 0, 0) };
+		static constexpr __m128 Z_MASK          { Internal::Construct4f(0, 0, 0xffffffffui32, 0) };
+		static constexpr __m128 W_MASK          { Internal::Construct4f(0, 0, 0, 0xffffffffui32) };
+		static constexpr __m128 XY_MASK         { Internal::Construct4f(0xffffffffui32, 0xffffffffui32, 0, 0) };
+		static constexpr __m128 XZ_MASK         { Internal::Construct4f(0xffffffffui32, 0, 0xffffffffui32, 0) };
+		static constexpr __m128 YW_MASK         { Internal::Construct4f(0, 0xffffffffui32, 0, 0xffffffffui32) };
+		static constexpr __m128 ZW_MASK         { Internal::Construct4f(0, 0, 0xffffffffui32, 0xffffffffui32) };
+		static constexpr __m128 XYZ_MASK        { Internal::Construct4f(0xffffffffui32, 0xffffffffui32, 0xffffffffui32, 0) };
+		static constexpr __m128 YZW_MASK        { Internal::Construct4f(0, 0xffffffffui32, 0xffffffffui32, 0xffffffffui32) };
+		static constexpr __m128 XYZW_MASK       { Internal::Construct4f(0xffffffffui32) };
 
 
 	public:

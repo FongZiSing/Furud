@@ -21,36 +21,33 @@ import Furud.Numbers;
 
 namespace Furud::Internal
 {
-	struct IVec8fBuilder
+	consteval __m256 Construct8f(uint32_t x)
 	{
-		static consteval __m256 Construct(uint32_t x)
-		{
-			__m256 result;
-			result.m256_f32[0] = std::bit_cast<float>(x);
-			result.m256_f32[1] = std::bit_cast<float>(x);
-			result.m256_f32[2] = std::bit_cast<float>(x);
-			result.m256_f32[3] = std::bit_cast<float>(x);
-			result.m256_f32[4] = std::bit_cast<float>(x);
-			result.m256_f32[5] = std::bit_cast<float>(x);
-			result.m256_f32[6] = std::bit_cast<float>(x);
-			result.m256_f32[7] = std::bit_cast<float>(x);
-			return result;
-		}
+		__m256 result;
+		result.m256_f32[0] = std::bit_cast<float>(x);
+		result.m256_f32[1] = std::bit_cast<float>(x);
+		result.m256_f32[2] = std::bit_cast<float>(x);
+		result.m256_f32[3] = std::bit_cast<float>(x);
+		result.m256_f32[4] = std::bit_cast<float>(x);
+		result.m256_f32[5] = std::bit_cast<float>(x);
+		result.m256_f32[6] = std::bit_cast<float>(x);
+		result.m256_f32[7] = std::bit_cast<float>(x);
+		return result;
+	}
 
-		static consteval __m256 Construct(float x)
-		{
-			__m256 result;
-			result.m256_f32[0] = x;
-			result.m256_f32[1] = x;
-			result.m256_f32[2] = x;
-			result.m256_f32[3] = x;
-			result.m256_f32[4] = x;
-			result.m256_f32[5] = x;
-			result.m256_f32[6] = x;
-			result.m256_f32[7] = x;
-			return result;
-		}
-	};
+	consteval __m256 Construct8f(float x)
+	{
+		__m256 result;
+		result.m256_f32[0] = x;
+		result.m256_f32[1] = x;
+		result.m256_f32[2] = x;
+		result.m256_f32[3] = x;
+		result.m256_f32[4] = x;
+		result.m256_f32[5] = x;
+		result.m256_f32[6] = x;
+		result.m256_f32[7] = x;
+		return result;
+	}
 }
 
 
@@ -90,14 +87,13 @@ export namespace Furud
 	class Vec8f final
 	{
 	private:
-		using IBuilder = Internal::IVec8fBuilder;
 		__m256 reg;
 
 
 	public:
 
-		static constexpr __m256 SIGN_BIT   { IBuilder::Construct(0x80000000ui32) };
-		static constexpr __m256 SIGN_MASK  { IBuilder::Construct(0x7fffffffui32) };
+		static constexpr __m256 SIGN_BIT   { Internal::Construct8f(0x80000000ui32) };
+		static constexpr __m256 SIGN_MASK  { Internal::Construct8f(0x7fffffffui32) };
 
 	public:
 		const Vec8f() noexcept {}
