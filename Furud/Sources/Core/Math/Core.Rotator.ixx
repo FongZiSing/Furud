@@ -20,7 +20,7 @@ import Furud.Platform.Math;
 
 
 
-namespace Furud
+export namespace Furud
 {
 	/**
 	 * @brief  Implements a container for rotation information.
