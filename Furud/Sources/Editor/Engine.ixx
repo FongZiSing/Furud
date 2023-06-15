@@ -18,7 +18,7 @@ import Furud.App;
 
 export namespace Furud
 {
-	class Engine final : public Furud::D2DApp
+	class Engine final : public Furud::D3DApp
 	{
 	public:
 		Engine();

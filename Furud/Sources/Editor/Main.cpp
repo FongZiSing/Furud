@@ -23,6 +23,7 @@ import Furud.Platform.Memory.FileStream;
 import Furud.Platform.SIMD;
 import Furud.Platform.Math;
 import Furud.Core.Matrix;
+import Furud.Platform.RHI.Viewport;
 
 INT APIENTRY wWinMain(
 	_In_     HINSTANCE hInstance,
@@ -31,6 +32,7 @@ INT APIENTRY wWinMain(
 	_In_     INT     nCmdShow
 )
 {
+	/*
 	Furud::Vector4f mmm { 123, 123, 123, 1 };
 	Furud::Matrix44f d1 = Furud::Matrix44f::IDENTITY;
 	Furud::Matrix44f d2 = 4;
@@ -71,16 +73,17 @@ INT APIENTRY wWinMain(
 
 	Furud::Vec8f mm = Furud::Vec8f::SIGN_BIT;
 	float u = Furud::IMath::Floor(1200.4f);
+	*/
 
  	INT ReturnCode = -1;
-	if (SUCCEEDED(::CoInitialize(nullptr)))
+	//if (SUCCEEDED(::CoInitialize(nullptr)))
 	{
 		Furud::Engine FurudEngine;
 		if (SUCCEEDED(FurudEngine.Initialize(hInstance, nCmdShow)))
 		{
 			ReturnCode = FurudEngine.Run();
 		}
-		::CoUninitialize();
+		//::CoUninitialize();
 	}
 	return ReturnCode;
 }

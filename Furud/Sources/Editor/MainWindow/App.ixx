@@ -9,36 +9,43 @@
 module;
 
 // Windows Header.
+#ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
+#endif
+#ifndef NOMINMAX
 #define NOMINMAX
+#endif
 #include <Windows.h>
 
-// D2D1 Runtimer header.
+// DirectX 12 header.
+#include <d3d12.h>
 #include <dxgi1_4.h>
-#include <D3D11.h>
-#include <d2d1_3.h>
+#include <D3Dcompiler.h>
+#include "DirectXHeaders/d3dx12.h"
 
 // Smart Pointer Header.
 #include <wrl/client.h>
+using Microsoft::WRL::ComPtr;
 
+
+// C++ Standard Library.
 #include <stdint.h>
 
 
 
 export module Furud.App;
 
-using Microsoft::WRL::ComPtr;
 
 
 
 export namespace Furud
 {
-	class D2DApp
+	class D3DApp
 	{
 	public:
-		D2DApp();
+		D3DApp();
 
-		virtual ~D2DApp();
+		virtual ~D3DApp();
 
 
 	protected:
@@ -82,23 +89,6 @@ export namespace Furud
 
 
 	private:
-		// Initialize device-independent resources.
-		HRESULT CreateDeviceIndependentResources();
-
-		// Initialize device-dependent resources.
-		HRESULT CreateDeviceResources();
-
-		// Device-dependent resources when window resize.
-		void CreateWindowSizeDependentResources();
-
-		// Text resources.
-		HRESULT CreateDrawTextResources();
-
-		// Called every frames.
-		bool BeginDraw();
-
-		// Called every frames.
-		void EndDraw();
 
 
 	private:
@@ -174,42 +164,21 @@ export namespace Furud
 
 	private:
 		//--------------------------------
-		//~ Begin D2D
+		//~ Begin D3D
 
-		D2D1_RECT_U                 rect = { 0, 0, width, height };
+		bool bEnableDebugLayer = false;
 
-		ComPtr<ID3D11Device>        ptrD3DDevice;
+		UINT num4xMSAAQuality = 0;
 
-		ComPtr<ID3D11DeviceContext> ptrD3DDeviceContext;
+		ComPtr<IDXGIFactory4> dxgiFactory;
 
-		ComPtr<ID2D1Factory4>       ptrD2DFactory;
+		ComPtr<ID3D12Device> d3d12Device;
 
-		ComPtr<ID2D1Device3>        ptrD2DDevice;
-
-		ComPtr<ID2D1DeviceContext3> ptrD2DDeviceContext;
-
-		ComPtr<ID2D1Bitmap1>        ptrD2DTargetBimtap;
-
-		ComPtr<ID2D1Bitmap1>        ptrD2DRenderTarget;
-
-		ComPtr<IDXGISwapChain1>     ptrSwapChain;
-
-		ComPtr<IDWriteFactory>      ptrWriteFactory;
-
-		ComPtr<IDWriteTextFormat>   ptrWriteTextFormat;
-
-		D2D1_RECT_F                 textLayoutRectFPS;
-
-		ComPtr<ID2D1SolidColorBrush> ptrBrush;
-
-		D3D_FEATURE_LEVEL           featureLevel;
-
-		DXGI_PRESENT_PARAMETERS     parameters;
-
-		//~ End D2D
+		//~ End D3D
 		//--------------------------------
 
 
+	private:
 		//--------------------------------
 		//~ Begin operation.
 
