@@ -155,9 +155,9 @@ export namespace Furud
 
 		HWND      hWnd = nullptr;
 
-		uint32_t    width = 700;
+		uint32_t    width = 720;
 
-		uint32_t    height = 700;
+		uint32_t    height = 480;
 
 		uint64_t    frameCount = 0;
 

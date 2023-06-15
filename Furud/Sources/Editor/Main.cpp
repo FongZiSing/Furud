@@ -23,7 +23,6 @@ import Furud.Platform.Memory.FileStream;
 import Furud.Platform.SIMD;
 import Furud.Platform.Math;
 import Furud.Core.Matrix;
-import Furud.Platform.RHI.Viewport;
 
 INT APIENTRY wWinMain(
 	_In_     HINSTANCE hInstance,
