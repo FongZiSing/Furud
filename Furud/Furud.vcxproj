@@ -166,6 +166,8 @@
     <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.FileStream.ixx" />
     <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.FileSystem.ixx" />
     <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.ixx" />
+    <ClCompile Include="Sources\Platform\GenericRHI\RHIAdapter.ixx" />
+    <ClCompile Include="Sources\Platform\GenericRHI\RHIVerification.ixx" />
     <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Mat44.ixx" />
     <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Vec4.ixx" />
     <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Vec8.ixx" />

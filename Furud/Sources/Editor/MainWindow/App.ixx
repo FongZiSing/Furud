@@ -28,14 +28,14 @@ module;
 
 // C++ Standard Library.
 #include <stdint.h>
+#include <vector>
 
 
 
 export module Furud.App;
 
+import Furud.Platform.RHI.Adapter;
 using Microsoft::WRL::ComPtr;
-
-
 
 export namespace Furud
 {
@@ -97,8 +97,6 @@ export namespace Furud
 		void CreateD3D12Device_Internal();
 		
 		void CheckD3D12FeatureSupport_Internal();
-		
-		void EnumerateD3D12Adapter_Internal();
 		
 		void CreateD3D12CommandObjects_Internal();
 		
@@ -191,6 +189,8 @@ export namespace Furud
 		bool bEnableDebugLayer = false;
 		UINT num4xMSAAQuality = 0;
 
+
+		std::vector<RHIAdapter> RHIAdapters;
 
 		ComPtr<IDXGIFactory4> DXGIFactory;
 		ComPtr<IDXGISwapChain> DXGISwapChain;

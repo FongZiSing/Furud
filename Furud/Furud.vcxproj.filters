@@ -46,6 +46,9 @@
     <Filter Include="Sources\3. Core\Math">
       <UniqueIdentifier>{2f23f599-d965-4f19-9d98-40fd2e6b88a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\2. Platform\GenericRHI">
+      <UniqueIdentifier>{bd71ca09-e33c-4b75-b7f1-f967744096ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Editor\MainWindow\Resources\Resource.h">
@@ -151,6 +154,12 @@
     </ClCompile>
     <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.TinyTask.ixx">
       <Filter>Sources\2. Platform\GenericThread</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\RHIAdapter.ixx">
+      <Filter>Sources\2. Platform\GenericRHI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\RHIVerification.ixx">
+      <Filter>Sources\2. Platform\GenericRHI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
