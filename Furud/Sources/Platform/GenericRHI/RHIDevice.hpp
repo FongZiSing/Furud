@@ -52,7 +52,7 @@ namespace Furud
 
 		void FlushCommandQueue();
 
-		void ResetCommandListAndAllocator();
+		void ResetCommandListAndAllocator(ID3D12PipelineState* PipelineState);
 
 		void ResetCommandList();
 
@@ -178,7 +178,7 @@ namespace Furud
 		}
 	}
 
-	void RHIDevice::ResetCommandListAndAllocator()
+	void RHIDevice::ResetCommandListAndAllocator(ID3D12PipelineState* PipelineState)
 	{
 		// Reuse the memory associated with command recording.
 		// We can only reset when the associated command lists have finished execution on the GPU.
@@ -191,7 +191,7 @@ namespace Furud
 		// A command list can be reset after it has been added to the command queue via ExecuteCommandList.
 		// Reusing the command list reuses memory.
 		VerifyD3D12Result(
-			D3D12CommandList->Reset(D3D12CommandListAllocator.Get(), nullptr),
+			D3D12CommandList->Reset(D3D12CommandListAllocator.Get(), PipelineState),
 			D3D12Device.Get(),
 			"D3D12CommandList->Reset(D3D12CommandListAllocator.Get(), nullptr)"
 		);

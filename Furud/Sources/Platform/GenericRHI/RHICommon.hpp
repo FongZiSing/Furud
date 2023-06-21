@@ -19,10 +19,13 @@
 // DirectX 12 header.
 #include <d3d12.h>
 #include <dxgi1_4.h>
+#include <D3Dcompiler.h>
 #include "../../Editor/MainWindow/DirectXHeaders/d3dx12.h"
 
 // DirectX math headers.
 #include <DirectXColors.h>
+#include <DirectXMath.h>
+#include <DirectXCollision.h>
 
 // Smart Pointer Header.
 #include <wrl/client.h>
@@ -32,6 +35,8 @@
 #include <format>
 #include <cassert>
 #include <vector>
+#include <array>
+#include <unordered_map>
 
 // Intrin
 #include <intrin.h>

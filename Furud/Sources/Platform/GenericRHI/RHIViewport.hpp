@@ -40,7 +40,9 @@ namespace Furud
 
 		void Resize(RHIDevice* Device, UINT clientWidth, UINT clientHeight);
 
-		void Draw(ID3D12GraphicsCommandList* commandList);
+		void BeginDraw(ID3D12GraphicsCommandList* commandList);
+
+		void EndDraw(ID3D12GraphicsCommandList* commandList);
 
 		void Present();
 	};
@@ -209,7 +211,7 @@ namespace Furud
 		}
 	}
 
-	void RHIViewport::Draw(ID3D12GraphicsCommandList* commandList)
+	void RHIViewport::BeginDraw(ID3D12GraphicsCommandList* commandList)
 	{
 		commandList->RSSetViewports(1, &screenViewport);
 		commandList->RSSetScissorRects(1, &scissorRect);
@@ -254,7 +256,10 @@ namespace Furud
 			&CurrentBackBufferView,
 			true,
 			&DepthStencilView);
+	}
 
+	void RHIViewport::EndDraw(ID3D12GraphicsCommandList* commandList)
+	{
 		// Indicate a state transition on the resource usage.
 		D3D12_RESOURCE_BARRIER endSwapChainBarrier = CD3DX12_RESOURCE_BARRIER::Transition(
 			renderTargetBuffers[swapChainIndex].Get(),
