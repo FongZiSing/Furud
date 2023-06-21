@@ -144,6 +144,11 @@
     <ClInclude Include="Sources\Editor\MainWindow\Resources\Resource.h" />
     <ClInclude Include="Sources\Editor\MainWindow\Resources\targetver.h" />
     <ClInclude Include="Sources\Platform\Furud.hpp" />
+    <ClInclude Include="Sources\Platform\GenericRHI\RHIAdapter.hpp" />
+    <ClInclude Include="Sources\Platform\GenericRHI\RHICommon.hpp" />
+    <ClInclude Include="Sources\Platform\GenericRHI\RHIDevice.hpp" />
+    <ClInclude Include="Sources\Platform\GenericRHI\RHIVerification.hpp" />
+    <ClInclude Include="Sources\Platform\GenericRHI\RHIViewport.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Core\Math\Core.Color.ixx" />
@@ -166,8 +171,8 @@
     <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.FileStream.ixx" />
     <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.FileSystem.ixx" />
     <ClCompile Include="Sources\Platform\GenericMemory\Platform.Memory.ixx" />
-    <ClCompile Include="Sources\Platform\GenericRHI\RHIAdapter.ixx" />
-    <ClCompile Include="Sources\Platform\GenericRHI\RHIVerification.ixx" />
+    <ClCompile Include="Sources\Platform\GenericRHI\RHI.cpp" />
+    <ClCompile Include="Sources\Platform\GenericRHI\RHI.ixx" />
     <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Mat44.ixx" />
     <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Vec4.ixx" />
     <ClCompile Include="Sources\Platform\GenericSIMD\Platform.SIMD-Vec8.ixx" />

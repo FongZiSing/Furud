@@ -63,6 +63,21 @@
     <ClInclude Include="Sources\Platform\Furud.hpp">
       <Filter>Sources\2. Platform</Filter>
     </ClInclude>
+    <ClInclude Include="Sources\Platform\GenericRHI\RHIDevice.hpp">
+      <Filter>Sources\2. Platform\GenericRHI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Platform\GenericRHI\RHIVerification.hpp">
+      <Filter>Sources\2. Platform\GenericRHI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Platform\GenericRHI\RHICommon.hpp">
+      <Filter>Sources\2. Platform\GenericRHI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Platform\GenericRHI\RHIViewport.hpp">
+      <Filter>Sources\2. Platform\GenericRHI</Filter>
+    </ClInclude>
+    <ClInclude Include="Sources\Platform\GenericRHI\RHIAdapter.hpp">
+      <Filter>Sources\2. Platform\GenericRHI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Sources\Editor\MainWindow\App.cpp">
@@ -155,10 +170,10 @@
     <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.TinyTask.ixx">
       <Filter>Sources\2. Platform\GenericThread</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Platform\GenericRHI\RHIAdapter.ixx">
+    <ClCompile Include="Sources\Platform\GenericRHI\RHI.ixx">
       <Filter>Sources\2. Platform\GenericRHI</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Platform\GenericRHI\RHIVerification.ixx">
+    <ClCompile Include="Sources\Platform\GenericRHI\RHI.cpp">
       <Filter>Sources\2. Platform\GenericRHI</Filter>
     </ClCompile>
   </ItemGroup>

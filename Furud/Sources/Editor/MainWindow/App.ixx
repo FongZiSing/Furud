@@ -34,7 +34,6 @@ module;
 
 export module Furud.App;
 
-import Furud.Platform.RHI.Adapter;
 using Microsoft::WRL::ComPtr;
 
 export namespace Furud
@@ -89,26 +88,6 @@ export namespace Furud
 
 		//~ End override message handle.
 		//--------------------------------
-
-
-	private:
-		void EnableD3D12DebugLayer_Internal();
-
-		void CreateD3D12Device_Internal();
-		
-		void CheckD3D12FeatureSupport_Internal();
-		
-		void CreateD3D12CommandObjects_Internal();
-		
-		void CreateD3D12SwapChain_Internal();
-		
-		void CreateD3D12DescriptorHeap_Internal();
-		
-		void ResizeD3D12SwapChain_Internal();
-
-		void CreateD3D12Fence_Internal();
-
-		void FlushD3D12CommandQueue_Internal();
 
 
 	private:
@@ -180,49 +159,6 @@ export namespace Furud
 		uint32_t    height = 480;
 
 		uint64_t    frameCount = 0;
-
-
-	private:
-		//--------------------------------
-		//~ Begin D3D
-
-		bool bEnableDebugLayer = false;
-		UINT num4xMSAAQuality = 0;
-
-
-		std::vector<RHIAdapter> RHIAdapters;
-
-		ComPtr<IDXGIFactory4> DXGIFactory;
-		ComPtr<IDXGISwapChain> DXGISwapChain;
-
-
-		ComPtr<ID3D12Device> D3D12Device;
-		ComPtr<ID3D12CommandQueue> D3D12CommandQueue;
-		ComPtr<ID3D12CommandAllocator> D3D12CommandListAllocator;
-		ComPtr<ID3D12GraphicsCommandList> D3D12CommandList;
-
-
-		D3D12_VIEWPORT ScreenViewport;
-		D3D12_RECT ScissorRect;
-
-		static const UINT numSwapChainBuffer = 3;
-		INT numSwapChainIndex = 0;
-		
-		UINT RTVDescriptorSize = 0;
-		ComPtr<ID3D12DescriptorHeap> RTVHeap; // Descriptor heap of render target view.
-		
-		UINT DSVDescriptorSize = 0;
-		ComPtr<ID3D12DescriptorHeap> DSVHeap; // Descriptor heap of depth stencil view.
-		
-		ComPtr<ID3D12Resource> SwapChainBuffers[numSwapChainBuffer];
-		ComPtr<ID3D12Resource> DepthStencilBuffer;
-
-
-		ComPtr<ID3D12Fence> D3D12Fence;
-		UINT64 CurrentFence = 0;
-
-		//~ End D3D
-		//--------------------------------
 
 
 	private:

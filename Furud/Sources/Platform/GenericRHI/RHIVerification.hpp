@@ -1,41 +1,21 @@
 //
-// RHIVerification.ixx
+// RHIVerification.hpp
 //
 //       Copyright (c) Furud Engine. All rights reserved.
 //       @author FongZiSing
 //
 // Verification utility.
 //
-module;
+#pragma once
 
 // Windows header.
-#ifndef WIN32_LEAN_AND_MEAN
-#define WIN32_LEAN_AND_MEAN
-#endif
-#ifndef NOMINMAX
-#define NOMINMAX
-#endif
-
-// DirectX 12 headers.
-#include <d3d12.h>
-
-// C++ Standard Library.
-#include <stdint.h>
-#include <format>
-
-// Intrin
-#include <intrin.h>
-
-// Furud headers.
-#include <Furud.hpp>
+#include "RHICommon.hpp"
 
 
 
-export module Furud.Platform.RHI.Verification;
-
-namespace Furud
+namespace Furud::Internal
 {
-	std::string GetD3D12ErrorInformation(HRESULT D3D12ErrorCode, ID3D12Device* D3D12Device)
+	static std::string GetD3D12ErrorInformation(HRESULT D3D12ErrorCode, ID3D12Device* D3D12Device)
 	{
 		// Enumerates the error code.
 		std::string defaultD3D12Error;
@@ -100,9 +80,9 @@ namespace Furud
 
 
 
-export namespace Furud
+namespace Furud
 {
-	void VerifyD3D12Result(
+	static void VerifyD3D12Result(
 		long D3D12ErrorCode,
 		ID3D12Device* D3D12Device = nullptr,
 		const char* message = "",
@@ -115,9 +95,9 @@ export namespace Furud
 			return;
 		}
 
-		std::string errorInformation = GetD3D12ErrorInformation(D3D12ErrorCode, D3D12Device);
+		std::string errorInformation = Internal::GetD3D12ErrorInformation(D3D12ErrorCode, D3D12Device);
 		std::string errorString = std::format(
-			"\'{}\' failed!\n - at {}:{}\n - with error code: {}",
+			"\'{}\'\n - at {}:{}\n - with error code: {}",
 			message,
 			fileName,
 			codeLine,
