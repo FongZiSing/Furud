@@ -9,6 +9,7 @@
 module;
 
 #include <Furud.hpp>
+#include <cstdint>
 #include <immintrin.h>
 
 

@@ -1,21 +1,65 @@
 //
-// RHIVerification.hpp
+// Platform.RHI.Verification.ixx
 //
 //       Copyright (c) Furud Engine. All rights reserved.
 //       @author FongZiSing
 //
-// Verification utility.
+// Render Hardware Interface - Verification utility.
 //
-#pragma once
+module;
 
-// Windows header.
-#include "RHICommon.hpp"
+#include "../RHICommon.hpp"
 
 
+export module Furud.Platform.RHI.Verification;
 
 namespace Furud::Internal
 {
-	static std::string GetD3D12ErrorInformation(HRESULT D3D12ErrorCode, ID3D12Device* D3D12Device)
+	std::string GetD3D12ErrorInformation(HRESULT D3D12ErrorCode, ID3D12Device* D3D12Device);
+}
+
+
+
+export namespace Furud
+{
+	void VerifyD3D12Result(
+		long D3D12ErrorCode,
+		ID3D12Device* D3D12Device = nullptr,
+		const char* message = "",
+		const char* const fileName = __builtin_FILE(),
+		const int codeLine = __builtin_LINE()
+	)
+	{
+		if (SUCCEEDED(D3D12ErrorCode))
+		{
+			return;
+		}
+
+		std::string errorInformation = Internal::GetD3D12ErrorInformation(D3D12ErrorCode, D3D12Device);
+		std::string errorString = std::format(
+			"\'{}\'\n - at {}:{}\n - with error code: {}",
+			message,
+			fileName,
+			codeLine,
+			errorInformation
+		);
+
+		::MessageBoxA(nullptr, errorString.c_str(), "HR Failed!", MB_OK);
+
+		// Windows debug break.
+		{
+			__nop(), __debugbreak();
+		}
+	}
+}
+
+
+
+module : private;
+
+namespace Furud::Internal
+{
+	std::string GetD3D12ErrorInformation(HRESULT D3D12ErrorCode, ID3D12Device* D3D12Device)
 	{
 		// Enumerates the error code.
 		std::string defaultD3D12Error;
@@ -75,40 +119,5 @@ namespace Furud::Internal
 		result += resultOfD3D12Error;
 		result += reasonOfDeviceRemoved;
 		return result;
-	}
-}
-
-
-
-namespace Furud
-{
-	static void VerifyD3D12Result(
-		long D3D12ErrorCode,
-		ID3D12Device* D3D12Device = nullptr,
-		const char* message = "",
-		const char* const fileName = __builtin_FILE(),
-		const int codeLine = __builtin_LINE()
-	)
-	{
-		if (SUCCEEDED(D3D12ErrorCode))
-		{
-			return;
-		}
-
-		std::string errorInformation = Internal::GetD3D12ErrorInformation(D3D12ErrorCode, D3D12Device);
-		std::string errorString = std::format(
-			"\'{}\'\n - at {}:{}\n - with error code: {}",
-			message,
-			fileName,
-			codeLine,
-			errorInformation
-		);
-
-		::MessageBoxA(nullptr, errorString.c_str(), "HR Failed!", MB_OK);
-
-		// Windows debug break.
-		{
-			__nop(), __debugbreak();
-		}
 	}
 }

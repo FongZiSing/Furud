@@ -49,6 +49,12 @@
     <Filter Include="Sources\2. Platform\GenericRHI">
       <UniqueIdentifier>{bd71ca09-e33c-4b75-b7f1-f967744096ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Sources\2. Platform\GenericRHI\Resource">
+      <UniqueIdentifier>{52dfd365-49cb-4581-a2fa-81d540805825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sources\2. Platform\GenericRHI\Interface">
+      <UniqueIdentifier>{6ef0a97b-7bc4-46bb-8dbc-11e888f23e6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Sources\Editor\MainWindow\Resources\Resource.h">
@@ -63,19 +69,7 @@
     <ClInclude Include="Sources\Platform\Furud.hpp">
       <Filter>Sources\2. Platform</Filter>
     </ClInclude>
-    <ClInclude Include="Sources\Platform\GenericRHI\RHIDevice.hpp">
-      <Filter>Sources\2. Platform\GenericRHI</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Platform\GenericRHI\RHIVerification.hpp">
-      <Filter>Sources\2. Platform\GenericRHI</Filter>
-    </ClInclude>
     <ClInclude Include="Sources\Platform\GenericRHI\RHICommon.hpp">
-      <Filter>Sources\2. Platform\GenericRHI</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Platform\GenericRHI\RHIViewport.hpp">
-      <Filter>Sources\2. Platform\GenericRHI</Filter>
-    </ClInclude>
-    <ClInclude Include="Sources\Platform\GenericRHI\RHIAdapter.hpp">
       <Filter>Sources\2. Platform\GenericRHI</Filter>
     </ClInclude>
   </ItemGroup>
@@ -170,11 +164,38 @@
     <ClCompile Include="Sources\Platform\GenericThread\Platform.Thread.TinyTask.ixx">
       <Filter>Sources\2. Platform\GenericThread</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Platform\GenericRHI\RHI.ixx">
+    <ClCompile Include="Sources\Platform\GenericRHI\Platform.RHI.ixx">
       <Filter>Sources\2. Platform\GenericRHI</Filter>
     </ClCompile>
-    <ClCompile Include="Sources\Platform\GenericRHI\RHI.cpp">
+    <ClCompile Include="Sources\Platform\GenericRHI\Platform.RHI.cpp">
       <Filter>Sources\2. Platform\GenericRHI</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\Resource\Platform.RHI.Resource.ixx">
+      <Filter>Sources\2. Platform\GenericRHI\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\Resource\Platform.RHI.Resource-Buffer.ixx">
+      <Filter>Sources\2. Platform\GenericRHI\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\Resource\Platform.RHI.Resource-Common.ixx">
+      <Filter>Sources\2. Platform\GenericRHI\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\Resource\Platform.RHI.Resource-RefCounting.ixx">
+      <Filter>Sources\2. Platform\GenericRHI\Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\Interface\Platform.RHI.Adapter.ixx">
+      <Filter>Sources\2. Platform\GenericRHI\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\Interface\Platform.RHI.Device.ixx">
+      <Filter>Sources\2. Platform\GenericRHI\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\Interface\Platform.RHI.Viewport.ixx">
+      <Filter>Sources\2. Platform\GenericRHI\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\Interface\Platform.RHI.Verification.ixx">
+      <Filter>Sources\2. Platform\GenericRHI\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Sources\Platform\GenericRHI\Resource\Platform.RHI.Resource-GPUFence.ixx">
+      <Filter>Sources\2. Platform\GenericRHI\Resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

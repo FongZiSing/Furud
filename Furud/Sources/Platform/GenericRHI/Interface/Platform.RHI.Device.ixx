@@ -1,30 +1,28 @@
 //
-// RHIDevice.hpp
+// Platform.RHI.Device.ixx
 //
 //       Copyright (c) Furud Engine. All rights reserved.
 //       @author FongZiSing
 //
-// Device ( interface ).
+// Render Hardware Interface - Device.
 //
-#pragma once
+module;
 
-#include "RHICommon.hpp"
-#include "RHIVerification.hpp"
-
+#include "../RHICommon.hpp"
 
 
-namespace Furud
+export module Furud.Platform.RHI.Device;
+import Furud.Platform.RHI.Verification;
+
+export namespace Furud
 {
 	struct RHIFeatures
 	{
 		UINT num4xMSAAQuality = 0;
 	};
-}
 
 
 
-namespace Furud
-{
 	class RHIDevice
 	{
 	private:

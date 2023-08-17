@@ -8,6 +8,8 @@
 //
 module;
 
+#include <stdint.h>
+#include <windows.h>
 
 
 export module Furud.Engine;
