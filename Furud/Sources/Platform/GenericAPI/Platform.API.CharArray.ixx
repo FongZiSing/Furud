@@ -418,7 +418,7 @@ namespace Furud::Internal
 				return;
 			}
 
-			TChar* tryPtr = search;
+			TChar* tryPtr = str;
 			const TChar* tryEnd = str + (strSize - searchSize) + 1;
 			while (tryPtr < tryEnd)
 			{
