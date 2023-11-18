@@ -9,6 +9,7 @@
 module;
 
 #include <Furud.hpp>
+#include <cstdint>
 
 
 
@@ -75,6 +76,7 @@ export namespace Furud
 		{
 			Vec8f::Copy(&v.m[0][0], &m[0][0]);
 			Vec8f::Copy(&v.m[2][0], &m[2][0]);
+			return *this;
 		}
 
 		furud_inline Matrix44f(Matrix44f&& v) noexcept

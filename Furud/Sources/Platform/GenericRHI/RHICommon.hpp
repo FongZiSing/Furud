@@ -22,6 +22,11 @@
 #include <D3Dcompiler.h>
 #include "../../Editor/MainWindow/DirectXHeaders/d3dx12.h"
 
+// Link necessary d3d12 libraries.
+#pragma comment(lib,"d3dcompiler.lib")
+#pragma comment(lib, "D3D12.lib")
+#pragma comment(lib, "dxgi.lib")
+
 // DirectX math headers.
 #include <DirectXColors.h>
 #include <DirectXMath.h>

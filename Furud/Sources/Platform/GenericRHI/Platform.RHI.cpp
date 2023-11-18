@@ -10,22 +10,17 @@ module;
 
 // Windows header.
 #include "RHICommon.hpp"
-#include "RHIVerification.hpp"
-#include "RHIDevice.hpp"
-#include "RHIAdapter.hpp"
-#include "RHIViewport.hpp"
-
-// Link necessary d3d12 libraries.
-#pragma comment(lib,"d3dcompiler.lib")
-#pragma comment(lib, "D3D12.lib")
-#pragma comment(lib, "dxgi.lib")
-
 
 
 module Furud.Platform.RHI;
-
+import Furud.Platform.RHI.Verification;
+import Furud.Platform.RHI.Device;
+import Furud.Platform.RHI.Viewport;
+import Furud.Platform.RHI.Adapter;
+import Furud.Platform.RHI.Resource;
 using Microsoft::WRL::ComPtr;
 using namespace DirectX;
+
 
 namespace Furud::inline TODO
 {
@@ -188,8 +183,8 @@ namespace Furud::inline TODO
 
 		// System memory copies.  Use Blobs because the vertex/index format can be generic.
 		// It is up to the client to cast appropriately.  
-		Microsoft::WRL::ComPtr<ID3DBlob> VertexBufferCPU = nullptr;
-		Microsoft::WRL::ComPtr<ID3DBlob> IndexBufferCPU = nullptr;
+		//Microsoft::WRL::ComPtr<ID3DBlob> VertexBufferCPU = nullptr;
+		//Microsoft::WRL::ComPtr<ID3DBlob> IndexBufferCPU = nullptr;
 
 		Microsoft::WRL::ComPtr<ID3D12Resource> VertexBufferGPU = nullptr;
 		Microsoft::WRL::ComPtr<ID3D12Resource> IndexBufferGPU = nullptr;
@@ -457,11 +452,11 @@ namespace Furud::RHI
 			mBoxGeo = std::make_unique<MeshGeometry>();
 			mBoxGeo->Name = "boxGeo";
 
-			VerifyD3D12Result(D3DCreateBlob(vbByteSize, &mBoxGeo->VertexBufferCPU));
-			CopyMemory(mBoxGeo->VertexBufferCPU->GetBufferPointer(), vertices.data(), vbByteSize);
+			//VerifyD3D12Result(D3DCreateBlob(vbByteSize, &mBoxGeo->VertexBufferCPU));
+			//CopyMemory(mBoxGeo->VertexBufferCPU->GetBufferPointer(), vertices.data(), vbByteSize);
 
-			VerifyD3D12Result(D3DCreateBlob(ibByteSize, &mBoxGeo->IndexBufferCPU));
-			CopyMemory(mBoxGeo->IndexBufferCPU->GetBufferPointer(), indices.data(), ibByteSize);
+			//VerifyD3D12Result(D3DCreateBlob(ibByteSize, &mBoxGeo->IndexBufferCPU));
+			//CopyMemory(mBoxGeo->IndexBufferCPU->GetBufferPointer(), indices.data(), ibByteSize);
 
 			mBoxGeo->VertexBufferGPU = CreateDefaultBuffer(GRHIDevice.GetDevice(),
 				GRHIDevice.GetCommandList(), vertices.data(), vbByteSize, mBoxGeo->VertexBufferUploader);
@@ -614,8 +609,15 @@ namespace Furud::RHI
 		GRHIDevice.FlushCommandQueue();
 
 	}
+
 	void FlushCommandQueue()
 	{
 		GRHIDevice.FlushCommandQueue();
 	}
+
+	RHIBufferRef CreateBuffer(const RHIBufferCreateInfo& info)
+	{
+		return new RHIBuffer({ GRHIDevice.GetDevice(), GRHIDevice.GetCommandQueue(),GRHIDevice.GetCommandList() }, info);
+	}
+
 }

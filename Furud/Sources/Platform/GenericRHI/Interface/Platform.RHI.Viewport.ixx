@@ -1,20 +1,21 @@
 //
-// RHIViewport.hpp
+// Platform.RHI.Viewport.ixx
 //
 //       Copyright (c) Furud Engine. All rights reserved.
 //       @author FongZiSing
 //
-// Viewport ( client area of application ).
+// Render Hardware Interface - Viewport ( client area of application ).
 //
-#pragma once
+module;
 
-#include "RHICommon.hpp"
-#include "RHIVerification.hpp"
-#include "RHIDevice.hpp"
+#include "../RHICommon.hpp"
 
 
+export module Furud.Platform.RHI.Viewport;
+import Furud.Platform.RHI.Verification;
+import Furud.Platform.RHI.Device;
 
-namespace Furud
+export namespace Furud
 {
 	class RHIViewport
 	{
@@ -47,6 +48,7 @@ namespace Furud
 		void Present();
 	};
 }
+
 
 
 namespace Furud

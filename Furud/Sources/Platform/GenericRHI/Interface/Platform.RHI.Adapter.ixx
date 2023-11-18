@@ -1,19 +1,20 @@
 //
-// RHIAdapter.hpp
+// Platform.RHI.Adapter.ixx
 //
 //       Copyright (c) Furud Engine. All rights reserved.
 //       @author FongZiSing
 //
-// Adapter ( video card ).
+// Render Hardware Interface - Adapter ( video card ).
 //
-#pragma once
+module;
 
-#include "RHICommon.hpp"
-#include "RHIVerification.hpp"
-
+#include "../RHICommon.hpp"
 
 
-namespace Furud
+export module Furud.Platform.RHI.Adapter;
+import Furud.Platform.RHI.Verification;
+
+export namespace Furud
 {
 	struct RHIAdapterDesc
 	{
@@ -31,12 +32,9 @@ namespace Furud
 		D3D_SHADER_MODEL maxD3D12ShaderModel;
 		const wchar_t* strD3D12ShaderModel;
 	};
-}
 
 
 
-namespace Furud
-{
 	class RHIAdapter
 	{
 	private:
@@ -67,7 +65,7 @@ namespace Furud
 		RHIAdapter() = default;
 
 		IDXGIAdapter* Get() noexcept { return ChosenAdapter.Get(); }
-		
+
 		const IDXGIAdapter* Get() const noexcept { return ChosenAdapter.Get(); }
 
 		void Initialize(IDXGIFactory* DXGIFactory);

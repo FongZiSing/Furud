@@ -129,20 +129,20 @@ export namespace Furud
 		Vector4i operator * (const Vector4i& rhs) const noexcept { Vector4i v; v.AsVec4() = AsVec4() * rhs.AsVec4(); return v; }
 		Vector4i operator / (const Vector4i& rhs) const noexcept { Vector4i v; v.AsVec4() = AsVec4() / rhs.AsVec4(); return v; }
 
-		const Vector4i& operator += (const Vector4i& rhs) noexcept { AsVec4() = AsVec4() + rhs.AsVec4(); }
-		const Vector4i& operator -= (const Vector4i& rhs) noexcept { AsVec4() = AsVec4() - rhs.AsVec4(); }
-		const Vector4i& operator *= (const Vector4i& rhs) noexcept { AsVec4() = AsVec4() * rhs.AsVec4(); }
-		const Vector4i& operator /= (const Vector4i& rhs) noexcept { AsVec4() = AsVec4() / rhs.AsVec4(); }
+		const Vector4i& operator += (const Vector4i& rhs) noexcept { AsVec4() = AsVec4() + rhs.AsVec4(); return *this; }
+		const Vector4i& operator -= (const Vector4i& rhs) noexcept { AsVec4() = AsVec4() - rhs.AsVec4(); return *this; }
+		const Vector4i& operator *= (const Vector4i& rhs) noexcept { AsVec4() = AsVec4() * rhs.AsVec4(); return *this; }
+		const Vector4i& operator /= (const Vector4i& rhs) noexcept { AsVec4() = AsVec4() / rhs.AsVec4(); return *this; }
 
 		Vector4i operator + (int32_t const& rhs) const noexcept { Vector4i v; v.AsVec4() = AsVec4() + Vec4i(rhs); return v; }
 		Vector4i operator - (int32_t const& rhs) const noexcept { Vector4i v; v.AsVec4() = AsVec4() - Vec4i(rhs); return v; }
 		Vector4i operator * (int32_t const& rhs) const noexcept { Vector4i v; v.AsVec4() = AsVec4() * Vec4i(rhs); return v; }
 		Vector4i operator / (int32_t const& rhs) const noexcept { Vector4i v; v.AsVec4() = AsVec4() / Vec4i(rhs); return v; }
 
-		const Vector4i& operator += (int32_t const& rhs) noexcept { AsVec4() = AsVec4() + Vec4i(rhs); }
-		const Vector4i& operator -= (int32_t const& rhs) noexcept { AsVec4() = AsVec4() - Vec4i(rhs); }
-		const Vector4i& operator *= (int32_t const& rhs) noexcept { AsVec4() = AsVec4() * Vec4i(rhs); }
-		const Vector4i& operator /= (int32_t const& rhs) noexcept { AsVec4() = AsVec4() / Vec4i(rhs); }
+		const Vector4i& operator += (int32_t const& rhs) noexcept { AsVec4() = AsVec4() + Vec4i(rhs); return *this; }
+		const Vector4i& operator -= (int32_t const& rhs) noexcept { AsVec4() = AsVec4() - Vec4i(rhs); return *this; }
+		const Vector4i& operator *= (int32_t const& rhs) noexcept { AsVec4() = AsVec4() * Vec4i(rhs); return *this; }
+		const Vector4i& operator /= (int32_t const& rhs) noexcept { AsVec4() = AsVec4() / Vec4i(rhs); return *this; }
 
 
 	public:
@@ -256,20 +256,20 @@ export namespace Furud
 		Vector4f operator - (const Vector4f& rhs) const noexcept { Vector4f v; v.AsVec4() = AsVec4() - rhs.AsVec4(); return v; }
 		Vector4f operator * (const Vector4f& rhs) const noexcept { Vector4f v; v.AsVec4() = AsVec4() * rhs.AsVec4(); return v; }
 		Vector4f operator / (const Vector4f& rhs) const noexcept { Vector4f v; v.AsVec4() = AsVec4() / rhs.AsVec4(); return v; }
-		const Vector4f& operator += (const Vector4f& rhs) noexcept { AsVec4() = AsVec4() + rhs.AsVec4(); }
-		const Vector4f& operator -= (const Vector4f& rhs) noexcept { AsVec4() = AsVec4() - rhs.AsVec4(); }
-		const Vector4f& operator *= (const Vector4f& rhs) noexcept { AsVec4() = AsVec4() * rhs.AsVec4(); }
-		const Vector4f& operator /= (const Vector4f& rhs) noexcept { AsVec4() = AsVec4() / rhs.AsVec4(); }
+		const Vector4f& operator += (const Vector4f& rhs) noexcept { AsVec4() = AsVec4() + rhs.AsVec4(); return *this; }
+		const Vector4f& operator -= (const Vector4f& rhs) noexcept { AsVec4() = AsVec4() - rhs.AsVec4(); return *this; }
+		const Vector4f& operator *= (const Vector4f& rhs) noexcept { AsVec4() = AsVec4() * rhs.AsVec4(); return *this; }
+		const Vector4f& operator /= (const Vector4f& rhs) noexcept { AsVec4() = AsVec4() / rhs.AsVec4(); return *this; }
 
 		Vector4f operator - () const noexcept { Vector4f v; (-AsVec4()).Store4(&v); return v; }
 		Vector4f operator + (float const& rhs) const noexcept { Vector4f v; v.AsVec4() = AsVec4() + Vec4f(rhs); return v; }
 		Vector4f operator - (float const& rhs) const noexcept { Vector4f v; v.AsVec4() = AsVec4() - Vec4f(rhs); return v; }
 		Vector4f operator * (float const& rhs) const noexcept { Vector4f v; v.AsVec4() = AsVec4() * Vec4f(rhs); return v; }
 		Vector4f operator / (float const& rhs) const noexcept { Vector4f v; v.AsVec4() = AsVec4() / Vec4f(rhs); return v; }
-		const Vector4f& operator += (float const& rhs) noexcept { AsVec4() = AsVec4() + Vec4f(rhs); }
-		const Vector4f& operator -= (float const& rhs) noexcept { AsVec4() = AsVec4() - Vec4f(rhs); }
-		const Vector4f& operator *= (float const& rhs) noexcept { AsVec4() = AsVec4() * Vec4f(rhs); }
-		const Vector4f& operator /= (float const& rhs) noexcept { AsVec4() = AsVec4() / Vec4f(rhs); }
+		const Vector4f& operator += (float const& rhs) noexcept { AsVec4() = AsVec4() + Vec4f(rhs); return *this; }
+		const Vector4f& operator -= (float const& rhs) noexcept { AsVec4() = AsVec4() - Vec4f(rhs); return *this; }
+		const Vector4f& operator *= (float const& rhs) noexcept { AsVec4() = AsVec4() * Vec4f(rhs); return *this; }
+		const Vector4f& operator /= (float const& rhs) noexcept { AsVec4() = AsVec4() / Vec4f(rhs); return *this; }
 
 
 	public:
